@@ -1,0 +1,65 @@
+ValidationFailed: {
+  "status": 422,
+  "statusText": "Unprocessable Entity",
+  "message": "Validation error",
+  "details": {
+    "errors": [
+      {
+        "name": "unexpected",
+        "details": "The property \"required\" is not expected",
+        "path": [
+          "fields",
+          2,
+          "items",
+          "required"
+        ]
+      }
+    ]
+  },
+  "request": {
+    "url": "spaces/3u8nbr4uxelg/environments/master/content_types/heroSection",
+    "headers": {
+      "Accept": "application/json, text/plain, */*",
+      "Content-Type": "application/vnd.contentful.management.v1+json",
+      "X-Contentful-User-Agent": "app contentful.cli/1.14.0; feature space-migration; sdk contentful-management-plain.js/7.54.2; platform node.js/v16.15.0; os Windows/v16.15.0;",
+      "CF-Sequence": "c3fec2f8-7b79-4996-9997-81d42cd1d765",
+      "Authorization": "Bearer ...BxwFc",
+      "user-agent": "node.js/v16.15.0",
+      "Accept-Encoding": "gzip",
+      "X-Contentful-Version": 0,
+      "Content-Length": 461
+    },
+    "method": "put",
+    "payloadData": "{\"name\":\"LAW - Hero Section\",\"displayField\":\"title\",\"fields\":[{\"id\":\"title\",\"name\":\"Title\",\"type\":\"Symbol\",\"required\":true},{\"id\":\"backgroundImage\",\"name\":\"Hero Image\",\"required\":true,\"type\":\"Link\",\"linkType\":\"Asset\"},{\"id\":\"services\",\"name\":\"Services\",\"type\":\"Array\",\"items\":{\"type\":\"Symbol\",\"required\":true}},{\"id\":\"tagline\",\"type\":\"Symbol\",\"name\":\"Tagline\"},{\"id\":\"cta\",\"name\":\"Call to Action\",\"type\":\"Symbol\"}],\"description\":\"Hero section for landing page\"}"
+  },
+  "requestId": "29a76bd1-252a-4dea-a00c-1fe537effd43"
+}
+    at errorHandler (C:\Users\alexs\AppData\Roaming\npm\node_modules\contentful-cli\node_modules\contentful-migration\node_modules\contentful-management\dist\contentful-management.node.js:3459:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)NotFound: {
+  "status": 404,
+  "statusText": "Not Found",
+  "message": "The resource could not be found.",
+  "details": {
+    "type": "ContentType",
+    "id": "heroSection",
+    "environment": "master",
+    "space": "3u8nbr4uxelg"
+  },
+  "request": {
+    "url": "spaces/3u8nbr4uxelg/environments/master/content_types/heroSection/published",
+    "headers": {
+      "Accept": "application/json, text/plain, */*",
+      "Content-Type": "application/vnd.contentful.management.v1+json",
+      "X-Contentful-User-Agent": "app contentful.cli/1.14.0; feature space-migration; sdk contentful-management-plain.js/7.54.2; platform node.js/v16.15.0; os Windows/v16.15.0;",
+      "CF-Sequence": "c3fec2f8-7b79-4996-9997-81d42cd1d765",
+      "Authorization": "Bearer ...BxwFc",
+      "user-agent": "node.js/v16.15.0",
+      "Accept-Encoding": "gzip",
+      "X-Contentful-Version": 1
+    },
+    "method": "put"
+  },
+  "requestId": "9d76068f-f51a-4cf5-ae7e-e83f24d9efba"
+}
+    at errorHandler (C:\Users\alexs\AppData\Roaming\npm\node_modules\contentful-cli\node_modules\contentful-migration\node_modules\contentful-management\dist\contentful-management.node.js:3459:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
