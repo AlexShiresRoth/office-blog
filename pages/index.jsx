@@ -1,15 +1,29 @@
 import Container from "../components/container";
 import Layout from "../components/layout";
 import {
+  getAboutSection,
   getAllPostsForHome,
+  getContactSection,
   getFooterSection,
   getHeroSection,
   getNavigation,
+  getServicesSection,
 } from "../lib/api";
 import Head from "next/head";
 import HeroSection from "../components/hero-section";
+import ServicesSection from "../components/ServicesSection";
+import AboutSection from "../components/about-section";
+import ContactSection from "../components/contact-section";
 
-export default function Index({ preview, navigation, hero, footer }) {
+export default function Index({
+  preview,
+  navigation,
+  hero,
+  footer,
+  services,
+  about,
+  contact
+}) {
   return (
     <>
       <Layout preview={preview} navigation={navigation[0]} footer={footer}>
@@ -17,7 +31,6 @@ export default function Index({ preview, navigation, hero, footer }) {
           <title>Bruce Rothenberg Law Office Blog</title>
         </Head>
 
-        <Container>
           <HeroSection
             backgroundImage={hero?.backgroundImage}
             cta={hero?.cta}
@@ -25,7 +38,10 @@ export default function Index({ preview, navigation, hero, footer }) {
             title={hero?.title}
             services={hero?.services}
           />
-        </Container>
+          <ServicesSection services={services} />
+
+          <AboutSection about={about} />
+          <ContactSection contact={contact} />
       </Layout>
     </>
   );
@@ -36,7 +52,11 @@ export async function getStaticProps({ preview = false }) {
   const navigation = (await getNavigation()) ?? [];
   const hero = (await getHeroSection()) ?? [];
   const footer = (await getFooterSection()) ?? [];
+  const services = (await getServicesSection()) ?? [];
+  const about = (await getAboutSection()) ?? [];
+  const contact = await getContactSection() ?? []
+
   return {
-    props: { preview, allPosts, navigation, hero, footer },
+    props: { preview, allPosts, navigation, hero, footer, services, about , contact},
   };
 }

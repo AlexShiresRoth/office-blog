@@ -86,6 +86,84 @@ const FOOTER_SECTION_FIELDS = `
   }
 `;
 
+const SERVICES_SECTION_FIELDS = `
+query servicesSection {
+ 	columnSectionCollection(limit: 10) {
+    ...services
+  }
+}
+
+fragment services on ColumnSectionCollection {
+  items {
+    title
+    preHeading
+    contentItemsCollection(limit: 10) {
+      items {
+        image {
+          title
+          description
+          contentType
+          fileName
+          size
+          url
+          width
+          height
+        }
+        cta
+        title
+        text
+        slug
+        linksCollection(limit:10){
+          items{
+            slug
+            title
+          }
+        }
+      }
+    }
+  }
+}`;
+
+const ABOUT_SECTION_FIELDS = `
+    query aboutSection {
+      richTextSectionCollection(limit: 1) {
+        items {
+          preHeading
+          title
+          cta
+          image {
+            url
+          }
+          content {
+            json
+          }
+          slug
+        }
+      }
+    }`;
+
+const CONTACT_SECTION_FIELDS = `
+query contactSection {
+  formSectionCollection(limit: 10) {
+    items {
+      title
+      submit
+      preHeading
+      inputsCollection(limit: 10) {
+        items {
+          label
+          name
+          placeholder
+          type
+          required
+          options
+        }
+      }
+    }
+  }
+}
+`;
+
 async function fetchGraphQL(query, preview = false) {
   return fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
@@ -126,6 +204,17 @@ function extractHeroSection(fetchResponse) {
 
 function extractFooterSection(fetchResponse) {
   return fetchResponse?.data?.footerCollection?.items[0];
+}
+
+function extractServicesSection(fetchResponse) {
+  return fetchResponse?.data?.columnSectionCollection?.items[0];
+}
+function extractAboutSection(fetchResponse) {
+  return fetchResponse?.data?.richTextSectionCollection?.items[0];
+}
+
+function extractContactSection(fetchResponse) {
+  return fetchResponse?.data?.formSectionCollection?.items[0];
 }
 
 export async function getPreviewPostBySlug(slug) {
@@ -238,4 +327,22 @@ export async function getBlogIntro() {
   }
 }`);
   return extractBlogIntro(intro);
+}
+
+export async function getServicesSection() {
+  const services = await fetchGraphQL(`${SERVICES_SECTION_FIELDS}`);
+
+  return extractServicesSection(services);
+}
+
+export async function getAboutSection() {
+  const about = await fetchGraphQL(`${ABOUT_SECTION_FIELDS}`);
+
+  return extractAboutSection(about);
+}
+
+export async function getContactSection() {
+  const contact = await fetchGraphQL(`${CONTACT_SECTION_FIELDS}`);
+
+  return extractContactSection(contact);
 }

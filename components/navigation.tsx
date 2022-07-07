@@ -6,7 +6,7 @@ import Container from "./container";
 const Navigation = ({ navigation }: NavigationType) => {
   console.log("nav in the nav", navigation);
   return (
-    <nav className="w-full py-4 flex flex-row items-center border-b-2 ">
+    <nav className="w-full py-4 flex flex-row items-center border-b-2 border-slate-400">
       <Container>
         <div className="flex flex-row items-center justify-between">
           <Link href="/">
@@ -18,7 +18,9 @@ const Navigation = ({ navigation }: NavigationType) => {
             {navigation?.navItemsCollection?.items?.map((item) => (
               <div key={item.slug}>
                 <Link href={`/${item.slug}`}>
-                  <a>{item.title}</a>
+                  <a className="text-slate-600 font-semibold hover:text-orange-500 transition-all">
+                    {item.title}
+                  </a>
                 </Link>
               </div>
             ))}
