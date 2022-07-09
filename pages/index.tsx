@@ -22,26 +22,27 @@ export default function Index({
   footer,
   services,
   about,
-  contact
+  contact,
 }) {
+  console.log("navigation", navigation);
   return (
     <>
       <Layout preview={preview} navigation={navigation[0]} footer={footer}>
         <Head>
-          <title>Bruce Rothenberg Law Office Blog</title>
+          <title>{hero?.title}</title>
         </Head>
 
-          <HeroSection
-            backgroundImage={hero?.backgroundImage}
-            cta={hero?.cta}
-            tagline={hero?.tagline}
-            title={hero?.title}
-            services={hero?.services}
-          />
-          <ServicesSection services={services} />
+        <HeroSection
+          backgroundImage={hero?.backgroundImage}
+          cta={hero?.cta}
+          tagline={hero?.tagline}
+          title={hero?.title}
+          services={hero?.services}
+        />
+        <ServicesSection services={services} />
 
-          <AboutSection about={about} />
-          <ContactSection contact={contact} />
+        <AboutSection about={about} />
+        <ContactSection contact={contact} />
       </Layout>
     </>
   );
@@ -54,9 +55,18 @@ export async function getStaticProps({ preview = false }) {
   const footer = (await getFooterSection()) ?? [];
   const services = (await getServicesSection()) ?? [];
   const about = (await getAboutSection()) ?? [];
-  const contact = await getContactSection() ?? []
+  const contact = (await getContactSection()) ?? [];
 
   return {
-    props: { preview, allPosts, navigation, hero, footer, services, about , contact},
+    props: {
+      preview,
+      allPosts,
+      navigation,
+      hero,
+      footer,
+      services,
+      about,
+      contact,
+    },
   };
 }

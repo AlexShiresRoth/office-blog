@@ -164,6 +164,17 @@ query contactSection {
 }
 `;
 
+const PAGE_TYPE_FIELDS = `
+      title
+      slug {
+        title
+        slug
+      }
+      content {
+        json
+      }
+ `;
+
 async function fetchGraphQL(query, preview = false) {
   return fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
@@ -215,6 +226,10 @@ function extractAboutSection(fetchResponse) {
 
 function extractContactSection(fetchResponse) {
   return fetchResponse?.data?.formSectionCollection?.items[0];
+}
+
+function extractPageType(fetchResponse) {
+  return fetchResponse?.data?.pageTypeCollection?.items[0];
 }
 
 export async function getPreviewPostBySlug(slug) {
@@ -345,4 +360,16 @@ export async function getContactSection() {
   const contact = await fetchGraphQL(`${CONTACT_SECTION_FIELDS}`);
 
   return extractContactSection(contact);
+}
+
+export async function getPageBySlug(slug) {
+  const page = await fetchGraphQL(`query getPageTypeBySlug {
+  pageTypeCollection(where:{slug: {slug:"${slug}"}}) {
+    items {
+      ${PAGE_TYPE_FIELDS}
+    }
+  }
+}`);
+
+  return extractPageType(page);
 }

@@ -11,8 +11,6 @@ type Props = {
 
 // TODO finish component
 const ContactSection = ({ contact }: Props) => {
-  console.log("contact", contact);
-
   const [data, setData] = useState<{
     email: string;
     name: string;
@@ -31,8 +29,17 @@ const ContactSection = ({ contact }: Props) => {
     >
   ) => setData({ ...data, [e.target.name]: e.target.value });
 
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      console.log("submit!", data);
+    } catch (error) {
+      console.error("submit error", error);
+    }
+  };
+
   return (
-    <div className="pb-10 w-full">
+    <div className="py-10 w-full bg-slate-100">
       <Container>
         <div className="flex items-center w-full">
           <div className="flex flex-col w-full">
@@ -40,7 +47,7 @@ const ContactSection = ({ contact }: Props) => {
             <h2 className="font-bold font-serif text-2xl text-slate-700">
               {contact?.title}
             </h2>
-            <form className="flex flex-col gap-4 w-full">
+            <form className="flex flex-col gap-4 w-full" onSubmit={submit}>
               <div className="flex  gap-4 w-full">
                 {contact?.inputsCollection?.items?.map((input) => {
                   return input.type === "text" || input.type === "email" ? (
@@ -52,6 +59,7 @@ const ContactSection = ({ contact }: Props) => {
                       onChange={onChange}
                       key={input?.name}
                       type={input.type}
+                      isRequired={input?.required}
                     />
                   ) : null;
                 })}
@@ -67,6 +75,7 @@ const ContactSection = ({ contact }: Props) => {
                       onChange={onChange}
                       key={input?.name}
                       options={input.options}
+                      isRequired={input?.required}
                     />
                   ) : null;
                 })}
@@ -81,6 +90,7 @@ const ContactSection = ({ contact }: Props) => {
                       value={data[input?.name]}
                       onChange={onChange}
                       key={input?.name}
+                      isRequired={input?.required}
                     />
                   ) : null;
                 })}
