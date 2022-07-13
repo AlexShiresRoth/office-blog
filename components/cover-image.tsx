@@ -1,16 +1,16 @@
-import ContentfulImage from './contentful-image'
-import Link from 'next/link'
+import ContentfulImage from "./contentful-image";
+import Link from "next/link";
 
 export default function CoverImage({ title, url, slug }) {
   const image = (
     <ContentfulImage
       width={2000}
-      height={600}
+      height={500}
       alt={`Cover Image for ${title}`}
-      className="object-center object-cover"
+      className="object-center object-cover rounded"
       src={url}
     />
-  )
+  );
 
   return (
     <div className="sm:mx-0">
@@ -22,5 +22,5 @@ export default function CoverImage({ title, url, slug }) {
         image
       )}
     </div>
-  )
+  );
 }

@@ -175,6 +175,28 @@ const PAGE_TYPE_FIELDS = `
       }
  `;
 
+const BLOG_POST_FIELDS = `
+      title
+      date
+      body {
+        json
+      }
+      slug
+      blurb
+      mainImage {
+        url
+      }
+      categories
+      author {
+        name
+        headshot {
+          title
+          url
+        }
+        bio
+      }
+`;
+
 async function fetchGraphQL(query, preview = false) {
   return fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
@@ -251,7 +273,7 @@ export async function getAllPostsWithSlug() {
     `query getPosts {
       blogPostTypeCollection(where: {slug_exists: true}) {
         items {
-        ${POST_GRAPHQL_FIELDS}
+        ${BLOG_POST_FIELDS}
         }
       }
     }
@@ -372,4 +394,18 @@ export async function getPageBySlug(slug) {
 }`);
 
   return extractPageType(page);
+}
+
+export async function getPostBySlug(slug) {
+  const post = await fetchGraphQL(`
+      query getPostBySlug {
+          blogPostTypeCollection(where: {slug: "${slug}"}) {
+            items {
+              ${BLOG_POST_FIELDS}
+            }
+        }
+      }
+    `);
+
+  return extractPost(post);
 }

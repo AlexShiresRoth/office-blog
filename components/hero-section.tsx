@@ -23,7 +23,7 @@ const HeroSection = ({
     <section className="pt-10">
       <Container>
         <div
-          className="flex flex-col items-left justify-start object-center object-cover"
+          className="flex flex-col items-left justify-start object-center object-cover mt-16"
           style={{
             backgroundImage: `url(${backgroundImage.url})`,
             backgroundSize: "cover",

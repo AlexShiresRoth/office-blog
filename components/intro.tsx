@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CMS_NAME, CMS_URL } from "../lib/constants";
 import Container from "./container";
 
@@ -8,11 +9,17 @@ type Props = {
 
 export default function Intro({ title, summary }: Props) {
   return (
-    <section className="flex-col md:flex-row flex items-center md:justify-between  mb-16 md:mb-12 w-full bg-neutral-200 py-10">
+    <section className="flex-col md:flex-row flex items-center md:justify-between mt-20  w-full border-t-2 border-b-2 py-2">
       <Container>
-        <div className="flex-col">
-          <h2 className="font-bold text-6xl">{title}</h2>
-          <p className="text-slate-500">{summary}</p>
+        <div className="flex justify-between">
+          <Link href={"/blog"}>
+            <a>
+              <h2 className="font-bold text-2xl text-slate-700 hover:underline">
+                {title}
+              </h2>
+            </a>
+          </Link>
+          <p className="text-slate-500 text-xl">{summary}</p>
         </div>
       </Container>
     </section>

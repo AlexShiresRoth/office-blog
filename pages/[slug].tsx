@@ -23,7 +23,7 @@ const Page = ({ preview, navigation, footer, contact, page }) => {
   return (
     <Layout preview={preview} navigation={navigation[0]} footer={footer}>
       <Container>
-        <div className="py-10">
+        <div className="py-10 mt-16">
           <PostTitle>{page?.title}</PostTitle>
           <PostBody content={page?.content} />
         </div>
