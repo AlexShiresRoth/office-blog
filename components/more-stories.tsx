@@ -1,17 +1,18 @@
 import PostPreview from "./post-preview";
 import { PostType } from "../types/post.types";
+import { BiRightArrowAlt } from "react-icons/bi";
 import Link from "next/link";
 
 export default function MoreStories({ posts }: { posts: Array<PostType> }) {
   return (
-    <section className="my-4">
-      <div className="flex justify-between items-center">
-        <h2 className="my-4 text-2xl italic md:text-2xl font-bold tracking-tighter leading-tight text-slate-400 font-serif">
+    <section className="my-2 mb-6">
+      <div className="py-2 flex justify-between items-center border-b-2 border-slate-100 mb-4">
+        <h2 className="text-xl italic md:text-xl font-semibold tracking-tighter leading-tight text-slate-400 font-serif">
           Recent Posts
         </h2>
         <Link href={`/posts/`}>
-          <a className="text-slate-50 border-2 rounded bg-blue-700 p-2 px-4">
-            More Articles
+          <a className="text-blue-300 hover:underline flex items-center">
+            More Articles <BiRightArrowAlt size={14} />
           </a>
         </Link>
       </div>
@@ -25,6 +26,7 @@ export default function MoreStories({ posts }: { posts: Array<PostType> }) {
             author={post.author}
             slug={post.slug}
             excerpt={post.blurb}
+            categories={post.categories}
           />
         ))}
       </div>

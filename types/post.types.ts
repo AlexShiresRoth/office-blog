@@ -13,4 +13,5 @@ export type PostType = {
   blurb: string;
   date: string;
   body: any;
+  categories: string[];
 };

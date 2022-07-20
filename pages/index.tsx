@@ -39,6 +39,7 @@ export default function Index({
           title={hero?.title}
           services={hero?.services}
         />
+
         <ServicesSection services={services} />
 
         <AboutSection about={about} />

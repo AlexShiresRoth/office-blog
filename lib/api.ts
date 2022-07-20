@@ -253,6 +253,9 @@ function extractContactSection(fetchResponse) {
 function extractPageType(fetchResponse) {
   return fetchResponse?.data?.pageTypeCollection?.items[0];
 }
+function extractCategories(fetchResponse) {
+  return fetchResponse?.data.blogPostTypeCollection.items;
+}
 
 export async function getPreviewPostBySlug(slug) {
   const entry = await fetchGraphQL(
@@ -408,4 +411,16 @@ export async function getPostBySlug(slug) {
     `);
 
   return extractPost(post);
+}
+
+export async function getBlogCategories() {
+  const categories = await fetchGraphQL(`query {
+      blogPostTypeCollection(where: {categories_exists: true}) {
+        items {
+          categories
+        }
+      }
+    }`);
+
+  return extractCategories(categories);
 }
