@@ -424,3 +424,17 @@ export async function getBlogCategories() {
 
   return extractCategories(categories);
 }
+
+export async function getPostByTitle(title) {
+  const post = await fetchGraphQL(`
+      query getPostByTitle {
+          blogPostTypeCollection(where: {title: "${title}"}) {
+            items {
+              ${BLOG_POST_FIELDS}
+            }
+        }
+      }
+    `);
+
+  return extractPost(post);
+}

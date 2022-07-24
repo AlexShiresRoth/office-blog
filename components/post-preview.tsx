@@ -13,7 +13,7 @@ export default function PostPreview({
   categories,
 }) {
   return (
-    <div>
+    <div className="p-4 border-2 border-slate-200">
       <div className="mb-5 rounded">
         <img
           src={coverImage.url}
@@ -23,20 +23,24 @@ export default function PostPreview({
       </div>
       <h3 className="text-3xl mb-3 leading-snug">
         <Link href={`/posts/${slug}`}>
-          <a className="hover:underline">{title}</a>
+          <a className="hover:underline font-bold text-slate-800">{title}</a>
         </Link>
       </h3>
 
+      <p className="text-lg leading-relaxed mb-4 text-slate-500">{excerpt}</p>
+
       {author && <Avatar name={author.name} picture={author.headshot} />}
       <div className="text-lg mb-4 mt-2">
-        <DateComponent dateString={date} classNames="text-slate-400 italic" />
+        <DateComponent
+          dateString={date}
+          classNames="text-slate-400 italic text-sm"
+        />
       </div>
-      <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
       <div className="flex mb-4">
         {categories &&
           categories.map((category, index) => (
             <span
-              className="p-2 bg-slate-100 rounded text-slate-800 font-bold italic text-xs"
+              className="p-2 bg-slate-100 rounded text-slate-800 font-bold italic text-xs mr-2"
               key={index}
             >
               {category}
@@ -45,7 +49,7 @@ export default function PostPreview({
       </div>
       <Link href={`/posts/${slug}`}>
         <a>
-          <button className=" font-bold border-2 border-orange-500 rounded px-4 py-2 text-slate-500 transition-all hover:bg-orange-500 hover:text-slate-50">
+          <button className=" font-bold underline rounded  text-orange-500 transition-all hover:text-orange-400 ">
             Read more
           </button>
         </a>

@@ -20,10 +20,10 @@ const HeroSection = ({
   services,
 }: Props) => {
   return (
-    <section className="pt-10">
+    <section className="py-4">
       <Container>
         <div
-          className="flex flex-col items-left justify-start object-center object-cover mt-16"
+          className="flex flex-col items-left justify-start object-center object-cover "
           style={{
             backgroundImage: `url(${backgroundImage.url})`,
             backgroundSize: "cover",

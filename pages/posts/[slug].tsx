@@ -17,7 +17,7 @@ import {
   getPostBySlug,
 } from "../../lib/api";
 import PostTitle from "../../components/post-title";
-import Intro from "../../components/intro";
+import BlogIntro from "../../components/blog-intro";
 
 export default function Post({ post, morePosts, preview, footer, nav, intro }) {
   const router = useRouter();
@@ -28,7 +28,7 @@ export default function Post({ post, morePosts, preview, footer, nav, intro }) {
 
   return (
     <Layout preview={preview} footer={footer} navigation={nav[0]}>
-      <Intro title={intro?.title} summary={intro?.summary} />
+      <BlogIntro title={intro?.title} summary={intro?.summary} />
       <div className="mt-20">
         <Container>
           {router.isFallback ? (

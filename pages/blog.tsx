@@ -1,6 +1,5 @@
 import Container from "../components/container";
 import MoreStories from "../components/more-stories";
-import Intro from "../components/intro";
 import Layout from "../components/layout";
 import {
   getAllPostsForHome,
@@ -14,6 +13,7 @@ import { PostType } from "../types/post.types";
 import { useEffect, useState } from "react";
 import { flattenArrayNested } from "../utility-funtions/flatten-array";
 import Categories from "../components/categories";
+import BlogIntro from "../components/blog-intro";
 
 export default function Index({
   preview,
@@ -61,7 +61,7 @@ export default function Index({
   return (
     <>
       <Layout preview={preview} navigation={navigation[0]} footer={footer}>
-        <Intro title={intro?.title} summary={intro?.summary} />
+        <BlogIntro title={intro?.title} summary={intro?.summary} />
         <FeaturedPost
           title={heroPost?.title}
           excerpt={heroPost?.blurb}

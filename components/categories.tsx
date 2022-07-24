@@ -9,9 +9,8 @@ type Props = {
 const Categories = ({ categories }: Props) => {
   const router = useRouter();
   const handleNavigate = (category: string) =>
-    router.push(`/posts/`, {
-      query: { category },
-    });
+    router.push({ pathname: "/posts/", query: { search: category } });
+
   return (
     <div className="flex flex-col w-full mt-4">
       <div className="py-2 flex justify-between items-center border-b-2 border-slate-100 mb-4">
