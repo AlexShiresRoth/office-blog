@@ -24,7 +24,7 @@ const Navigation = ({ navigation }: NavigationType) => {
   return (
     <nav
       className={`w-full transition-all  flex flex-row items-center  top-0 bg-white z-50 ${
-        isAtTopOfScreen ? "relative py-4 " : "fixed py-2 "
+        isAtTopOfScreen ? "relative py-4" : "fixed py-2 shadow-md"
       }`}
     >
       <Container>

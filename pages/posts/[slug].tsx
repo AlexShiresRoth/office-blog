@@ -59,6 +59,13 @@ export default function Post({ post, morePosts, preview, footer, nav, intro }) {
     </Layout>
   );
 }
+export async function getStaticPaths() {
+  const allPosts = await getAllPostsWithSlug();
+  return {
+    paths: allPosts?.map(({ slug }) => `/posts/${slug}`),
+    fallback: false,
+  };
+}
 
 export async function getStaticProps({ params, preview = false }) {
   const data = await getPostAndMorePosts(params.slug, preview);
@@ -76,13 +83,5 @@ export async function getStaticProps({ params, preview = false }) {
       footer,
       nav,
     },
-  };
-}
-
-export async function getStaticPaths() {
-  const allPosts = await getAllPostsWithSlug();
-  return {
-    paths: allPosts?.map(({ slug }) => `/posts/${slug}`) ?? [],
-    fallback: true,
   };
 }
