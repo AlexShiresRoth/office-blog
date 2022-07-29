@@ -48,22 +48,35 @@ const Page = ({
         categories={categories}
         navigation={navigation}
         preview={preview}
+        contact={contact}
       />
     );
   return (
-    <Layout preview={preview} navigation={navigation[0]} footer={footer}>
+    <Layout
+      preview={preview}
+      navigation={navigation[0]}
+      footer={footer}
+      contact={contact}
+    >
       <Container>
         <div className="py-10 mt-16">
           <PostTitle>{page?.title}</PostTitle>
           <PostBody content={page?.content} />
         </div>
       </Container>
-      <ContactSection contact={contact} />
     </Layout>
   );
 };
 
-function Blog({ preview, allPosts, navigation, intro, categories, footer }) {
+function Blog({
+  preview,
+  allPosts,
+  navigation,
+  intro,
+  categories,
+  footer,
+  contact,
+}) {
   const [rankedCategories, setRankedCategories] = useState<Array<string>>([]);
 
   const heroPost: PostType = allPosts[0];
@@ -101,7 +114,12 @@ function Blog({ preview, allPosts, navigation, intro, categories, footer }) {
 
   return (
     <>
-      <Layout preview={preview} navigation={navigation[0]} footer={footer}>
+      <Layout
+        preview={preview}
+        navigation={navigation[0]}
+        footer={footer}
+        contact={contact}
+      >
         <BlogIntro title={intro?.title} summary={intro?.summary} />
         <FeaturedPost
           title={heroPost?.title}

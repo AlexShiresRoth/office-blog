@@ -11,6 +11,7 @@ import Layout from "../../components/layout";
 import {
   getAllPostsWithSlug,
   getBlogIntro,
+  getContactSection,
   getFooterSection,
   getNavigation,
   getPostAndMorePosts,
@@ -19,7 +20,15 @@ import {
 import PostTitle from "../../components/post-title";
 import BlogIntro from "../../components/blog-intro";
 
-export default function Post({ post, morePosts, preview, footer, nav, intro }) {
+export default function Post({
+  post,
+  morePosts,
+  preview,
+  footer,
+  nav,
+  intro,
+  contact,
+}) {
   const router = useRouter();
 
   if (!router.isFallback && !post) {
@@ -27,7 +36,12 @@ export default function Post({ post, morePosts, preview, footer, nav, intro }) {
   }
 
   return (
-    <Layout preview={preview} footer={footer} navigation={nav[0]}>
+    <Layout
+      preview={preview}
+      footer={footer}
+      navigation={nav[0]}
+      contact={contact}
+    >
       <BlogIntro title={intro?.title} summary={intro?.summary} />
       <div className="mt-20">
         <Container>
@@ -73,6 +87,7 @@ export async function getStaticProps({ params, preview = false }) {
   const intro = await getBlogIntro();
   const footer = (await getFooterSection()) ?? null;
   const nav = (await getNavigation()) ?? null;
+  const contact = (await getContactSection()) ?? null;
 
   return {
     props: {
@@ -82,6 +97,7 @@ export async function getStaticProps({ params, preview = false }) {
       morePosts: data?.morePosts ?? null,
       footer,
       nav,
+      contact,
     },
   };
 }

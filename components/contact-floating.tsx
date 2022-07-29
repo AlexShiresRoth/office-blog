@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { AiOutlineClose, AiOutlineMail } from "react-icons/ai";
 import { ContactSectionType } from "../types/contact.types";
 import Container from "./container";
 import SelectInput from "./select-input";
@@ -9,8 +10,9 @@ type Props = {
   contact: ContactSectionType;
 };
 
-// TODO finish component
-const ContactSection = ({ contact }: Props) => {
+const ContactFloating = ({ contact }: Props) => {
+  const [expanded, setExpanded] = useState<boolean>(false);
+
   const [sending, setSending] = useState<boolean>(false);
 
   const [data, setData] = useState<{
@@ -50,14 +52,47 @@ const ContactSection = ({ contact }: Props) => {
   };
 
   return (
-    <div className="py-10 w-full bg-slate-100">
+    <div
+      className={`fixed right-10 bottom-10 z-50 shadow-lg p-3 transition-all rounded-full hover:cursor-pointer ${
+        !expanded
+          ? "rounded-full bg-slate-600"
+          : "w-half bg-slate-100 rounded-none"
+      }`}
+    >
+      {!expanded && (
+        <div
+          className="text-center flex justify-center"
+          onClick={() => setExpanded(!expanded)}
+        >
+          <AiOutlineMail size={36} className="text-slate-50" />
+        </div>
+      )}
       <Container>
-        <div className="flex items-center w-full">
+        <div
+          className={`flex items-center  ${
+            !expanded ? "w-0 hidden" : "w-full"
+          } transition-all`}
+        >
           <div className="flex flex-col w-full">
-            <h6 className="text-orange-400 text-sm">{contact?.preHeading}</h6>
-            <h2 className="font-bold font-serif text-2xl text-slate-700">
-              {contact?.title}
-            </h2>
+            <div className="flex">
+              <div>
+                <h6 className="text-orange-400 text-sm">
+                  {contact?.preHeading}
+                </h6>
+                <h2 className="font-bold font-serif text-2xl text-slate-700">
+                  {contact?.title}
+                </h2>
+              </div>
+              <div>
+                <button
+                  onClick={() => setExpanded(!expanded)}
+                  className="flex items-center bg-slate-700 text-slate-50 p-2 text-xs hover:bg-slate-500 transition-all"
+                >
+                  Close
+                  <AiOutlineClose size={16} />
+                </button>
+              </div>
+            </div>
             <form className="flex flex-col gap-4 w-full" onSubmit={submit}>
               <div className="flex  gap-4 w-full">
                 {contact?.inputsCollection?.items?.map((input) => {
@@ -119,4 +154,4 @@ const ContactSection = ({ contact }: Props) => {
   );
 };
 
-export default ContactSection;
+export default ContactFloating;

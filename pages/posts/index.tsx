@@ -4,6 +4,7 @@ import {
   getAllPostsForHome,
   getBlogCategories,
   getBlogIntro,
+  getContactSection,
   getFooterSection,
   getNavigation,
   getPostByTitle,
@@ -21,6 +22,7 @@ export default function Index({
   intro,
   categories,
   footer,
+  contact,
 }) {
   const router = useRouter();
 
@@ -47,7 +49,12 @@ export default function Index({
 
   return (
     <>
-      <Layout preview={preview} navigation={navigation[0]} footer={footer}>
+      <Layout
+        preview={preview}
+        navigation={navigation[0]}
+        footer={footer}
+        contact={contact}
+      >
         <BlogIntro title={intro?.title} summary={intro?.summary} />
         <Container>
           <div className="my-4 flex items-center justify-between border-b-2">
@@ -91,7 +98,16 @@ export async function getStaticProps({ preview = false }) {
   const intro = (await getBlogIntro()) ?? null;
   const categories = (await getBlogCategories()) ?? [];
   const footer = (await getFooterSection()) ?? null;
+  const contact = (await getContactSection()) ?? null;
   return {
-    props: { preview, allPosts, navigation, intro, footer, categories },
+    props: {
+      preview,
+      allPosts,
+      navigation,
+      intro,
+      footer,
+      categories,
+      contact,
+    },
   };
 }

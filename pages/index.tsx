@@ -14,6 +14,7 @@ import HeroSection from "../components/hero-section";
 import ServicesSection from "../components/ServicesSection";
 import AboutSection from "../components/about-section";
 import ContactSection from "../components/contact-section";
+import ContactFloating from "../components/contact-floating";
 
 export default function Index({
   preview,
@@ -24,10 +25,14 @@ export default function Index({
   about,
   contact,
 }) {
-  console.log("navigation", navigation);
   return (
     <>
-      <Layout preview={preview} navigation={navigation[0]} footer={footer}>
+      <Layout
+        preview={preview}
+        navigation={navigation[0]}
+        footer={footer}
+        contact={contact}
+      >
         <Head>
           <title>{hero?.title}</title>
         </Head>
@@ -43,7 +48,6 @@ export default function Index({
         <ServicesSection services={services} />
 
         <AboutSection about={about} />
-        <ContactSection contact={contact} />
       </Layout>
     </>
   );

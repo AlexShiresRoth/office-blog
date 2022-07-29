@@ -1,6 +1,7 @@
+import { ContactSectionType } from "../types/contact.types";
 import { FooterParams } from "../types/footer.types";
 import { NavigationType } from "../types/navigation.types";
-import Alert from "./alert";
+import ContactFloating from "./contact-floating";
 import Footer from "./footer";
 import Meta from "./meta";
 import Navigation from "./navigation";
@@ -9,6 +10,7 @@ type Props = {
   preview: boolean;
   children: React.ReactNode;
   footer: FooterParams;
+  contact: ContactSectionType;
 };
 
 export default function Layout({
@@ -16,6 +18,7 @@ export default function Layout({
   children,
   navigation,
   footer,
+  contact,
 }: Props & NavigationType) {
   return (
     <>
@@ -24,6 +27,7 @@ export default function Layout({
         <Navigation navigation={navigation} />
         <main>{children}</main>
       </div>
+      <ContactFloating contact={contact} />
       <Footer footer={footer} />
     </>
   );
