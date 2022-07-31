@@ -10,9 +10,8 @@ type Props = {
 };
 
 const AboutSection = ({ about }: Props) => {
-  console.log("about", about);
   return (
-    <div className="flex flex-col my-10">
+    <div className="flex flex-col my-6">
       <Container>
         <div className="flex items-center justify-between">
           <div className="w-1/2">

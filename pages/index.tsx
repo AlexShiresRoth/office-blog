@@ -6,6 +6,7 @@ import {
   getContactSection,
   getFooterSection,
   getHeroSection,
+  getImageBackgroundSection,
   getNavigation,
   getServicesSection,
 } from "../lib/api";
@@ -13,8 +14,7 @@ import Head from "next/head";
 import HeroSection from "../components/hero-section";
 import ServicesSection from "../components/ServicesSection";
 import AboutSection from "../components/about-section";
-import ContactSection from "../components/contact-section";
-import ContactFloating from "../components/contact-floating";
+import SectionWithImageBackground from "../components/section-with-image-background";
 
 export default function Index({
   preview,
@@ -23,8 +23,10 @@ export default function Index({
   footer,
   services,
   about,
+  sectionWithImage,
   contact,
 }) {
+  console.log("sectionWithImage", sectionWithImage);
   return (
     <>
       <Layout
@@ -46,8 +48,8 @@ export default function Index({
         />
 
         <ServicesSection services={services} />
-
         <AboutSection about={about} />
+        <SectionWithImageBackground content={sectionWithImage} />
       </Layout>
     </>
   );
@@ -61,7 +63,7 @@ export async function getStaticProps({ preview = false }) {
   const services = (await getServicesSection()) ?? [];
   const about = (await getAboutSection()) ?? [];
   const contact = (await getContactSection()) ?? [];
-
+  const sectionWithImage = (await getImageBackgroundSection("contact")) ?? null;
   return {
     props: {
       preview,
@@ -72,6 +74,7 @@ export async function getStaticProps({ preview = false }) {
       services,
       about,
       contact,
+      sectionWithImage,
     },
   };
 }

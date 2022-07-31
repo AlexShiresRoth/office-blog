@@ -87,14 +87,8 @@ const FOOTER_SECTION_FIELDS = `
 `;
 
 const SERVICES_SECTION_FIELDS = `
-query servicesSection {
- 	columnSectionCollection(limit: 10) {
-    ...services
-  }
-}
 
-fragment services on ColumnSectionCollection {
-  items {
+    items {
     title
     preHeading
     contentItemsCollection(limit: 10) {
@@ -122,7 +116,9 @@ fragment services on ColumnSectionCollection {
       }
     }
   }
-}`;
+
+
+`;
 
 const ABOUT_SECTION_FIELDS = `
     query aboutSection {
@@ -197,6 +193,18 @@ const BLOG_POST_FIELDS = `
       }
 `;
 
+const IMAGE_BACKGROUND_SECTION_FIELDS = `  
+      title
+      subTitle
+      cta
+      slug {
+        title
+        slug
+      }
+      bgImage {
+        url
+      }`;
+
 async function fetchGraphQL(query, preview = false) {
   return fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
@@ -255,6 +263,9 @@ function extractPageType(fetchResponse) {
 }
 function extractCategories(fetchResponse) {
   return fetchResponse?.data.blogPostTypeCollection.items;
+}
+function extractImageBackgroundSection(fetchResponse) {
+  return fetchResponse?.data?.sectionWithImageBackgroundCollection?.items[0];
 }
 
 export async function getPreviewPostBySlug(slug) {
@@ -370,7 +381,11 @@ export async function getBlogIntro() {
 }
 
 export async function getServicesSection() {
-  const services = await fetchGraphQL(`${SERVICES_SECTION_FIELDS}`);
+  const services = await fetchGraphQL(`query servicesSection {
+ 	columnSectionCollection(limit: 10, where: {internalName: "services"}) {
+    ${SERVICES_SECTION_FIELDS}
+  }
+}`);
 
   return extractServicesSection(services);
 }
@@ -437,4 +452,17 @@ export async function getPostByTitle(title) {
     `);
 
   return extractPost(post);
+}
+
+export async function getImageBackgroundSection(title) {
+  const section = await fetchGraphQL(`
+  query sectionWithImageBackground {
+      sectionWithImageBackgroundCollection(where: {internalName: "${title}"}) {
+        items {
+          ${IMAGE_BACKGROUND_SECTION_FIELDS}
+        }
+      }
+    }`);
+
+  return extractImageBackgroundSection(section);
 }

@@ -7,7 +7,6 @@ import {
   getContactSection,
   getFooterSection,
   getNavigation,
-  getPostByTitle,
 } from "../../lib/api";
 import PostPreview from "../../components/post-preview";
 import BlogIntro from "../../components/blog-intro";
@@ -20,7 +19,6 @@ export default function Index({
   allPosts,
   navigation,
   intro,
-  categories,
   footer,
   contact,
 }) {

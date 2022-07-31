@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-const contentfulLoader = ({ src, width, quality }) => {
+export const contentfulLoader = ({ src, width, quality }) => {
   return `${src}?w=${width}&q=${quality || 80} `
 }
 
