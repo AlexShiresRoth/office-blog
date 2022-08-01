@@ -64,6 +64,8 @@ const Page = ({
           <PostBody content={page?.content} />
         </div>
       </Container>
+
+      <ContactSection contact={contact} />
     </Layout>
   );
 };

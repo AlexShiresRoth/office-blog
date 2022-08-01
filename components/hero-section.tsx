@@ -31,7 +31,7 @@ const HeroSection = ({
             height: "70vh",
           }}
         >
-          <div className="bg-white w-2/4 gap-2 flex flex-col justify-center h-full">
+          <div className="bg-white w-full md:w-2/4 gap-2 flex flex-col justify-center h-full">
             <h1 className="font-serif text-slate-600 text-7xl font-regular  ">
               {title}
             </h1>

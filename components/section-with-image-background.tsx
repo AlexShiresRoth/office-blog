@@ -1,7 +1,8 @@
 import Image from "next/image";
-import React from "react";
+import Link from "next/link";
+import React, { Dispatch, SetStateAction } from "react";
 import Container from "./container";
-import ContentfulImage, { contentfulLoader } from "./contentful-image";
+import { contentfulLoader } from "./contentful-image";
 
 type Props = {
   content: {
@@ -13,9 +14,10 @@ type Props = {
     slug: string;
     cta: string;
   };
+  action: any;
 };
 
-const SectionWithImageBackground = ({ content }: Props) => {
+const SectionWithImageBackground = ({ content, action }: Props) => {
   return (
     <div className="flex flex-col w-full relative mb-10">
       <Container>
@@ -27,9 +29,13 @@ const SectionWithImageBackground = ({ content }: Props) => {
             <h1 className="text-4xl text-slate-50 w-2/3 text-center font-semibold font-serif">
               {content?.subTitle}
             </h1>
-            <button className="bg-orange-500 text-slate-50 p-2 mt-6 ">
-              {content?.cta}
-            </button>
+            <Link href={content?.slug ?? "/contact"}>
+              <a>
+                <button className="bg-orange-500 text-slate-50 p-2 mt-6 border-4 border-orange-200/20 shadow-lg">
+                  {content?.cta}
+                </button>
+              </a>
+            </Link>
           </div>
 
           <div className="absolute h-full w-full z-10 bg-slate-700/60 left-0"></div>

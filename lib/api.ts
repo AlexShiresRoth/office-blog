@@ -247,7 +247,7 @@ function extractFooterSection(fetchResponse) {
   return fetchResponse?.data?.footerCollection?.items[0];
 }
 
-function extractServicesSection(fetchResponse) {
+function extractColumnsSection(fetchResponse) {
   return fetchResponse?.data?.columnSectionCollection?.items[0];
 }
 function extractAboutSection(fetchResponse) {
@@ -380,14 +380,14 @@ export async function getBlogIntro() {
   return extractBlogIntro(intro);
 }
 
-export async function getServicesSection() {
+export async function getColumnsSectionByTitle(title) {
   const services = await fetchGraphQL(`query servicesSection {
- 	columnSectionCollection(limit: 10, where: {internalName: "services"}) {
+ 	columnSectionCollection(limit: 10, where: {internalName: "${title}"}) {
     ${SERVICES_SECTION_FIELDS}
   }
 }`);
 
-  return extractServicesSection(services);
+  return extractColumnsSection(services);
 }
 
 export async function getAboutSection() {

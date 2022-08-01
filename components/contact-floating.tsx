@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlineClose, AiOutlineMail } from "react-icons/ai";
+import { useAppDispatch, useAppSelector } from "../redux/hooks/hooks";
+import { selectFormState, toggleForm } from "../redux/reducers/contact.reducer";
 import { ContactSectionType } from "../types/contact.types";
 import Container from "./container";
 import SelectInput from "./select-input";
@@ -11,7 +13,8 @@ type Props = {
 };
 
 const ContactFloating = ({ contact }: Props) => {
-  const [expanded, setExpanded] = useState<boolean>(false);
+  const formState = useAppSelector(selectFormState);
+  const dispatch = useAppDispatch();
 
   const [sending, setSending] = useState<boolean>(false);
 
@@ -54,23 +57,25 @@ const ContactFloating = ({ contact }: Props) => {
   return (
     <div
       className={`fixed right-10 bottom-10 z-50 shadow-lg p-3 transition-all rounded-full hover:cursor-pointer ${
-        !expanded
+        !formState?.contact?.isFormVisible
           ? "rounded-full bg-slate-600"
           : "w-half bg-slate-100 rounded-none"
       }`}
     >
-      {!expanded && (
+      {!formState?.contact?.isFormVisible && (
         <div
           className="text-center flex justify-center"
-          onClick={() => setExpanded(!expanded)}
+          onClick={() =>
+            dispatch(toggleForm(!formState?.contact?.isFormVisible))
+          }
         >
           <AiOutlineMail size={36} className="text-slate-50" />
         </div>
       )}
       <Container>
         <div
-          className={`flex items-center  ${
-            !expanded ? "w-0 hidden" : "w-full"
+          className={`flex items-center py-4  ${
+            !formState?.contact?.isFormVisible ? "w-0 hidden" : "w-full"
           } transition-all`}
         >
           <div className="flex flex-col w-full">
@@ -85,7 +90,9 @@ const ContactFloating = ({ contact }: Props) => {
               </div>
               <div>
                 <button
-                  onClick={() => setExpanded(!expanded)}
+                  onClick={() =>
+                    dispatch(toggleForm(!formState?.contact?.isFormVisible))
+                  }
                   className="flex items-center bg-slate-700 text-slate-50 p-2 text-xs hover:bg-slate-500 transition-all"
                 >
                   Close
