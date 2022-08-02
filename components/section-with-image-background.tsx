@@ -17,16 +17,23 @@ type Props = {
   action: any;
 };
 
-const SectionWithImageBackground = ({ content, action }: Props) => {
+const SectionWithImageBackground = ({ content }: Props) => {
   return (
     <div className="flex flex-col w-full relative mb-10">
       <Container>
         <div className="w-full flex flex-col items-center justify-center relative">
-          <div className="absolute flex flex-col items-center z-20">
+          <Image
+            src={content?.bgImage?.url}
+            width={2000}
+            height={500}
+            loader={contentfulLoader}
+            className="object-cover object-center w-full h-full "
+          />
+          <div className="relative md:absolute flex flex-col items-center z-20">
             <h2 className="text-sm text-orange-400 font-regular relative ">
               {content?.title}
             </h2>
-            <h1 className="text-4xl text-slate-50 w-2/3 text-center font-semibold font-serif">
+            <h1 className="text-xl md:text-2xl xl:text-4xl text-slate-50 w-2/3 text-center font-semibold font-serif">
               {content?.subTitle}
             </h1>
             <Link href={content?.slug ?? "/contact"}>
@@ -39,13 +46,6 @@ const SectionWithImageBackground = ({ content, action }: Props) => {
           </div>
 
           <div className="absolute h-full w-full z-10 bg-slate-700/60 left-0"></div>
-          <Image
-            src={content?.bgImage?.url}
-            width={2000}
-            height={500}
-            loader={contentfulLoader}
-            className="object-cover object-center w-full"
-          />
         </div>
       </Container>
     </div>

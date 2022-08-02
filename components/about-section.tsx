@@ -13,11 +13,11 @@ const AboutSection = ({ about }: Props) => {
   return (
     <div className="flex flex-col my-6">
       <Container>
-        <div className="flex items-center justify-between">
-          <div className="w-1/2">
+        <div className="flex flex-col md:flex-row items-center justify-between">
+          <div className="w-full md:w-1/2">
             <ContentfulImage src={about.image.url} width={600} height={400} />
           </div>
-          <div className="py-10 w-1/2">
+          <div className="py-10 w-full md:w-1/2">
             <h6 className="text-sm text-orange-400">{about?.preHeading} </h6>
             <h2 className="font-bold font-serif text-2xl text-slate-700">
               {about.title}
