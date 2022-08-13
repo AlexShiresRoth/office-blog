@@ -29,21 +29,35 @@ const HeroSection = ({
 
   return (
     <section className="py-4 ">
+      {/* background image */}
+      <div className="block md:hidden ">
+        <Image
+          loader={contentfulLoader}
+          src={backgroundImage.url}
+          height={1000}
+          width={2300}
+          layout="responsive"
+          className="object-cover object-center h-screen md:min-h-full"
+        />
+      </div>
+      {/* background image */}
       <Container>
         <div
-          className={`relative flex flex-col md:items-left justify-start object-center object-cover ${
+          className={`relative -mt-36 md:mt-0 flex flex-col md:items-left justify-start object-center object-cover ${
             rendered ? "opacity-100" : "opacity-10 p-20"
           } transition-all duration-700  bg-slate-800 min-h-full`}
         >
           {/* background image */}
-          <Image
-            loader={contentfulLoader}
-            src={backgroundImage.url}
-            height={1000}
-            width={2300}
-            layout="responsive"
-            className="object-cover object-center h-screen md:min-h-full"
-          />
+          <div className="hidden md:block ">
+            <Image
+              loader={contentfulLoader}
+              src={backgroundImage.url}
+              height={1000}
+              width={2300}
+              layout="responsive"
+              className="object-cover object-center h-screen md:min-h-full"
+            />
+          </div>
           {/* background image */}
 
           <div className="md:bg-white w-full md:w-2/4 gap-2 flex flex-col items-center md:items-stretch justify-center relative md:absolute p-4 h-full">

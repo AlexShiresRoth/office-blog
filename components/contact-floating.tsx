@@ -56,9 +56,9 @@ const ContactFloating = ({ contact }: Props) => {
 
   return (
     <div
-      className={`fixed right-10 bottom-10 z-50 shadow-lg p-3 transition-all rounded-full hover:cursor-pointer ${
+      className={`fixed right-10 bottom-10 z-50 shadow-xl flex flex-col items-center justify-center   md:h-auto md:w-auto transition-all rounded-full hover:cursor-pointer ${
         !formState?.contact?.isFormVisible
-          ? "rounded-full bg-slate-600"
+          ? "rounded-full bg-orange-500 w-12 h-12"
           : "w-half bg-slate-100 rounded-none"
       }`}
     >
@@ -69,7 +69,7 @@ const ContactFloating = ({ contact }: Props) => {
             dispatch(toggleForm(!formState?.contact?.isFormVisible))
           }
         >
-          <AiOutlineMail size={36} className="text-slate-50" />
+          <AiOutlineMail className="text-slate-50 text-2xl md:text-4xl m-2" />
         </div>
       )}
       <Container>

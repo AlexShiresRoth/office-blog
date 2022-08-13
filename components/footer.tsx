@@ -8,8 +8,6 @@ type Props = {
 };
 
 const footer = ({ footer }: Props) => {
-  console.log("footer", footer);
-
   const parseText = (text: string) => {
     if (!text) return;
     return text.split("\n").map((sentence, index) => (
@@ -25,10 +23,10 @@ const footer = ({ footer }: Props) => {
         <div className="border-b-2 border-slate-700 py-2">
           <h3 className="text-slate-500 font-bold">{footer.heading}</h3>
         </div>
-        <div className="flex flex-row justify-between gap-4 mt-6">
+        <div className="flex flex-col md:flex-row justify-between gap-4 mt-6">
           {footer.columnsCollection?.items?.map((item) => {
             return (
-              <div key={item.title} className="w-1/4">
+              <div key={item.title} className="md:w-1/4">
                 <h4 className="font-semibold text-slate-500">{item.title} </h4>
                 <div>{parseText(item.text)}</div>
                 {item?.linksCollection?.items.map((link) => (
