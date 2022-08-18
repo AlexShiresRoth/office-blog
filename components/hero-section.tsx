@@ -12,6 +12,7 @@ type Props = {
   services: string[];
   title: string;
   tagline: string;
+  logo: string;
 };
 
 const HeroSection = ({
@@ -20,6 +21,7 @@ const HeroSection = ({
   tagline,
   title,
   services,
+  logo,
 }: Props) => {
   const [rendered, setRendered] = useState<boolean>(false);
 
@@ -28,7 +30,7 @@ const HeroSection = ({
   }, []);
 
   return (
-    <section className="">
+    <section>
       {/* background image */}
       <div className="block md:hidden ">
         <Image
@@ -60,27 +62,48 @@ const HeroSection = ({
           </div>
           {/* background image */}
 
-          <div className="md:bg-white w-full md:w-2/4 gap-2 flex flex-col items-center md:items-stretch justify-center relative md:absolute p-4 h-full">
-            <div className="w-2/3 md:w-full">
+          <div className="md:bg-white w-full md:w-2/4 gap-2 flex flex-col items-center md:items-stretch justify-center relative md:absolute px-2 py-4 h-full">
+            {/* Show logo in mobile view */}
+            <div className="hidden md:block w-full">
               <h1 className=" font-serif text-slate-600 text-2xl lg:text-4xl xl:text-7xl xl:leading-normal font-semibold md:font-normal text-center md:text-left">
                 {title}
               </h1>
             </div>
+            {/* Show logo in mobile view */}
+            <div className="block md:hidden w-2/3 h-26">
+              <Image
+                src={logo}
+                width={500}
+                height={150}
+                loader={contentfulLoader}
+                layout="responsive"
+                className="object-contain object-center"
+              />
+            </div>
             <div className=" w-1/4 md:w-3/4 h-0.5 bg-orange-500/50 md:bg-slate-500 mb-4" />
-            <div className="flex flex-row items-center gap-2">
+            <div className="flex flex-row flex-nowrap items-center gap-2">
               {services?.map((service, index) => (
-                <p key={service} className="text-slate-500 text-sm md:text-xl">
-                  {service} {index !== services.length - 1 && "|"}
-                </p>
+                <div key={service} className="flex items-center flex-nowrap ">
+                  <p className="text-slate-500 text-xs sm:text-sm font-medium md:text-xl">
+                    {service}
+                  </p>
+                  {index !== services.length - 1 && (
+                    <span className="ml-2 text-slate-500 text-sm md:text-xl">
+                      |
+                    </span>
+                  )}
+                </div>
               ))}
             </div>
             <div>
-              <p className="text-slate-500 text-sm md:text-xl">{tagline}</p>
+              <p className="text-slate-500 text-xs text-center md:text-left md:text-xl">
+                {tagline}
+              </p>
             </div>
             <div className="mt-4">
               <Link href="/contact">
                 <a>
-                  <button className="px-6 py-2 bg-orange-400 text-xl text-slate-100 transition-all hover:bg-orange-500">
+                  <button className="px-6 py-2 bg-orange-400 text-sm md:text-xl text-slate-100 transition-all hover:bg-orange-500">
                     {cta}
                   </button>
                 </a>

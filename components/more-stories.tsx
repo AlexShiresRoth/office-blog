@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function MoreStories({ posts }: { posts: Array<PostType> }) {
   return (
-    <section className="my-2 mb-6">
+    <section className="my-2 mb-6 ">
       <div className="py-2 flex justify-between items-center border-b-2 border-slate-100 mb-4">
         <h2 className="text-xl italic md:text-xl font-semibold tracking-tighter leading-tight text-slate-400 font-serif">
           Recent Posts
@@ -16,7 +16,7 @@ export default function MoreStories({ posts }: { posts: Array<PostType> }) {
           </a>
         </Link>
       </div>
-      <div className="flex gap-4">
+      <div className="flex gap-4 flex-col md:flex-row">
         {posts.map((post) => (
           <PostPreview
             key={post.slug}

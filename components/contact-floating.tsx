@@ -56,7 +56,7 @@ const ContactFloating = ({ contact }: Props) => {
 
   return (
     <div
-      className={`fixed right-10 bottom-10 z-50 shadow-xl flex flex-col items-center justify-center   md:h-auto md:w-auto transition-all rounded-full hover:cursor-pointer ${
+      className={`fixed right-10 bottom-10 z-50 shadow-xl hidden md:flex flex-col items-center justify-center   md:h-auto md:w-auto transition-all rounded-full hover:cursor-pointer ${
         !formState?.contact?.isFormVisible
           ? "rounded-full bg-orange-500 w-12 h-12"
           : "w-half bg-slate-100 rounded-none"

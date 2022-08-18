@@ -14,8 +14,6 @@ import HeroSection from "../components/hero-section";
 import ServicesSection from "../components/ServicesSection";
 import AboutSection from "../components/about-section";
 import SectionWithImageBackground from "../components/section-with-image-background";
-import { useAppDispatch, useAppSelector } from "../redux/hooks/hooks";
-import { selectFormState, toggleForm } from "../redux/reducers/contact.reducer";
 import BlogSection from "../components/blog-section";
 
 export default function Index({
@@ -30,10 +28,6 @@ export default function Index({
   blogSection,
   allPosts,
 }) {
-  const formState = useAppSelector(selectFormState);
-
-  const dispatch = useAppDispatch();
-
   const posts = allPosts.slice(0, 2);
   return (
     <>
@@ -53,15 +47,11 @@ export default function Index({
           tagline={hero?.tagline}
           title={hero?.title}
           services={hero?.services}
+          logo={navigation[0]?.logo.url}
         />
         <ServicesSection services={services} />
         <AboutSection about={about} />
-        <SectionWithImageBackground
-          content={sectionWithImage}
-          action={() =>
-            dispatch(toggleForm(!formState?.contact?.isFormVisible))
-          }
-        />
+        <SectionWithImageBackground content={sectionWithImage} />
         <BlogSection content={blogSection} posts={posts} />
       </Layout>
     </>

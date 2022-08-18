@@ -26,7 +26,7 @@ const Navigation = ({ navigation }: NavigationType) => {
   return (
     <>
       <nav
-        className={`w-full transition-all flex flex-row items-center md:top-0 bg-white z-50 ${
+        className={`w-full transition-all hidden md:flex flex-row items-center md:top-0 bg-white z-50 ${
           isAtTopOfScreen
             ? "relative py-4"
             : "relative md:fixed py-2 shadow-md "

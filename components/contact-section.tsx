@@ -58,8 +58,11 @@ const ContactSection = ({ contact }: Props) => {
             <h2 className="font-bold font-serif text-2xl text-slate-700">
               {contact?.title}
             </h2>
-            <form className="flex flex-col gap-4 w-full" onSubmit={submit}>
-              <div className="flex  gap-4 w-full">
+            <form
+              className="flex flex-col gap-2 md:gap-4 w-full mt-6 md:mt-2"
+              onSubmit={submit}
+            >
+              <div className="flex flex-col md:flex-row gap-4 w-full">
                 {contact?.inputsCollection?.items?.map((input) => {
                   return input.type === "text" || input.type === "email" ? (
                     <TextInput
@@ -107,7 +110,7 @@ const ContactSection = ({ contact }: Props) => {
                 })}
               </div>
               <div className="flex justify-end">
-                <button className="px-6 py-4 bg-orange-400 text-slate-50 text-xl font-semibold w-36">
+                <button className="px-2 md:px-6 py-2 md:py-4 bg-orange-400 text-slate-50 text-lg md:text-xl font-semibold w-36">
                   {contact?.submit}
                 </button>
               </div>

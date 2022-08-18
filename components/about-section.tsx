@@ -13,7 +13,7 @@ const AboutSection = ({ about }: Props) => {
   return (
     <div className="flex flex-col my-6">
       <Container>
-        <div className="flex flex-col md:flex-row items-center justify-between">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="w-full md:w-1/2">
             <ContentfulImage src={about.image.url} width={600} height={400} />
           </div>

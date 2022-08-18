@@ -23,12 +23,12 @@ export default function Layout({
   return (
     <>
       <Meta />
-      <div className="min-h-screen">
+      <div className="min-h-screen min-w-[350px]">
         <Navigation navigation={navigation} />
         <main>{children}</main>
+        <ContactFloating contact={contact} />
+        <Footer footer={footer} />
       </div>
-      <ContactFloating contact={contact} />
-      <Footer footer={footer} />
     </>
   );
 }

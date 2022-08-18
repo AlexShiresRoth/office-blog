@@ -11,7 +11,7 @@ export default function BlogIntro({ title, summary }: Props) {
   return (
     <section className="flex-col md:flex-row flex items-center md:justify-between  w-full border-t-2 border-b-2 py-2">
       <Container>
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col md:flex-row justify-between items-center">
           <Link href={"/blog"}>
             <a>
               <h2 className="font-semibold text-xl text-slate-500 hover:underline">
