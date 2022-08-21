@@ -19,6 +19,7 @@ import {
 } from "../../lib/api";
 import PostTitle from "../../components/post-title";
 import BlogIntro from "../../components/blog-intro";
+import { BlogSideBar } from "../../components/blog-side-bar";
 
 export default function Post({
   post,
@@ -43,31 +44,37 @@ export default function Post({
       contact={contact}
     >
       <BlogIntro title={intro?.title} summary={intro?.summary} />
-      <div className="mt-20">
+      <div className="mt-20 ">
         <Container>
-          {router.isFallback ? (
-            <PostTitle>Loading…</PostTitle>
-          ) : (
-            <>
-              <article>
-                <Head>
-                  <title>{post.title}</title>
-                  {/* <meta property="og:image" content={post.coverImage.url} /> */}
-                </Head>
-                <PostHeader
-                  title={post?.title}
-                  coverImage={post?.mainImage}
-                  date={post?.date}
-                  author={post?.author}
-                />
-                <PostBody content={post.body} />
-              </article>
-              <SectionSeparator />
-              {morePosts && morePosts.length > 0 && (
-                <MoreStories posts={morePosts} />
+          <div className="flex justify-between gap-16">
+            <div className="w-full md:w-3/4">
+              {router.isFallback ? (
+                <PostTitle>Loading…</PostTitle>
+              ) : (
+                <>
+                  <article>
+                    <Head>
+                      <title>{post.title}</title>
+                      {/* <meta property="og:image" content={post.coverImage.url} /> */}
+                    </Head>
+                    <PostHeader
+                      title={post?.title}
+                      coverImage={post?.mainImage}
+                      date={post?.date}
+                      author={post?.author}
+                    />
+                    <PostBody content={post.body} />
+                  </article>
+                  <SectionSeparator />
+                  {morePosts && morePosts.length > 0 && (
+                    <MoreStories posts={morePosts} />
+                  )}
+                </>
               )}
-            </>
-          )}
+            </div>
+
+            <BlogSideBar />
+          </div>
         </Container>
       </div>
     </Layout>

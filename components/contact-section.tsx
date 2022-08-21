@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useAppDispatch, useAppSelector } from "../redux/hooks/hooks";
+import { selectFormState, setAlert } from "../redux/reducers/contact.reducer";
 import { ContactSectionType } from "../types/contact.types";
 import Container from "./container";
+import LoadingSpinner from "./loading-spinner";
 import SelectInput from "./select-input";
 import TextInput from "./text-input";
 import Textarea from "./textarea";
@@ -9,8 +12,10 @@ type Props = {
   contact: ContactSectionType;
 };
 
-// TODO finish component
 const ContactSection = ({ contact }: Props) => {
+  const formState = useAppSelector(selectFormState);
+  const dispatch = useAppDispatch();
+
   const [sending, setSending] = useState<boolean>(false);
 
   const [data, setData] = useState<{
@@ -41,10 +46,17 @@ const ContactSection = ({ contact }: Props) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      console.log(await response.json());
+      const { message } = await response.json();
+      //////////////////////////////////////////
+      dispatch(setAlert({ status: "success", message }));
+      //////////////////////////////////////////////
+      setData({ email: "", name: "", message: "", service: "" });
       setSending(false);
     } catch (error) {
       console.error("submit error", error);
+      ////////////////////////////////////////////////
+      dispatch(setAlert({ status: "error", message: "Error sending message" }));
+      /////////////////////////////////////////////
       setSending(false);
     }
   };
@@ -110,9 +122,13 @@ const ContactSection = ({ contact }: Props) => {
                 })}
               </div>
               <div className="flex justify-end">
-                <button className="px-2 md:px-6 py-2 md:py-4 bg-orange-400 text-slate-50 text-lg md:text-xl font-semibold w-36">
-                  {contact?.submit}
-                </button>
+                {!sending ? (
+                  <button className="px-2 md:px-6 py-2 md:py-4 bg-orange-400 text-slate-50 text-lg md:text-xl font-semibold w-36">
+                    {contact?.submit}
+                  </button>
+                ) : (
+                  <LoadingSpinner />
+                )}
               </div>
             </form>
           </div>

@@ -7,15 +7,36 @@
 .markdown ol,
 .markdown blockquote {
   @apply my-6;
-  @apply text-slate-500;
-  @apply text-base;
-  @apply leading-relaxed;
+  @apply text-slate-700;
+  @apply leading-loose;
+  @apply text-lg;
 }
 
+.markdown h1 {
+  @apply text-4xl mt-12 mb-4 leading-snug font-serif text-slate-800;
+  @apply font-bold;
+}
 .markdown h2 {
-  @apply text-3xl mt-12 mb-4 leading-snug;
+  @apply text-3xl mt-12 mb-4 leading-snug font-serif text-slate-600;
+  @apply font-bold;
 }
 
 .markdown h3 {
-  @apply text-2xl mt-8 mb-4 leading-snug;
+  @apply text-2xl mt-8 mb-4 leading-snug font-serif text-slate-600;
+  @apply font-bold;
+}
+
+.markdown h4 {
+  @apply text-xl mt-12 mb-4 leading-snug font-serif text-slate-600;
+  @apply font-bold;
+}
+
+.markdown h5 {
+  @apply text-lg mt-12 mb-4 leading-snug font-serif text-slate-600;
+  @apply font-bold;
+}
+
+.markdown h6 {
+  @apply text-base mt-12 mb-4 leading-snug font-serif;
+  @apply font-bold;
 }

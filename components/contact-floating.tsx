@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { AiOutlineClose, AiOutlineMail } from "react-icons/ai";
 import { useAppDispatch, useAppSelector } from "../redux/hooks/hooks";
-import { selectFormState, toggleForm } from "../redux/reducers/contact.reducer";
+import {
+  selectFormState,
+  setAlert,
+  toggleForm,
+} from "../redux/reducers/contact.reducer";
 import { ContactSectionType } from "../types/contact.types";
 import Container from "./container";
+import LoadingSpinner from "./loading-spinner";
 import SelectInput from "./select-input";
 import TextInput from "./text-input";
 import Textarea from "./textarea";
@@ -46,10 +51,17 @@ const ContactFloating = ({ contact }: Props) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      console.log(await response.json());
+      const { message } = await response.json();
+      //////////////////////////////////////////
+      dispatch(setAlert({ status: "success", message }));
+      //////////////////////////////////////////////
+      setData({ email: "", name: "", message: "", service: "" });
       setSending(false);
     } catch (error) {
       console.error("submit error", error);
+      ////////////////////////////////////////////////
+      dispatch(setAlert({ status: "error", message: "Error sending message" }));
+      /////////////////////////////////////////////
       setSending(false);
     }
   };
@@ -149,9 +161,16 @@ const ContactFloating = ({ contact }: Props) => {
                 })}
               </div>
               <div className="flex justify-end">
-                <button className="px-6 py-4 bg-orange-400 text-slate-50 text-xl font-semibold w-36">
-                  {contact?.submit}
-                </button>
+                {!sending ? (
+                  <button className="px-6 py-4 bg-orange-400 text-slate-50 text-xl font-semibold w-36">
+                    {contact?.submit}
+                  </button>
+                ) : (
+                  <div className="flex items-center">
+                    <LoadingSpinner />
+                    <p className="ml-2">Sending...</p>
+                  </div>
+                )}
               </div>
             </form>
           </div>

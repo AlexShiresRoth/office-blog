@@ -1,6 +1,7 @@
 import { ContactSectionType } from "../types/contact.types";
 import { FooterParams } from "../types/footer.types";
 import { NavigationType } from "../types/navigation.types";
+import Alert from "./alert";
 import ContactFloating from "./contact-floating";
 import Footer from "./footer";
 import Meta from "./meta";
@@ -24,6 +25,7 @@ export default function Layout({
     <>
       <Meta />
       <div className="min-h-screen min-w-[350px]">
+        <Alert preview={false} />
         <Navigation navigation={navigation} />
         <main>{children}</main>
         <ContactFloating contact={contact} />

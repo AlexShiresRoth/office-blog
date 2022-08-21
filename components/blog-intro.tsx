@@ -9,7 +9,7 @@ type Props = {
 
 export default function BlogIntro({ title, summary }: Props) {
   return (
-    <section className="flex-col md:flex-row flex items-center md:justify-between  w-full border-t-2 border-b-2 py-2">
+    <section className="flex-col md:flex-row flex items-center md:justify-between  w-full border-t-[1px] border-b-[1px] py-2">
       <Container>
         <div className="flex flex-col md:flex-row justify-between items-center">
           <Link href={"/blog"}>

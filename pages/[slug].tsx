@@ -59,12 +59,11 @@ const Page = ({
       contact={contact}
     >
       <Container>
-        <div className="py-10 mt-16">
+        <div className="py-10 mt-2">
           <PostTitle>{page?.title}</PostTitle>
           <PostBody content={page?.content} />
         </div>
       </Container>
-
       <ContactSection contact={contact} />
     </Layout>
   );
@@ -129,7 +128,7 @@ function Blog({
           slug={heroPost?.slug}
           contributor={heroPost?.author}
           featured={true}
-          category={"uhh"} //fix this
+          category={""} //fix this
           date={heroPost?.date}
           imageURL={heroPost?.mainImage?.url}
         />
