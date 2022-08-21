@@ -19,7 +19,7 @@ const Categories = ({ categories }: Props) => {
         </h2>
       </div>
       <div className="mt-2 mb-2 flex w-full gap-2">
-        {categories.slice(0, 6).map((category) => (
+        {categories.slice(0, 4).map((category) => (
           <button
             onClick={() => handleNavigate(category)}
             key={category}

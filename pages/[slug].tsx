@@ -78,6 +78,7 @@ function Blog({
   footer,
   contact,
 }) {
+  //TODO add an  older articles section
   const [rankedCategories, setRankedCategories] = useState<Array<string>>([]);
 
   const heroPost: PostType = allPosts[0];

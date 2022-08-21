@@ -10,6 +10,7 @@ import SectionSeparator from "../../components/section-separator";
 import Layout from "../../components/layout";
 import {
   getAllPostsWithSlug,
+  getBlogCategories,
   getBlogIntro,
   getContactSection,
   getFooterSection,
@@ -21,9 +22,11 @@ import PostTitle from "../../components/post-title";
 import BlogIntro from "../../components/blog-intro";
 import { BlogSideBar } from "../../components/blog-side-bar";
 
+//Need to fetch articles that arent the current article & more articles
 export default function Post({
   post,
   morePosts,
+  categories,
   preview,
   footer,
   nav,
@@ -44,7 +47,7 @@ export default function Post({
       contact={contact}
     >
       <BlogIntro title={intro?.title} summary={intro?.summary} />
-      <div className="mt-20 ">
+      <div>
         <Container>
           <div className="flex justify-between gap-16">
             <div className="w-full md:w-3/4">
@@ -52,7 +55,7 @@ export default function Post({
                 <PostTitle>Loading…</PostTitle>
               ) : (
                 <>
-                  <article>
+                  <article className="pt-16">
                     <Head>
                       <title>{post.title}</title>
                       {/* <meta property="og:image" content={post.coverImage.url} /> */}
@@ -73,7 +76,10 @@ export default function Post({
               )}
             </div>
 
-            <BlogSideBar />
+            <BlogSideBar
+              categories={categories}
+              suggestedArticles={morePosts}
+            />
           </div>
         </Container>
       </div>
@@ -95,6 +101,7 @@ export async function getStaticProps({ params, preview = false }) {
   const footer = (await getFooterSection()) ?? null;
   const nav = (await getNavigation()) ?? null;
   const contact = (await getContactSection()) ?? null;
+  const categories = (await getBlogCategories()) ?? [];
 
   return {
     props: {
@@ -105,6 +112,7 @@ export async function getStaticProps({ params, preview = false }) {
       footer,
       nav,
       contact,
+      categories,
     },
   };
 }

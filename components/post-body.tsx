@@ -12,10 +12,7 @@ const customMarkdownOptions = (content) => {
     },
     renderNode: {
       [BLOCKS.EMBEDDED_ASSET]: (node) => (
-        <RichTextAsset
-          id={node.data.target.sys.id}
-          assets={content.links.assets.block}
-        />
+        <RichTextAsset id={node.data.target.sys.id} />
       ),
       [BLOCKS.PARAGRAPH]: (node, children) => {
         return <Paragraph content={children} />;
@@ -29,7 +26,7 @@ const customMarkdownOptions = (content) => {
 
 export default function PostBody({ content }) {
   return (
-    <div className="max-w-2xl">
+    <div className="max-w-4xl">
       <div className={markdownStyles["markdown"]}>
         {documentToReactComponents(
           content.json,
