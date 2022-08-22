@@ -18,9 +18,9 @@ export const FeaturedPost = ({
 }) => {
   return (
     <div className="flex flex-col">
-      <div className="relative flex flex-col justify-center">
+      <div className="relative flex flex-col justify-center mt-[40px] md:mt-0">
         <div className="w-full h-full hidden md:block">
-          <CoverImage title={title} slug={slug} url={imageURL} height={500} />
+          <CoverImage title={title} slug={slug} url={imageURL} height={600} />
         </div>
         <div className="w-full h-full md:hidden block">
           <CoverImage title={title} slug={slug} url={imageURL} height={1600} />
@@ -29,7 +29,7 @@ export const FeaturedPost = ({
           <div className="flex flex-col absolute top-0 z-20 justify-center h-full py-8 gap-2">
             <Link href={`/posts/${slug}`}>
               <a>
-                <h1 className="text-2xl md:text-7xl md:leading-none text-white font-bold hover:underline">
+                <h1 className="text-5xl md:text-7xl md:leading-none text-white font-bold hover:underline">
                   {title}
                 </h1>
               </a>
@@ -38,7 +38,7 @@ export const FeaturedPost = ({
               dateString={date}
               classNames="text-slate-100 italic text-sm md:text-2xl"
             />
-            <p className="text-slate-300 max-w-sm md:max-w-2xl my-2 text-sm md:text-base">
+            <p className="hidden md:block text-slate-300 max-w-xs md:max-w-2xl my-2 text-sm md:text-base">
               {excerpt}
             </p>
             <Link href={`/posts/${slug}`}>
