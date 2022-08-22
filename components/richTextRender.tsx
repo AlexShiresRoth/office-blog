@@ -6,10 +6,7 @@ import RichTextAsset from "./rich-text-asset";
 const customMarkdownOptions = (content) => ({
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node) => (
-      <RichTextAsset
-        id={node.data.target.sys.id}
-        assets={content.links.assets.block}
-      />
+      <RichTextAsset id={node.data.target.sys.id} />
     ),
   },
 });

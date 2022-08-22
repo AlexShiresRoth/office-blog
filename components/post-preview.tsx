@@ -13,7 +13,7 @@ export default function PostPreview({
   categories,
 }) {
   return (
-    <div className="p-4 border-2 border-slate-200">
+    <div className="p-4 border-[1px] border-slate-200">
       <div className="mb-5 rounded">
         <img
           src={coverImage.url}
@@ -27,7 +27,9 @@ export default function PostPreview({
         </Link>
       </h3>
 
-      <p className="text-lg leading-relaxed mb-4 text-slate-500">{excerpt}</p>
+      <p className="text-lg leading-relaxed mb-4 text-slate-500">
+        {excerpt.substring(0, 120) + "..."}
+      </p>
 
       {author && <Avatar name={author.name} picture={author.headshot} />}
       <div className="text-lg mb-4 mt-2">

@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import Container from "./container";
+import React, { useEffect, useRef } from "react";
+import cn from "classnames";
 import { flattenArrayNested } from "../utility-funtions/flatten-array";
 import Link from "next/link";
 import ArticlePreview from "./article-preview";
@@ -8,7 +8,11 @@ export const BlogSideBar = ({
   categories: arrayOfCategoryObjects,
   suggestedArticles,
 }) => {
+  const sideBarRef = useRef(null);
+
   const [categories, setCategories] = React.useState<Array<string>>([]);
+
+  const [scrollMaxReached, setScrollMaxReached] = React.useState(false);
 
   const [categoryMatrix, setCategoryMatrix] = React.useState<
     Array<{ key: string; value: number }>
@@ -50,12 +54,30 @@ export const BlogSideBar = ({
     }
   }, [categories]);
 
-  //TODO set element to stop once reaching bottom of container. must use js
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (sideBarRef.current) {
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > sideBarRef?.current?.offsetHeight - 550) {
+            setScrollMaxReached(true);
+          } else setScrollMaxReached(false);
+        });
+      }
+    }
+  }, [sideBarRef]);
 
   return (
-    <div className="w-1/4 hidden md:flex flex-col border-l-[1px]  border-accent-2  mb-8 py-4 relative">
-      <div className="absolute h-[1000px] top-8">
-        <div className=" overflow-hidden  fixed">
+    <div
+      className=" hidden md:flex flex-col border-l-[1px]  border-accent-2  mb-8 py-4 relative min-h-screen  w-1/3 overflow-hidden"
+      ref={sideBarRef}
+    >
+      <div className="relative top-2 h-full w-full">
+        <div
+          className={cn({
+            fixed: !scrollMaxReached,
+            [`absolute bottom-4`]: scrollMaxReached,
+          })}
+        >
           <div className="border-b-[1px] border-slate-100 flex pb-2 mb-2">
             <h2 className="font-bold text-slate-500 ml-6">Top Categories</h2>
           </div>
@@ -80,7 +102,7 @@ export const BlogSideBar = ({
               Suggested Articles
             </h2>
           </div>
-          <div className="pl-6 pb-2 flex flex-col gap-2 w-11/12 ">
+          <div className="pl-6 pb-2 flex flex-col gap-2 w-full ">
             {suggestedArticles.slice(0, 3).map((article) => (
               <ArticlePreview content={article} key={article?.slug} />
             ))}
