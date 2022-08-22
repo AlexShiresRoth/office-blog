@@ -25,7 +25,7 @@ export default function MoreStories({
           <h2 className="text-xl italic md:text-xl font-semibold tracking-tighter leading-tight text-slate-400 font-serif">
             {title}
           </h2>
-          <div className="relative flex items-center">
+          <div className="relative hidden md:flex items-center">
             <button
               onClick={() => setLayoutColumns(!layoutColumns)}
               onMouseEnter={() => setShowHint(true)}

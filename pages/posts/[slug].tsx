@@ -55,7 +55,7 @@ export default function Post({
                 <PostTitle>Loading…</PostTitle>
               ) : (
                 <>
-                  <article className="pt-16">
+                  <article className="pt-20 md:pt-4">
                     <Head>
                       <title>{post.title}</title>
                       {/* <meta property="og:image" content={post.coverImage.url} /> */}

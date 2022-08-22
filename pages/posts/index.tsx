@@ -55,7 +55,7 @@ export default function Index({
       >
         <BlogIntro title={intro?.title} summary={intro?.summary} />
         <Container>
-          <div className="my-0 pt-24 md:pt-4 md:mt-0 md:my-4 flex flex-col md:flex-row md:items-center md:justify-between border-b-[1px]">
+          <div className="my-0 pt-32 md:pt-4 md:mt-0 md:my-4 flex flex-col md:flex-row md:items-center md:justify-between border-b-[1px]">
             <h1 className="text-slate-800 font-bold text-lg md:text-6xl md:leading-relaxed mr-10">
               {router?.query?.search ? (
                 <>
