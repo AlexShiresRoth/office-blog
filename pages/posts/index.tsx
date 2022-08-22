@@ -55,7 +55,7 @@ export default function Index({
       >
         <BlogIntro title={intro?.title} summary={intro?.summary} />
         <Container>
-          <div className="my-4 flex items-center justify-between border-b-2">
+          <div className="my-0 pt-20 md:pt-4 md:mt-0 md:my-4 flex items-center justify-between border-b-2">
             <h1 className="text-slate-800 font-bold text-6xl mr-10">
               {router?.query?.search
                 ? "Posts: " + router?.query?.search
