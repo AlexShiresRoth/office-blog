@@ -18,7 +18,7 @@ const footer = ({ footer }: Props) => {
   };
 
   return (
-    <footer className="bg-slate-900 w-full py-10">
+    <footer className="bg-slate-900 w-full py-10 pb-20 md:pb-10">
       <Container>
         <div className="border-b-2 border-slate-700 py-2">
           <h3 className="text-slate-500 font-bold">{footer.heading}</h3>

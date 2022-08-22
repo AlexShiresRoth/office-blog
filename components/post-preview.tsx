@@ -11,6 +11,7 @@ export default function PostPreview({
   author,
   slug,
   categories,
+  expanded = false,
 }) {
   return (
     <div className="p-4 border-[1px] border-slate-200">
@@ -28,7 +29,7 @@ export default function PostPreview({
       </h3>
 
       <p className="text-lg leading-relaxed mb-4 text-slate-500">
-        {excerpt.substring(0, 120) + "..."}
+        {!expanded ? excerpt.substring(0, 150) + "..." : excerpt}
       </p>
 
       {author && <Avatar name={author.name} picture={author.headshot} />}

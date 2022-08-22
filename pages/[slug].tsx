@@ -85,6 +85,8 @@ function Blog({
 
   const morePosts = allPosts.slice(1, 4);
 
+  const olderPosts = allPosts.slice(4, 7);
+
   //is this possibly a long winded way of doing this?
   //I think it is, but I'm not sure how to make it better at the moment
   const handleCategoryRankings = () => {
@@ -137,7 +139,20 @@ function Blog({
           {categories?.length > 0 && (
             <Categories categories={rankedCategories} />
           )}
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+          {morePosts.length > 0 && (
+            <MoreStories
+              posts={morePosts}
+              title={"Recent Posts"}
+              link={`/posts/`}
+            />
+          )}
+          {olderPosts.length > 0 && (
+            <MoreStories
+              posts={olderPosts}
+              title={"More Posts"}
+              link={"/posts/"}
+            />
+          )}
         </Container>
       </Layout>
     </>

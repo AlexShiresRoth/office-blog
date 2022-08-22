@@ -70,7 +70,7 @@ export default function Post({
                   </article>
                   <SectionSeparator />
                   {morePosts && morePosts.length > 0 && (
-                    <MoreStories posts={morePosts} />
+                    <MoreStories posts={morePosts} title={""} link="" />
                   )}
                 </>
               )}
