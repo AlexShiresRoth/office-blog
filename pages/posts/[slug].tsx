@@ -32,6 +32,7 @@ export default function Post({
   nav,
   intro,
   contact,
+  sidebarPosts,
 }) {
   const router = useRouter();
 
@@ -55,7 +56,7 @@ export default function Post({
                 <PostTitle>Loading…</PostTitle>
               ) : (
                 <>
-                  <article className="pt-20 md:pt-4">
+                  <article className="pt-32 md:pt-4">
                     <Head>
                       <title>{post.title}</title>
                       {/* <meta property="og:image" content={post.coverImage.url} /> */}
@@ -65,6 +66,7 @@ export default function Post({
                       coverImage={post?.mainImage}
                       date={post?.date}
                       author={post?.author}
+                      categories={post?.categories}
                     />
                     <PostBody content={post.body} />
                   </article>
@@ -78,7 +80,7 @@ export default function Post({
 
             <BlogSideBar
               categories={categories}
-              suggestedArticles={morePosts}
+              suggestedArticles={sidebarPosts}
             />
           </div>
         </Container>
@@ -96,23 +98,33 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params, preview = false }) {
   const data = await getPostAndMorePosts(params.slug, preview);
-  const post = await getPostBySlug(params.slug);
   const intro = await getBlogIntro();
   const footer = (await getFooterSection()) ?? null;
   const nav = (await getNavigation()) ?? null;
   const contact = (await getContactSection()) ?? null;
   const categories = (await getBlogCategories()) ?? [];
+  const sidebarPosts = await getAllPostsWithSlug();
+
+  const existingPosts = [
+    data?.post?.slug,
+    ...data?.morePosts?.map(({ slug }) => slug),
+  ];
+
+  const filteredPosts = sidebarPosts.filter(
+    ({ slug }) => !existingPosts.includes(slug)
+  );
 
   return {
     props: {
       preview,
       intro,
-      post: post ?? null,
+      post: data?.post,
       morePosts: data?.morePosts ?? null,
       footer,
       nav,
       contact,
       categories,
+      sidebarPosts: filteredPosts.slice(0, 3),
     },
   };
 }

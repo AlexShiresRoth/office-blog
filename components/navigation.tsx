@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import Link from "../node_modules/next/link";
@@ -5,6 +6,8 @@ import { NavigationType } from "../types/navigation.types";
 import Container from "./container";
 
 const Navigation = ({ navigation }: NavigationType) => {
+  const router = useRouter();
+
   const [isAtTopOfScreen, setIsAtTopOfScreen] = useState<boolean>(true);
 
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -22,6 +25,10 @@ const Navigation = ({ navigation }: NavigationType) => {
       window.removeEventListener("scroll", onScroll);
     };
   });
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [router?.asPath]);
 
   return (
     <>

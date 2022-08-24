@@ -2,13 +2,23 @@ import Avatar from "./avatar";
 import DateComponent from "./date";
 import CoverImage from "./cover-image";
 import PostTitle from "./post-title";
+import Link from "next/link";
 
-export default function PostHeader({ title, coverImage, date, author }) {
+export default function PostHeader({
+  title,
+  coverImage,
+  date,
+  author,
+  categories = [],
+}) {
   return (
-    <>
-      <PostTitle>{title}</PostTitle>
+    <div className="border-b-[1px] border-slate-100">
+      <div className="mb-4 md:mb-16 sm:mx-0 mt-10">
+        <CoverImage title={title} url={coverImage.url} slug="" />
+      </div>
 
-      <div className="hidden md:block ">
+      <PostTitle>{title}</PostTitle>
+      <div className="">
         {author && <Avatar name={author.name} picture={author.headshot} />}
       </div>
       <div className="mb-6 text-lg">
@@ -17,14 +27,15 @@ export default function PostHeader({ title, coverImage, date, author }) {
           classNames="italic text-slate-400 text-sm"
         />
       </div>
-      <div className="mb-8 md:mb-16 sm:mx-0">
-        <CoverImage title={title} url={coverImage.url} slug="" />
+      <div className="flex items-center gap-2 mb-4">
+        {categories.map((category, index) => (
+          <Link key={index} href={`/posts?=search${category}`}>
+            <a className="hover:bg-orange-300 hover:border-orange-500 hover:text-white transition-all px-4 py-2 bg-slate-100 border-[1px] rounded border-slate-200 text-slate-600 text-xs">
+              {category}
+            </a>
+          </Link>
+        ))}
       </div>
-      <div className="max-w-2xl mx-auto">
-        <div className="block md:hidden mb-6">
-          {author && <Avatar name={author.name} picture={author.headshot} />}
-        </div>
-      </div>
-    </>
+    </div>
   );
 }

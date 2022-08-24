@@ -1,6 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import Avatar from "./avatar";
 import Container from "./container";
+import { contentfulLoader } from "./contentful-image";
 import CoverImage from "./cover-image";
 import DateComponent from "./date";
 
@@ -17,16 +20,16 @@ export const FeaturedPost = ({
   imageURL,
 }) => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full">
       <div className="relative flex flex-col justify-center mt-[40px] md:mt-0">
         <div className="w-full h-full hidden md:block">
           <CoverImage title={title} slug={slug} url={imageURL} height={600} />
         </div>
-        <div className="w-full h-full md:hidden block">
-          <CoverImage title={title} slug={slug} url={imageURL} height={1600} />
+        <div className="w-full h-full md:hidden block pt-16">
+          <CoverImage title={title} slug={slug} url={imageURL} height={1300} />
         </div>
         <Container>
-          <div className="flex flex-col absolute top-0 z-20 justify-center h-full py-8 gap-2">
+          <div className="flex flex-col absolute top-0 z-20 mt-8 md:mt-0 justify-center h-full py-8 gap-2">
             <Link href={`/posts/${slug}`}>
               <a>
                 <h1 className="text-5xl md:text-7xl md:leading-none text-white font-bold hover:underline">
@@ -34,17 +37,33 @@ export const FeaturedPost = ({
                 </h1>
               </a>
             </Link>
+            <div className="flex items-center">
+              <div className="w-[30px]">
+                <Image
+                  src={contributor.headshot.url}
+                  alt={contributor.name}
+                  layout="responsive"
+                  width={40}
+                  height={40}
+                  className="rounded-full"
+                  loader={contentfulLoader}
+                />
+              </div>
+              <span className="text-xs text-slate-300 ml-2 font-semibold">
+                {contributor?.name}
+              </span>
+            </div>
             <DateComponent
               dateString={date}
-              classNames="text-slate-100 italic text-sm md:text-2xl"
+              classNames="text-slate-400 italic text-xs md:text-2xl mb-2"
             />
             <p className="hidden md:block text-slate-300 max-w-xs md:max-w-2xl my-2 text-sm md:text-base">
               {excerpt}
             </p>
             <Link href={`/posts/${slug}`}>
               <a>
-                <button className="px-4 py-2 bg-orange-500 text-slate-50 rounded">
-                  Read More
+                <button className="px-4 py-2 text-xs md:text-base bg-orange-500 text-slate-50 rounded-sm">
+                  View Post
                 </button>
               </a>
             </Link>

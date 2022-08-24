@@ -39,15 +39,14 @@ export default function PostPreview({
           classNames="text-slate-400 italic text-sm"
         />
       </div>
-      <div className="flex mb-4">
+      <div className="flex mb-4 gap-2">
         {categories &&
           categories.map((category, index) => (
-            <span
-              className="p-2 bg-slate-100 rounded text-slate-800 font-bold italic text-xs mr-2"
-              key={index}
-            >
-              {category}
-            </span>
+            <Link href={`/posts?search=${category}`} key={index}>
+              <a className="hover:bg-orange-300 hover:border-orange-500 hover:text-white transition-all px-4 py-2 bg-slate-100 border-[1px] rounded border-slate-200 text-slate-600 text-xs">
+                {category}
+              </a>
+            </Link>
           ))}
       </div>
       <Link href={`/posts/${slug}`}>

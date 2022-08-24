@@ -14,11 +14,11 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="p-2  rounded  border-2 border-slate-400  transition-width transition-all flex items-center overflow-hidden">
+    <div className="p-2  rounded  border-2 border-slate-400  transition-width transition-all flex items-center overflow-hidden w-full">
       <AiOutlineSearch size={20} className="text-slate-500" />
       <form className="flex items-center" onSubmit={handleSubmit}>
         <input
-          className="bg-transparent focus:outline-none text-slate-500 text-sm font-serif mx-2"
+          className="bg-transparent focus:outline-none text-slate-500 text-xs md:text-sm font-serif mx-2"
           placeholder="Search by category or title"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
