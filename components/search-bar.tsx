@@ -10,7 +10,10 @@ const SearchBar = () => {
     e: React.FormEvent<HTMLFormElement | HTMLButtonElement>
   ) => {
     e.preventDefault();
+
     router.push({ pathname: "/posts/", query: { search: searchValue } });
+
+    setSearchValue("");
   };
 
   return (
