@@ -32,7 +32,7 @@ export default function Index({
       allPosts.filter(
         (post) =>
           post.title.toLowerCase().includes(lSearch) ||
-          post.categories.filter((category) =>
+          post?.categories?.filter((category) =>
             category.toLowerCase().includes(lSearch)
           ).length > 0
       )
