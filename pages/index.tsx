@@ -29,6 +29,8 @@ export default function Index({
   allPosts,
 }) {
   const posts = allPosts.slice(0, 2);
+
+  console.log("posts", posts);
   return (
     <>
       <Layout

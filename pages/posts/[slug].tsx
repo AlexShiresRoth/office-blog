@@ -64,7 +64,7 @@ export default function Post({
                     <PostHeader
                       title={post?.title}
                       coverImage={post?.mainImage}
-                      date={post?.date}
+                      publishedAt={post?.sys?.publishedAt}
                       author={post?.author}
                       categories={post?.categories}
                     />

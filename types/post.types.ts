@@ -3,6 +3,9 @@ export type PostType = {
   mainImage: {
     url: string;
   };
+  sys: {
+    publishedAt: string;
+  }
   author: {
     headshot: {
       url: string;

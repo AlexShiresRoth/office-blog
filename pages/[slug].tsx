@@ -132,7 +132,7 @@ function Blog({
           contributor={heroPost?.author}
           featured={true}
           category={""} //fix this
-          date={heroPost?.date}
+          publishedAt={heroPost?.sys?.publishedAt}
           imageURL={heroPost?.mainImage?.url}
         />
         <Container>

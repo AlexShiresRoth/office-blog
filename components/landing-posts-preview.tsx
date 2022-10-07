@@ -9,13 +9,14 @@ type Props = {
 };
 
 const LandingPostPreview = ({ post }: Props) => {
+  console.log("post", post);
   return (
     <div className="flex flex-col">
       <div className="my-2">
-        <ContentfulImage src={post?.mainImage?.url} height={500} width={1000} />
+       {post?.mainImage ? <ContentfulImage src={post?.mainImage?.url} height={500} width={1000} /> : null}
       </div>
       <DateComponent
-        dateString={post?.date}
+        dateString={post?.sys?.publishedAt}
         classNames="text-slate-400 italic text-xs"
       />
       <Link href={`/posts/${post?.slug}`}>

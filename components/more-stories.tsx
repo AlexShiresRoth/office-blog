@@ -68,12 +68,12 @@ export default function MoreStories({
           "flex-col md:flex-row": layoutColumns,
         })}
       >
-        {posts.map((post) => (
+        {posts.length > 0 && posts.map((post) => (
           <PostPreview
             key={post.slug}
             title={post.title}
             coverImage={post.mainImage}
-            date={post.date}
+            publishedAt={post?.sys?.publishedAt}
             author={post.author}
             slug={post.slug}
             excerpt={post.blurb}

@@ -15,7 +15,9 @@ const AboutSection = ({ about }: Props) => {
       <Container>
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="w-full md:w-1/2">
-            <ContentfulImage src={about.image.url} width={600} height={400} />
+            {about?.image && about?.image?.url && (
+              <ContentfulImage src={about.image.url} width={600} height={400} />
+            )}
           </div>
           <div className="py-10 w-full md:w-1/2">
             <h6 className="text-sm text-orange-400">{about?.preHeading} </h6>

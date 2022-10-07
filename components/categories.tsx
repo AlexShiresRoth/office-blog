@@ -19,15 +19,17 @@ const Categories = ({ categories }: Props) => {
         </h2>
       </div>
       <div className="mt-2 mb-2 flex w-full gap-2 flex-wrap md:flex-nowrap ">
-        {categories.slice(0, 4).map((category) => (
-          <button
-            onClick={() => handleNavigate(category)}
-            key={category}
-            className="text-slate-400 font-regular flex items-center justify-center p-2 flex-1 border-slate-300 border-[1px] rounded hover:bg-slate-300 hover:text-slate-50 transition-all"
-          >
-            {category}
-          </button>
-        ))}
+        {categories &&
+          categories?.length > 0 &&
+          categories?.slice(0, 4).map((category) => (
+            <button
+              onClick={() => handleNavigate(category)}
+              key={category}
+              className="text-slate-400 font-regular flex items-center justify-center p-2 flex-1 border-slate-300 border-[1px] rounded hover:bg-slate-300 hover:text-slate-50 transition-all"
+            >
+              {category}
+            </button>
+          ))}
       </div>
     </div>
   );

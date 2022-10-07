@@ -2,7 +2,6 @@ const POST_GRAPHQL_FIELDS = `
       title
       categories
       blurb
-      date
       sys {
         id
         publishedAt
@@ -172,8 +171,10 @@ const PAGE_TYPE_FIELDS = `
  `;
 
 const BLOG_POST_FIELDS = `
+      sys{
+        publishedAt
+      }
       title
-      date
       body {
         json
       }
@@ -299,7 +300,7 @@ export async function getAllPostsWithSlug() {
 export async function getAllPostsForHome(preview) {
   const entries = await fetchGraphQL(
     `query {
-      blogPostTypeCollection(order: date_DESC, preview: ${
+      blogPostTypeCollection(order: sys_publishedAt_ASC, preview: ${
         preview ? "true" : "false"
       }) {
         items {
@@ -325,9 +326,10 @@ export async function getPostAndMorePosts(slug, preview) {
     }`,
     preview
   );
+  
   const entries = await fetchGraphQL(
     `query {
-      blogPostTypeCollection(where: { slug_not_in: "${slug}" }, order: date_DESC, preview: ${
+      blogPostTypeCollection(where: { slug_not_in: "${slug}" }, order: sys_publishedAt_ASC, preview: ${
       preview ? "true" : "false"
     }, limit: 2) {
         items {

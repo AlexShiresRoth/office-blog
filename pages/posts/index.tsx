@@ -85,7 +85,7 @@ export default function Index({
                 <PostPreview
                   title={post.title}
                   coverImage={post.mainImage}
-                  date={post.date}
+                  publishedAt={post?.sys?.publishedAt}
                   author={post.author}
                   slug={post.slug}
                   excerpt={post.blurb}

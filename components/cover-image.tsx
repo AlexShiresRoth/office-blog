@@ -8,6 +8,9 @@ export default function CoverImage({
   height = 500,
   width = 2000,
 }) {
+
+  if (!url && !slug) return null;
+
   const image = (
     <ContentfulImage
       width={width}

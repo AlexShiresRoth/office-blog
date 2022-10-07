@@ -6,7 +6,7 @@ import CoverImage from "./cover-image";
 export default function PostPreview({
   title,
   coverImage,
-  date,
+  publishedAt,
   excerpt,
   author,
   slug,
@@ -14,13 +14,15 @@ export default function PostPreview({
   expanded = false,
 }) {
   return (
-    <div className="p-4 border-[1px] border-slate-200">
+    <div className="p-4 border-[1px] border-slate-200 flex-1">
       <div className="mb-5 rounded">
-        <img
-          src={coverImage.url}
-          alt={title}
-          className="rounded object-center object-cover w-full max-h-56"
-        />
+        {coverImage && coverImage?.url && (
+          <img
+            src={coverImage.url}
+            alt={title}
+            className="rounded object-center object-cover w-full max-h-56"
+          />
+        )}
       </div>
       <h3 className="text-3xl mb-3 leading-snug">
         <Link href={`/posts/${slug}`}>
@@ -35,7 +37,7 @@ export default function PostPreview({
       {author && <Avatar name={author.name} picture={author.headshot} />}
       <div className="text-lg mb-4 mt-2">
         <DateComponent
-          dateString={date}
+          dateString={publishedAt}
           classNames="text-slate-400 italic text-sm"
         />
       </div>

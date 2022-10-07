@@ -8,6 +8,9 @@ type Props = {
     mainImage: {
       url: string;
     };
+    sys: {
+      publishedAt: string;
+    }
     author: {
       headshot: {
         url: string;
@@ -16,7 +19,6 @@ type Props = {
     };
     slug: string;
     blurb: string;
-    date: string;
   };
 };
 
@@ -28,7 +30,7 @@ const LatestContent = ({ heroPost }: Props) => {
         <HeroPost
           title={heroPost.title}
           coverImage={heroPost.mainImage}
-          date={heroPost.date}
+          publishedAt={heroPost?.sys?.publishedAt}
           author={heroPost.author}
           slug={heroPost.slug}
           excerpt={heroPost.blurb}

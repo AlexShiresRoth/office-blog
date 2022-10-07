@@ -23,20 +23,22 @@ const ArticlePreview = ({ content }) => {
             {content?.blurb?.substring(0, 100) + "..."}
           </p>
           <DateComponent
-            dateString={content?.date}
+            dateString={content?.sys?.publishedAt}
             classNames="text-xs italic text-slate-300"
           />
         </div>
       </div>
       <div className="w-[90px] h-full flex flex-col justify-start">
-        <Image
-          src={content?.mainImage?.url}
-          layout="responsive"
-          width={300}
-          height={300}
-          loader={contentfulLoader}
-          className="object-cover rounded"
-        />
+        {content?.mainImage && content?.mainImage?.url && (
+          <Image
+            src={content?.mainImage?.url}
+            layout="responsive"
+            width={300}
+            height={300}
+            loader={contentfulLoader}
+            className="object-cover rounded"
+          />
+        )}
       </div>
     </div>
   );

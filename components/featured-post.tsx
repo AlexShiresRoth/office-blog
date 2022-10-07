@@ -7,8 +7,6 @@ import { contentfulLoader } from "./contentful-image";
 import CoverImage from "./cover-image";
 import DateComponent from "./date";
 
-import PostPreview from "./post-preview";
-
 export const FeaturedPost = ({
   title,
   excerpt,
@@ -16,17 +14,27 @@ export const FeaturedPost = ({
   contributor,
   featured = true,
   category,
-  date,
+  publishedAt,
   imageURL,
 }) => {
+  console.log("featured post", publishedAt);
   return (
     <div className="flex flex-col w-full">
       <div className="relative flex flex-col justify-center mt-[40px] md:mt-0">
         <div className="w-full h-full hidden md:block">
-          <CoverImage title={title} slug={slug} url={imageURL} height={600} />
+          {imageURL && (
+            <CoverImage title={title} slug={slug} url={imageURL} height={600} />
+          )}
         </div>
         <div className="w-full h-full md:hidden block pt-16">
-          <CoverImage title={title} slug={slug} url={imageURL} height={1300} />
+          {imageURL && (
+            <CoverImage
+              title={title}
+              slug={slug}
+              url={imageURL}
+              height={1300}
+            />
+          )}
         </div>
         <Container>
           <div className="flex flex-col absolute top-0 z-20 mt-8 md:mt-0 justify-center h-full py-8 gap-2">
@@ -39,22 +47,24 @@ export const FeaturedPost = ({
             </Link>
             <div className="flex items-center">
               <div className="w-[30px]">
-                <Image
-                  src={contributor.headshot.url}
-                  alt={contributor.name}
-                  layout="responsive"
-                  width={40}
-                  height={40}
-                  className="rounded-full"
-                  loader={contentfulLoader}
-                />
+                {contributor?.headshot && (
+                  <Image
+                    src={contributor.headshot.url}
+                    alt={contributor.name}
+                    layout="responsive"
+                    width={40}
+                    height={40}
+                    className="rounded-full"
+                    loader={contentfulLoader}
+                  />
+                )}
               </div>
               <span className="text-xs text-slate-300 ml-2 font-semibold">
                 {contributor?.name}
               </span>
             </div>
             <DateComponent
-              dateString={date}
+              dateString={publishedAt}
               classNames="text-slate-400 italic text-xs md:text-2xl mb-2"
             />
             <p className="hidden md:block text-slate-300 max-w-xs md:max-w-2xl my-2 text-sm md:text-base">

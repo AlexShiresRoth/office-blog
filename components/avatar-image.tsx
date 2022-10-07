@@ -5,6 +5,7 @@ const contentfulLoader = ({ src, width, quality }) => {
 };
 
 const AvatarImage = (props) => {
+  
   return (
     <Image
       loader={contentfulLoader}
