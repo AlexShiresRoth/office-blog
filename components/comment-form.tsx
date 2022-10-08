@@ -73,6 +73,15 @@ const CommentForm = ({ postReference }: Props) => {
         type: "success",
       });
 
+      //reset form
+      setFormData({
+        title: "",
+        body: "",
+        author: "",
+        email: "",
+        postReference: postReference,
+      });
+
       return {
         message: "Comment created successfully",
         success: true,
