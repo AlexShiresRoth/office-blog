@@ -17,10 +17,14 @@ import {
   getNavigation,
   getPostAndMorePosts,
   getPostBySlug,
+  getPostComments,
 } from "../../lib/api";
 import PostTitle from "../../components/post-title";
 import BlogIntro from "../../components/blog-intro";
 import { BlogSideBar } from "../../components/blog-side-bar";
+import { useEffect } from "react";
+import CommentForm from "../../components/comment-form";
+import Comments from "../../components/comments";
 
 //Need to fetch articles that arent the current article & more articles
 export default function Post({
@@ -33,6 +37,7 @@ export default function Post({
   intro,
   contact,
   sidebarPosts,
+  comments,
 }) {
   const router = useRouter();
 
@@ -70,7 +75,12 @@ export default function Post({
                     />
                     <PostBody content={post.body} />
                   </article>
-                  <SectionSeparator />
+                  <CommentForm postReference={post?.sys?.id} />
+                  {comments?.length > 0 ? (
+                    <Comments comments={comments} />
+                  ) : (
+                    <p className="my-4 text-slate-400 font-bold">No comments yet</p>
+                  )}
                   {morePosts && morePosts.length > 0 && (
                     <MoreStories posts={morePosts} title={""} link="" />
                   )}
@@ -104,6 +114,7 @@ export async function getStaticProps({ params, preview = false }) {
   const contact = (await getContactSection()) ?? null;
   const categories = (await getBlogCategories()) ?? [];
   const sidebarPosts = await getAllPostsWithSlug();
+  const comments = (await getPostComments(params.slug)) ?? [];
 
   const existingPosts = [
     data?.post?.slug,
@@ -125,6 +136,7 @@ export async function getStaticProps({ params, preview = false }) {
       contact,
       categories,
       sidebarPosts: filteredPosts.slice(0, 3),
+      comments,
     },
   };
 }

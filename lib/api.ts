@@ -206,6 +206,26 @@ const IMAGE_BACKGROUND_SECTION_FIELDS = `
         url
       }`;
 
+const COMMENT_FIELDS = `
+      title
+      sys{
+        id
+        publishedAt
+      }
+      body
+      author
+      email
+      commentDate
+      approved
+      postReference {
+        slug
+        sys {
+          id
+        }
+      }
+    
+  `;
+
 async function fetchGraphQL(query, preview = false) {
   return fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
@@ -269,6 +289,10 @@ function extractImageBackgroundSection(fetchResponse) {
   return fetchResponse?.data?.sectionWithImageBackgroundCollection?.items[0];
 }
 
+function extractComments(fetchResponse) {
+  return fetchResponse?.data?.commentCollection?.items;
+}
+
 export async function getPreviewPostBySlug(slug) {
   const entry = await fetchGraphQL(
     `query {
@@ -326,7 +350,7 @@ export async function getPostAndMorePosts(slug, preview) {
     }`,
     preview
   );
-  
+
   const entries = await fetchGraphQL(
     `query {
       blogPostTypeCollection(where: { slug_not_in: "${slug}" }, order: sys_publishedAt_ASC, preview: ${
@@ -467,4 +491,17 @@ export async function getImageBackgroundSection(title) {
     }`);
 
   return extractImageBackgroundSection(section);
+}
+
+export async function getPostComments(slug) {
+  const comments = await fetchGraphQL(`query getComments {
+      commentCollection(where: {postReference: {slug: "${slug}"}}) {
+        
+        items {
+          ${COMMENT_FIELDS}
+        }
+      }
+    }`);
+
+  return extractComments(comments);
 }
