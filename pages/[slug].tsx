@@ -11,6 +11,8 @@ import {
   getAllPostsForHome,
   getBlogCategories,
   getBlogIntro,
+  getAllAuthorsWithSlug,
+  getBlogDescription,
 } from "../lib/api";
 import PostBody from "../components/post-body";
 import Container from "../components/container";
@@ -22,6 +24,8 @@ import { PostType } from "../types/post.types";
 import { flattenArrayNested } from "../utility-funtions/flatten-array";
 import Categories from "../components/categories";
 import BlogIntro from "../components/blog-intro";
+import { BlogSideBar } from "../components/blog-side-bar";
+import BlogDescription from "../components/blog-description";
 
 const Page = ({
   preview,
@@ -32,6 +36,8 @@ const Page = ({
   allPosts,
   categories,
   intro,
+  authors,
+  blogDescription,
 }) => {
   const router = useRouter();
 
@@ -49,6 +55,8 @@ const Page = ({
         navigation={navigation}
         preview={preview}
         contact={contact}
+        authors={authors}
+        blogDescription={blogDescription}
       />
     );
   return (
@@ -77,6 +85,8 @@ function Blog({
   categories,
   footer,
   contact,
+  authors,
+  blogDescription,
 }) {
   //TODO add an  older articles section
   const [rankedCategories, setRankedCategories] = useState<Array<string>>([]);
@@ -116,6 +126,8 @@ function Blog({
     handleCategoryRankings();
   }, [categories]);
 
+  console.log("blogDescription", blogDescription);
+
   return (
     <>
       <Layout
@@ -124,36 +136,49 @@ function Blog({
         footer={footer}
         contact={contact}
       >
-        <BlogIntro title={intro?.title} summary={intro?.summary} />
-        <FeaturedPost
-          title={heroPost?.title}
-          excerpt={heroPost?.blurb}
-          slug={heroPost?.slug}
-          contributor={heroPost?.author}
-          featured={true}
-          category={""} //fix this
-          publishedAt={heroPost?.sys?.publishedAt}
-          imageURL={heroPost?.mainImage?.url}
-        />
-        <Container>
-          {categories?.length > 0 && (
-            <Categories categories={rankedCategories} />
-          )}
-          {morePosts.length > 0 && (
-            <MoreStories
-              posts={morePosts}
-              title={"Recent Posts"}
-              link={`/posts/`}
-            />
-          )}
-          {olderPosts.length > 0 && (
-            <MoreStories
-              posts={olderPosts}
-              title={"More Posts"}
-              link={"/posts/"}
-            />
-          )}
-        </Container>
+        <BlogIntro title={intro?.title} briefSummary={intro?.briefSummary} />
+
+        <div className="flex flex-auto">
+          <div className="w-full flex grow">
+            <Container>
+              <FeaturedPost
+                title={heroPost?.title}
+                excerpt={heroPost?.blurb}
+                slug={heroPost?.slug}
+                contributor={heroPost?.author}
+                featured={true}
+                category={""} //fix this
+                publishedAt={heroPost?.sys?.publishedAt}
+                imageURL={heroPost?.mainImage?.url}
+              />
+              {blogDescription && (
+                <BlogDescription blogDescription={blogDescription} />
+              )}
+              {categories?.length > 0 && (
+                <Categories categories={rankedCategories} />
+              )}
+              {morePosts.length > 0 && (
+                <MoreStories
+                  posts={morePosts}
+                  title={"Recent Posts"}
+                  link={`/posts/`}
+                />
+              )}
+              {olderPosts.length > 0 && (
+                <MoreStories
+                  posts={olderPosts}
+                  title={"More Posts"}
+                  link={"/posts/"}
+                />
+              )}
+            </Container>
+          </div>
+          <BlogSideBar
+            categories={categories}
+            suggestedArticles={[]}
+            authors={authors}
+          />
+        </div>
       </Layout>
     </>
   );
@@ -176,6 +201,8 @@ export async function getStaticProps({ preview = false, params }) {
   const allPosts = (await getAllPostsForHome(preview)) ?? [];
   const intro = (await getBlogIntro()) ?? null;
   const categories = (await getBlogCategories()) ?? [];
+  const authors = (await getAllAuthorsWithSlug()) ?? [];
+  const blogDescription = (await getBlogDescription()) ?? null;
 
   return {
     props: {
@@ -187,6 +214,8 @@ export async function getStaticProps({ preview = false, params }) {
       allPosts,
       intro,
       categories,
+      authors,
+      blogDescription,
     },
   };
 }

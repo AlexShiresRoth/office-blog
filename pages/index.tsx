@@ -30,7 +30,6 @@ export default function Index({
 }) {
   const posts = allPosts.slice(0, 2);
 
-  console.log("posts", posts);
   return (
     <>
       <Layout

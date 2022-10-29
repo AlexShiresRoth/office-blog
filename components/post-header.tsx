@@ -13,15 +13,16 @@ export default function PostHeader({
 }) {
   return (
     <div className="border-b-[1px] border-slate-100">
-      <div className="mb-4 md:mb-16 sm:mx-0 mt-10 w-full h-full hidden md:block">
+      <div className="mb-4 md:mb-16 sm:mx-0 mt-10 w-full h-full hidden md:block rounded">
        {coverImage &&  <CoverImage title={title} url={coverImage?.url} height={600} slug="" />}
       </div>
-      <div className="mb-4 md:mb-16 sm:mx-0 mt-10 w-full h-full md:hidden block ">
+      <div className="mb-4 md:mb-16 sm:mx-0 mt-10 w-full h-full md:hidden block rounded">
         <CoverImage
           title={title}
           slug={""}
           url={coverImage?.url}
           height={1000}
+          
         />
       </div>
 

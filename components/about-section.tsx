@@ -11,7 +11,7 @@ type Props = {
 
 const AboutSection = ({ about }: Props) => {
   return (
-    <div className="flex flex-col my-6">
+    <div className="flex flex-col my-2">
       <Container>
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="w-full md:w-1/2">

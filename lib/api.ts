@@ -293,6 +293,14 @@ function extractComments(fetchResponse) {
   return fetchResponse?.data?.commentCollection?.items;
 }
 
+function extractBlogDescription(fetchResponse) {
+  return fetchResponse?.data?.lawBlogDescriptionSectionCollection?.items[0];
+}
+
+function extractAuthorEntries(fetchResponse) {
+  return fetchResponse?.data?.authorTypeCollection?.items;
+}
+
 export async function getPreviewPostBySlug(slug) {
   const entry = await fetchGraphQL(
     `query {
@@ -399,7 +407,7 @@ export async function getBlogIntro() {
   introCollection {
     items {
       title
-      summary 
+      briefSummary
     }
   }
 }`);
@@ -504,4 +512,42 @@ export async function getPostComments(slug) {
     }`);
 
   return extractComments(comments);
+}
+
+export async function getBlogDescription() {
+  const description = await fetchGraphQL(`query {
+      lawBlogDescriptionSectionCollection(limit:1){
+        items {
+          sectionTitle
+          blurb {
+            json
+          }
+          sys {
+            id
+          }
+        }
+      }
+    }`);
+
+  return extractBlogDescription(description);
+}
+
+export async function getAllAuthorsWithSlug() {
+  const entries = await fetchGraphQL(`query {
+  authorTypeCollection(where:{slug_exists: true}) {
+    items {
+      sys {
+        id
+      }
+      name
+      email
+      slug
+      headshot {
+        url
+      }
+      bio
+    }
+  }
+}`);
+  return extractAuthorEntries(entries);
 }

@@ -63,7 +63,7 @@ export default function MoreStories({
         </div>
       </div>
       <div
-        className={cn("flex gap-4 transition-all", {
+        className={cn("flex gap-2 flex-wrap flex-auto transition-all", {
           "flex-col": !layoutColumns,
           "flex-col md:flex-row": layoutColumns,
         })}

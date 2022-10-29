@@ -6,10 +6,10 @@ import SearchBar from "./search-bar";
 
 type Props = {
   title: string;
-  summary: string;
+  briefSummary: string;
 };
 
-export default function BlogIntro({ title, summary }: Props) {
+export default function BlogIntro({ title, briefSummary }: Props) {
   return (
     <section className="fixed md:relative bg-white shadow-md md:shadow-none z-50 flex-col md:flex-row flex items-center md:justify-between  w-full border-t-[1px] border-b-[1px] pt-[2px] pb-2 md:py-2">
       <div className="flex flex-col items-center justify-center md:hidden w-full border-b-[1px] border-b-slate-100 mb-2">
@@ -34,7 +34,7 @@ export default function BlogIntro({ title, summary }: Props) {
             </a>
           </Link>
 
-          <p className="text-slate-600 text-sm hidden md:block">{summary}</p>
+          <p className="text-slate-600 text-sm hidden md:block">{briefSummary}</p>
           <div className="flex items-center w-full md:w-auto justify-between">
             <div className="w-1/2">
               <Link href={"/posts/"}>

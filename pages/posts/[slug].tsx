@@ -52,7 +52,7 @@ export default function Post({
       navigation={nav[0]}
       contact={contact}
     >
-      <BlogIntro title={intro?.title} summary={intro?.summary} />
+      <BlogIntro title={intro?.title} briefSummary={intro?.briefSummary} />
       <div>
         <Container>
           <div className="flex justify-between gap-16">

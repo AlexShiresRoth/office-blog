@@ -1,15 +1,16 @@
+import Image from "next/image";
 import React from "react";
 import Link from "../node_modules/next/link";
 import { ServicesType } from "../types/services.types";
 import Container from "./container";
-import ContentfulImage from "./contentful-image";
+import ContentfulImage, { contentfulLoader } from "./contentful-image";
 
 type Props = {
   services: ServicesType;
 };
 const ServicesSection = ({ services }: Props) => {
   return (
-    <div className="flex flex-col w-full my-10 bg-slate-100 pb-10">
+    <div className="flex flex-col w-full my-2 mt-6 bg-slate-100 pb-10">
       <Container>
         <div className="flex-col items-center flex w-full mt-4">
           <h6 className="text-sm text-orange-400">{services?.preHeading}</h6>
@@ -26,13 +27,16 @@ const ServicesSection = ({ services }: Props) => {
             return (
               <div
                 key={item.title}
-                className="flex flex-col relative justify-center bg-slate-800 "
+                className="flex flex-col relative justify-center bg-slate-800 rounded overflow-hidden"
               >
-                <ContentfulImage
-                  src={item.image.url}
-                  width={350}
-                  height={200}
-                />
+                <div className="relative w-full h-32 flex flex-auto">
+                  <Image
+                    src={item.image.url}
+                    layout="fill"
+                    loader={contentfulLoader}
+                    className="object-cover object-center"
+                  />
+                </div>
                 <div className=" p-4 flex flex-col gap-2">
                   <h4 className="font-semibold text-slate-100 border-b-2 text-xl border-slate-700 py-2">
                     {item.title}

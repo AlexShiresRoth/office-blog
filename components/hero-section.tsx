@@ -30,19 +30,15 @@ const HeroSection = ({
   }, []);
 
   return (
-    <section>
-      {/* background image */}
-      <div className="block md:hidden ">
-        <Image
-          loader={contentfulLoader}
-          src={backgroundImage.url}
-          height={1200}
-          width={2300}
-          layout="responsive"
-          className="object-cover object-center h-screen md:min-h-full"
-        />
-      </div>
-      {/* background image */}
+    <section className="rounded">
+        <div className="z-0 relative min-h-[250px] block md:hidden md:w-auto">
+            <Image
+              loader={contentfulLoader}
+              src={backgroundImage.url}
+              layout="fill"
+              className="object-cover object-center h-screen md:min-h-full rounded"
+            />
+          </div>
       <Container>
         <div
           className={`relative -mt-36 md:mt-0 flex flex-col md:items-left justify-start object-center object-cover ${
@@ -50,22 +46,20 @@ const HeroSection = ({
           } transition-all duration-700  bg-white shadow-lg md:shadow-none rounded-sm min-h-full`}
         >
           {/* background image */}
-          <div className="hidden md:block ">
+          <div className="z-0 relative hidden md:block md:min-h-[500px] md:w-auto">
             <Image
               loader={contentfulLoader}
               src={backgroundImage.url}
-              height={1000}
-              width={2300}
-              layout="responsive"
-              className="object-cover object-center h-screen md:min-h-full"
+              layout="fill"
+              className="object-cover object-center h-screen md:min-h-full rounded"
             />
           </div>
           {/* background image */}
 
-          <div className="md:bg-white w-full md:w-2/4 gap-2 flex flex-col items-center md:items-stretch justify-center relative md:absolute px-2 py-4 h-full">
+          <div className="z-20 bg-white rounded md:rounded-none md:bg-white w-full md:w-2/4 gap-2 flex flex-col items-center md:items-stretch justify-center relative md:absolute px-2 py-4 h-full">
             {/* Show logo in mobile view */}
             <div className="hidden md:block w-full">
-              <h1 className=" font-serif text-slate-600 text-2xl lg:text-4xl xl:text-7xl xl:leading-normal font-semibold md:font-normal text-center md:text-left">
+              <h1 className="font-serif text-slate-600 text-2xl lg:text-4xl xl:text-7xl xl:leading-normal font-semibold md:font-normal text-center md:text-left">
                 {title}
               </h1>
             </div>

@@ -27,17 +27,15 @@ const SectionWithImageBackground = ({ content }: Props) => {
 
 const WideScreenSection = ({ content }: Props) => {
   return (
-    <div className="hidden md:flex flex-col w-full relative mb-30 md:mb-4 items-center justify-center">
+    <div className="hidden md:flex flex-col w-full relative mb-30 md:mb-6 items-center justify-center">
       <Container>
-        <div className="w-full hidden md:flex flex-col items-center justify-center relative my-4">
-          <div className="md:w-full md:h-full hidden md:block overflow-hidden">
+        <div className="w-full hidden md:flex flex-col items-center justify-center relative  rounded">
+          <div className="md:w-full md:h-full hidden md:block overflow-hidden rounded min-h-[300px]">
             <Image
               src={content?.bgImage?.url}
-              width={2000}
-              height={500}
               loader={contentfulLoader}
-              layout="responsive"
-              className="object-cover object-center"
+              layout="fill"
+              className="object-cover object-center rounded"
             />
           </div>
           <div className="relative py-4 md:p-0 md:absolute flex flex-col items-center z-20 w-full">
@@ -56,7 +54,7 @@ const WideScreenSection = ({ content }: Props) => {
             </Link>
           </div>
 
-          <div className="absolute h-full w-full z-10 bg-slate-700/50 left-0 hidden md:block"></div>
+          <div className="absolute h-full w-full z-10 bg-slate-700/50 left-0 hidden md:block rounded"></div>
         </div>
       </Container>
     </div>
