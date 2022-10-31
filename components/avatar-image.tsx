@@ -1,17 +1,19 @@
 import Image from "next/image";
 
-const contentfulLoader = ({ src, width, quality }) => {
-  return `${src}?w=${width}&q=${quality || 80} `;
+const contentfulLoader = ({ src, width, height, quality }) => {
+  return `${src}?w=${width}&q=${quality || 80}`;
 };
 
 const AvatarImage = (props) => {
-  
   return (
-    <Image
-      loader={contentfulLoader}
-      {...props}
-      className="object-cover object-center rounded-full"
-    />
+    <div className="overflow-hidden rounded-full relative block w-8 h-8">
+      <Image
+        loader={contentfulLoader}
+        {...props}
+        fill={true}
+        className="object-cover object-center "
+      />
+    </div>
   );
 };
 

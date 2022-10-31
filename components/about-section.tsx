@@ -1,8 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { AboutType } from "../types/about.types";
 import Container from "./container";
-import ContentfulImage from "./contentful-image";
+import { contentfulLoader } from "./contentful-image";
 import RichTextRender from "./richTextRender";
 
 type Props = {
@@ -11,12 +12,19 @@ type Props = {
 
 const AboutSection = ({ about }: Props) => {
   return (
-    <div className="flex flex-col my-2">
+    <div className="flex flex-col my-6">
       <Container>
-        <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-          <div className="w-full md:w-1/2">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="w-full md:w-1/2 relative max-h-[500px]">
             {about?.image && about?.image?.url && (
-              <ContentfulImage src={about.image.url} width={600} height={400} />
+              <Image
+                src={about.image.url}
+                width={600}
+                height={400}
+                alt="About image"
+                loader={contentfulLoader}
+                className="object-cover object-center h-screen md:min-h-full w-full max-h-[500px] rounded"
+              />
             )}
           </div>
           <div className="py-10 w-full md:w-1/2">
@@ -26,11 +34,9 @@ const AboutSection = ({ about }: Props) => {
             </h2>
             <RichTextRender content={about.content} />
             <Link href={`/${about.slug}`}>
-              <a>
-                <button className="text-orange-400 border-orange-400 border-2 px-4 py-2 hover:bg-orange-400 hover:text-slate-50 transition-all">
-                  {about?.cta}
-                </button>
-              </a>
+              <button className="text-orange-400 border-orange-400 border-2 px-4 py-2 hover:bg-orange-400 hover:text-slate-50 transition-all">
+                {about?.cta}
+              </button>
             </Link>
           </div>
         </div>

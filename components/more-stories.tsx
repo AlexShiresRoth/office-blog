@@ -54,10 +54,11 @@ export default function MoreStories({
         </div>
         <div className="flex items-center">
           {link && (
-            <Link href={link}>
-              <a className="text-blue-300 hover:underline flex items-center">
-                All Articles <BiRightArrowAlt size={14} />
-              </a>
+            <Link
+              href={link}
+              className="text-blue-300 hover:underline flex items-center"
+            >
+              All Articles <BiRightArrowAlt size={14} />
             </Link>
           )}
         </div>
@@ -68,19 +69,20 @@ export default function MoreStories({
           "flex-col md:flex-row": layoutColumns,
         })}
       >
-        {posts.length > 0 && posts.map((post) => (
-          <PostPreview
-            key={post.slug}
-            title={post.title}
-            coverImage={post.mainImage}
-            publishedAt={post?.sys?.publishedAt}
-            author={post.author}
-            slug={post.slug}
-            excerpt={post.blurb}
-            categories={post.categories}
-            expanded={!layoutColumns}
-          />
-        ))}
+        {posts.length > 0 &&
+          posts.map((post) => (
+            <PostPreview
+              key={post.slug}
+              title={post.title}
+              coverImage={post.mainImage}
+              publishedAt={post?.sys?.publishedAt}
+              author={post.author}
+              slug={post.slug}
+              excerpt={post.blurb}
+              categories={post.categories}
+              expanded={!layoutColumns}
+            />
+          ))}
       </div>
     </section>
   );

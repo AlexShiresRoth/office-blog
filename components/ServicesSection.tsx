@@ -29,11 +29,13 @@ const ServicesSection = ({ services }: Props) => {
                 key={item.title}
                 className="flex flex-col relative justify-center bg-slate-800 rounded overflow-hidden"
               >
-                <div className="relative w-full h-32 flex flex-auto">
+                <div className="relative w-full h-36 flex flex-auto">
                   <Image
                     src={item.image.url}
-                    layout="fill"
+                    alt={item.image.title}
                     loader={contentfulLoader}
+                    width={500}
+                    height={300}
                     className="object-cover object-center"
                   />
                 </div>
@@ -44,12 +46,10 @@ const ServicesSection = ({ services }: Props) => {
                   <p className="text-sm text-slate-400">
                     {item.text.substring(0, 120) + "..."}
                   </p>
-                  <Link href={`/${item.slug}`}>
-                    <a className="mt-2">
-                      <button className="text-xs text-orange-400 font-semibold p-2 border-2 border-orange-400 hover:bg-orange-400 hover:text-slate-100 transition-all">
-                        {item.cta}
-                      </button>
-                    </a>
+                  <Link href={`/${item.slug}`} className="mt-2">
+                    <button className="text-xs text-orange-400 font-semibold p-2 border-2 border-orange-400 hover:bg-orange-400 hover:text-slate-100 transition-all">
+                      {item.cta}
+                    </button>
                   </Link>
                 </div>
               </div>

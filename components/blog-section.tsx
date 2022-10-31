@@ -34,10 +34,8 @@ const BlogSection = ({ content, posts }: Props) => {
             <p className="text-slate-500 w-3/4 my-2 text-xl">
               {content?.contentItemsCollection?.items[0]?.text}
             </p>
-            <Link href="/blog/">
-              <a className="mt-2 text-orange-400 underline">
-                {content?.contentItemsCollection?.items[0]?.cta}
-              </a>
+            <Link href="/blog/" className="mt-2 text-orange-400 underline">
+              {content?.contentItemsCollection?.items[0]?.cta}
             </Link>
           </div>
           <div className="w-full md:w-3/4 flex gap-6 flex-col md:flex-row">

@@ -27,8 +27,9 @@ export const FeaturedPost = ({
               <Image
                 src={imageURL}
                 loader={contentfulLoader}
-                layout="fill"
-                className="object-cover object-center rounded"
+                alt="featured post image"
+                fill={true}
+                className="object-cover object-center rounded w-full max-h-[500px]"
               />
             </div>
           )}
@@ -37,24 +38,22 @@ export const FeaturedPost = ({
         <Container>
           <div className="flex flex-col absolute top-0 z-20 mt-8 mb-8 md:mt-0 justify-center md:justify-end h-full py-8 gap-2">
             <Link href={`/posts/${slug}`}>
-              <a>
-                <h1 className="text-3xl md:text-6xl md:leading-none max-w-sm md:max-w-xl md:mb-4 text-white font-bold hover:underline">
-                  {title}
-                </h1>
-              </a>
+              <h1 className="text-3xl md:text-6xl md:leading-none max-w-sm md:max-w-xl md:mb-4 text-white font-bold hover:underline">
+                {title}
+              </h1>
             </Link>
             <div className="flex items-center">
               <div className="w-[30px]">
                 {contributor?.headshot && (
-                  <Image
-                    src={contributor.headshot.url}
-                    alt={contributor.name}
-                    layout="responsive"
-                    width={40}
-                    height={40}
-                    className="rounded-full"
-                    loader={contentfulLoader}
-                  />
+                  <div className="block relative w-8 h-8 rounded-full">
+                    <Image
+                      src={contributor.headshot.url}
+                      alt={contributor.name}
+                      fill={true}
+                      className="object-cover object-center rounded-full w-full h-full"
+                      loader={contentfulLoader}
+                    />
+                  </div>
                 )}
               </div>
               <span className="text-sm text-slate-300 ml-2 font-semibold">
@@ -68,11 +67,9 @@ export const FeaturedPost = ({
             </div>
 
             <Link href={`/posts/${slug}`}>
-              <a>
-                <button className="px-2 mt-2 py-2 text-xs md:text-sm border-[1px] border-slate-50 text-slate-50 rounded-sm hover:bg-orange-500 hover:border-orange-500 transition-all">
-                  View Post
-                </button>
-              </a>
+              <button className="px-2 mt-2 py-2 text-xs md:text-sm border-[1px] border-slate-50 text-slate-50 rounded-sm hover:bg-orange-500 hover:border-orange-500 transition-all">
+                View Post
+              </button>
             </Link>
           </div>
         </Container>

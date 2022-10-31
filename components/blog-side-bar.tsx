@@ -93,14 +93,12 @@ export const BlogSideBar = ({
             {categoryMatrix.slice(0, 3).map((category) => (
               <div key={category.key}>
                 <Link href={`/posts?search=${category.key}`}>
-                  <a>
-                    <p className="italic text-slate-400 font-serif relative">
-                      {category.key}
-                      <span className="ml-2 font-bold font-sans bg-slate-200 rounded-full text-slate-800 normal py-[2px] px-[6px] text-[10px]">
-                        {category?.value}
-                      </span>
-                    </p>
-                  </a>
+                  <p className="italic text-slate-400 font-serif relative">
+                    {category.key}
+                    <span className="ml-2 font-bold font-sans bg-slate-200 rounded-full text-slate-800 normal py-[2px] px-[6px] text-[10px]">
+                      {category?.value}
+                    </span>
+                  </p>
                 </Link>
               </div>
             ))}
@@ -129,10 +127,11 @@ export const BlogSideBar = ({
                   key={author?.sys?.id}
                   className="p-2 ml-6 flex  flex-wrap items-center w-11/12"
                 >
-                  <div className="w-10 h-10 relative rounded mr-2">
+                  <div className="w-10 h-10 relative rounded-full block mr-2">
                     <Image
                       src={author?.headshot?.url}
-                      layout="fill"
+                      alt="author headshot"
+                      fill={true}
                       loader={contentfulLoader}
                       className="rounded-full object-cover object-center"
                     />
@@ -144,10 +143,11 @@ export const BlogSideBar = ({
                     <p className="text-sm text-slate-400">
                       {author?.bio.substring(0, 60) + "..."}
                     </p>
-                    <Link href={author?.slug}>
-                      <a className="text-xs underline text-blue-500 italic">
-                        Read More
-                      </a>
+                    <Link
+                      href={author?.slug}
+                      className="text-xs underline text-blue-500 italic"
+                    >
+                      Read More
                     </Link>
                   </div>
                 </div>

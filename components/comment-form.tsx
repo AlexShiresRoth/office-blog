@@ -4,7 +4,6 @@ import cn from "classnames";
 import LoadingSpinner from "./loading-spinner";
 import SectionSeparator from "./section-separator";
 import { useRouter } from "next/router";
-import { toggleForm } from "../redux/reducers/contact.reducer";
 
 type Comment_Data = {
   title: string;

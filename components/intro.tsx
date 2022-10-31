@@ -12,11 +12,9 @@ export default function Intro({ title, summary }: Props) {
       <Container>
         <div className="flex justify-between items-center">
           <Link href={"/blog"}>
-            <a>
-              <h2 className="font-semibold text-xl text-slate-500 hover:underline">
-                {title}
-              </h2>
-            </a>
+            <h2 className="font-semibold text-xl text-slate-500 hover:underline">
+              {title}
+            </h2>
           </Link>
           <p className="text-slate-600 text-sm">{summary}</p>
         </div>

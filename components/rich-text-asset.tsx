@@ -36,7 +36,6 @@ export default function RichTextAsset({ id }) {
     return (
       <Image
         src={asset?.asset?.fields?.file?.url}
-        layout="responsive"
         height={1000}
         width={2000}
         loader={contentfulLoader}

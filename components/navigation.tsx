@@ -41,18 +41,17 @@ const Navigation = ({ navigation }: NavigationType) => {
       >
         <Container>
           <div className="flex flex-row items-center justify-between">
-            <Link href="/">
-              <a className="w-24 md:w-32">
-                <img src={`${navigation.logo.url}`} alt="title" />
-              </a>
+            <Link href="/" className="w-24 md:w-32">
+              <img src={`${navigation.logo.url}`} alt="title" />
             </Link>
             <div className="hidden md:flex flex-row gap-4">
               {navigation?.navItemsCollection?.items?.map((item) => (
                 <div key={item.slug}>
-                  <Link href={`/${item.slug}`}>
-                    <a className="text-slate-500 font-regular  hover:text-orange-500 transition-all">
-                      {item.title}
-                    </a>
+                  <Link
+                    href={`/${item.slug}`}
+                    className="text-slate-500 font-regular  hover:text-orange-500 transition-all"
+                  >
+                    {item.title}
                   </Link>
                 </div>
               ))}
@@ -77,10 +76,11 @@ const Navigation = ({ navigation }: NavigationType) => {
                 key={"/"}
                 className="w-full border-b-2 border-slate-100 py-2"
               >
-                <Link href={`/`}>
-                  <a className="text-slate-500 font-regular w-full hover:text-orange-500 transition-all ">
-                    Home
-                  </a>
+                <Link
+                  href={`/`}
+                  className="text-slate-500 font-regular w-full hover:text-orange-500 transition-all "
+                >
+                  Home
                 </Link>
               </div>
               {navigation?.navItemsCollection?.items?.map((item) => (
@@ -88,10 +88,11 @@ const Navigation = ({ navigation }: NavigationType) => {
                   key={item.slug}
                   className="w-full border-b-2 border-slate-100 py-2"
                 >
-                  <Link href={`/${item.slug}`}>
-                    <a className="text-slate-500 font-regular w-full hover:text-orange-500 transition-all ">
-                      {item.title}
-                    </a>
+                  <Link
+                    href={`/${item.slug}`}
+                    className="text-slate-500 font-regular w-full hover:text-orange-500 transition-all "
+                  >
+                    {item.title}
                   </Link>
                 </div>
               ))}

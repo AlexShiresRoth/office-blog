@@ -31,14 +31,15 @@ const HeroSection = ({
 
   return (
     <section className="rounded">
-        <div className="z-0 relative min-h-[250px] block md:hidden md:w-auto">
-            <Image
-              loader={contentfulLoader}
-              src={backgroundImage.url}
-              layout="fill"
-              className="object-cover object-center h-screen md:min-h-full rounded"
-            />
-          </div>
+      <div className="z-0 relative min-h-[250px] max-h-[400px] relative block md:hidden md:w-auto">
+        <Image
+          loader={contentfulLoader}
+          src={backgroundImage.url}
+          alt="hero image"
+          fill={true}
+          className="object-cover object-center h-screen md:min-h-full rounded"
+        />
+      </div>
       <Container>
         <div
           className={`relative -mt-36 md:mt-0 flex flex-col md:items-left justify-start object-center object-cover ${
@@ -50,8 +51,10 @@ const HeroSection = ({
             <Image
               loader={contentfulLoader}
               src={backgroundImage.url}
-              layout="fill"
-              className="object-cover object-center h-screen md:min-h-full rounded"
+              alt="hero image"
+              width={2000}
+              height={600}
+              className="object-cover object-center h-screen md:min-h-full w-full max-h-[600px] rounded"
             />
           </div>
           {/* background image */}
@@ -70,7 +73,7 @@ const HeroSection = ({
                 width={500}
                 height={150}
                 loader={contentfulLoader}
-                layout="responsive"
+                alt="logo"
                 className="object-contain object-center"
               />
             </div>
@@ -96,11 +99,9 @@ const HeroSection = ({
             </div>
             <div className="mt-4">
               <Link href="/contact">
-                <a>
-                  <button className="px-6 py-2 bg-orange-400 text-sm md:text-xl text-slate-100 transition-all hover:bg-orange-500">
-                    {cta}
-                  </button>
-                </a>
+                <button className="px-6 py-2 bg-orange-400 text-sm md:text-xl text-slate-100 transition-all hover:bg-orange-500">
+                  {cta}
+                </button>
               </Link>
             </div>
           </div>

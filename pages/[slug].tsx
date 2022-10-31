@@ -136,8 +136,8 @@ function Blog({
       >
         <BlogIntro title={intro?.title} briefSummary={intro?.briefSummary} />
 
-        <div className="flex flex-auto">
-          <div className="w-full flex grow">
+        <div className="flex flex-auto justify-center">
+          <div className="w-full flex grow max-w-[1200px]">
             <Container>
               <FeaturedPost
                 title={heroPost?.title}

@@ -3,6 +3,8 @@ import DateComponent from "./date";
 import CoverImage from "./cover-image";
 import PostTitle from "./post-title";
 import Link from "next/link";
+import Image from "next/image";
+import { contentfulLoader } from "./contentful-image";
 
 export default function PostHeader({
   title,
@@ -14,7 +16,18 @@ export default function PostHeader({
   return (
     <div className="border-b-[1px] border-slate-100">
       <div className="mb-4 md:mb-16 sm:mx-0 mt-10 w-full h-full hidden md:block rounded">
-       {coverImage &&  <CoverImage title={title} url={coverImage?.url} height={600} slug="" />}
+        {coverImage && (
+          <div className="block relative w-full rounded min-h-[300px] max-h-[500px]">
+            <Image
+              title={title}
+              src={coverImage?.url}
+              loader={contentfulLoader}
+              fill={true}
+              alt={title}
+              className="rounded object-cover object-center"
+            />
+          </div>
+        )}
       </div>
       <div className="mb-4 md:mb-16 sm:mx-0 mt-10 w-full h-full md:hidden block rounded">
         <CoverImage
@@ -22,7 +35,7 @@ export default function PostHeader({
           slug={""}
           url={coverImage?.url}
           height={1000}
-          
+          width={2000}
         />
       </div>
 
@@ -37,12 +50,15 @@ export default function PostHeader({
         />
       </div>
       <div className="flex items-center gap-2 mb-4">
-        {categories && categories?.length > 0 &&
+        {categories &&
+          categories?.length > 0 &&
           categories.map((category, index) => (
-            <Link key={index} href={`/posts?search=${category}`}>
-              <a className="hover:bg-orange-300 hover:border-orange-500 hover:text-white transition-all px-4 py-2 bg-slate-100 border-[1px] rounded border-slate-200 text-slate-600 text-xs">
-                {category}
-              </a>
+            <Link
+              key={index}
+              href={`/posts?search=${category}`}
+              className="hover:bg-orange-300 hover:border-orange-500 hover:text-white transition-all px-4 py-2 bg-slate-100 border-[1px] rounded border-slate-200 text-slate-600 text-xs"
+            >
+              {category}
             </Link>
           ))}
       </div>

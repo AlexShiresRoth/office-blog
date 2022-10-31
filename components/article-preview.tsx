@@ -10,11 +10,9 @@ const ArticlePreview = ({ content }) => {
       <div className="w-2/3 ">
         <div className="flex flex-col w-full">
           <Link href={`/posts/${content?.slug}`}>
-            <a>
-              <h4 className="font-bold font-serif text-slate-600 text-base hover:underline">
-                {content?.title}
-              </h4>
-            </a>
+            <h4 className="font-bold font-serif text-slate-600 text-base hover:underline">
+              {content?.title}
+            </h4>
           </Link>
           <p className="font-semibold text-slate-400 text-sm mb-[2px]">
             {content?.author?.name}
@@ -32,7 +30,7 @@ const ArticlePreview = ({ content }) => {
         {content?.mainImage && content?.mainImage?.url && (
           <Image
             src={content?.mainImage?.url}
-            layout="responsive"
+            alt={content?.mainImage?.title}
             width={300}
             height={300}
             loader={contentfulLoader}

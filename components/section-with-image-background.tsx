@@ -34,8 +34,10 @@ const WideScreenSection = ({ content }: Props) => {
             <Image
               src={content?.bgImage?.url}
               loader={contentfulLoader}
-              layout="fill"
-              className="object-cover object-center rounded"
+              alt="background image"
+              width={2000}
+              height={300}
+              className="object-cover object-center rounded w-full max-h-[350px]"
             />
           </div>
           <div className="relative py-4 md:p-0 md:absolute flex flex-col items-center z-20 w-full">
@@ -46,11 +48,9 @@ const WideScreenSection = ({ content }: Props) => {
               {content?.subTitle}
             </h1>
             <Link href={content?.slug ?? "/contact"}>
-              <a>
-                <button className="bg-orange-500 text-slate-50 p-2 mt-2 md:mt-6 border-4 border-orange-200/20 shadow-lg">
-                  {content?.cta}
-                </button>
-              </a>
+              <button className="bg-orange-500 text-slate-50 p-2 mt-2 md:mt-6 border-4 border-orange-200/20 shadow-lg">
+                {content?.cta}
+              </button>
             </Link>
           </div>
 
@@ -72,6 +72,7 @@ const SmallScreenSection = ({ content }: Props) => {
             width={2300}
             height={1500}
             loader={contentfulLoader}
+            alt="background image"
             className="object-cover object-center "
           />
         </div>
@@ -85,11 +86,9 @@ const SmallScreenSection = ({ content }: Props) => {
                 {content?.subTitle}
               </h1>
               <Link href={content?.slug ?? "/contact"}>
-                <a>
-                  <button className="bg-orange-500 text-slate-50 p-2 mt-2 md:mt-6 border-4 border-orange-200/20 shadow-lg">
-                    {content?.cta}
-                  </button>
-                </a>
+                <button className="bg-orange-500 text-slate-50 p-2 mt-2 md:mt-6 border-4 border-orange-200/20 shadow-lg">
+                  {content?.cta}
+                </button>
               </Link>
             </div>
           </div>

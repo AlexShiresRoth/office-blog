@@ -31,10 +31,11 @@ const footer = ({ footer }: Props) => {
                 <div>{parseText(item.text)}</div>
                 {item?.linksCollection?.items.map((link) => (
                   <div className="w-full my-2" key={link.title}>
-                    <Link href={`/${link.slug}`}>
-                      <a className="text-slate-600 hover:underline hover:text-slate-400 transition-all">
-                        {link.title}
-                      </a>
+                    <Link
+                      href={`/${link.slug}`}
+                      className="text-slate-600 hover:underline hover:text-slate-400 transition-all"
+                    >
+                      {link.title}
                     </Link>
                   </div>
                 ))}
