@@ -126,8 +126,6 @@ function Blog({
     handleCategoryRankings();
   }, [categories]);
 
-  console.log("blogDescription", blogDescription);
-
   return (
     <>
       <Layout

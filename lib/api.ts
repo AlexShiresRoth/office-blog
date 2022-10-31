@@ -318,7 +318,7 @@ export async function getPreviewPostBySlug(slug) {
 export async function getAllPostsWithSlug() {
   const entries = await fetchGraphQL(
     `query getPosts {
-      blogPostTypeCollection(where: {slug_exists: true}) {
+      blogPostTypeCollection(where: {slug_exists: true}, order: sys_publishedAt_DESC) {
         items {
         ${BLOG_POST_FIELDS}
         }
@@ -332,7 +332,7 @@ export async function getAllPostsWithSlug() {
 export async function getAllPostsForHome(preview) {
   const entries = await fetchGraphQL(
     `query {
-      blogPostTypeCollection(order: sys_publishedAt_ASC, preview: ${
+      blogPostTypeCollection(order: sys_publishedAt_DESC, preview: ${
         preview ? "true" : "false"
       }) {
         items {
