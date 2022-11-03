@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
@@ -50,7 +51,14 @@ const Navigation = ({ navigation }: NavigationType) => {
               {navigation?.navItemsCollection?.items?.map((item) => (
                 <div key={item.slug}>
                   <Link href={`/${item.slug}`}>
-                    <a className="text-slate-500 font-regular  hover:text-orange-500 transition-all">
+                    <a
+                      className={classNames(
+                        "text-slate-500 font-regular  hover:text-orange-500 transition-all",
+                        {
+                          "text-orange-500": router?.asPath === `/${item.slug}`,
+                        }
+                      )}
+                    >
                       {item.title}
                     </a>
                   </Link>

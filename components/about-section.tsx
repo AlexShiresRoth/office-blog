@@ -27,7 +27,7 @@ const AboutSection = ({ about }: Props) => {
             <RichTextRender content={about.content} />
             <Link href={`/${about.slug}`}>
               <a>
-                <button className="text-orange-400 border-orange-400 border-2 px-4 py-2 hover:bg-orange-400 hover:text-slate-50 transition-all">
+                <button className="text-orange-400 border-orange-400 border-2 px-4 py-2 hover:bg-orange-400 hover:text-slate-50 transition-all rounded">
                   {about?.cta}
                 </button>
               </a>

@@ -97,7 +97,7 @@ const HeroSection = ({
             <div className="mt-4">
               <Link href="/contact">
                 <a>
-                  <button className="px-6 py-2 bg-orange-400 text-sm md:text-xl text-slate-100 transition-all hover:bg-orange-500">
+                  <button className="px-6 py-2 rounded bg-orange-400 text-sm md:text-xl text-slate-100 transition-all hover:bg-orange-500">
                     {cta}
                   </button>
                 </a>

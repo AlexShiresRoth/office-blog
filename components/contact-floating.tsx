@@ -105,7 +105,7 @@ const ContactFloating = ({ contact }: Props) => {
                   onClick={() =>
                     dispatch(toggleForm(!formState?.contact?.isFormVisible))
                   }
-                  className="flex items-center bg-slate-700 text-slate-50 p-2 text-xs hover:bg-slate-500 transition-all"
+                  className="flex rounded items-center bg-slate-700 text-slate-50 p-2 text-xs hover:bg-slate-500 transition-all"
                 >
                   Close
                   <AiOutlineClose size={16} />
@@ -162,7 +162,7 @@ const ContactFloating = ({ contact }: Props) => {
               </div>
               <div className="flex justify-end">
                 {!sending ? (
-                  <button className="px-6 py-4 bg-orange-400 text-slate-50 text-xl font-semibold w-36">
+                  <button className="px-6 py-4 bg-orange-400 text-slate-50 text-xl font-semibold w-36 rounded">
                     {contact?.submit}
                   </button>
                 ) : (

@@ -45,7 +45,7 @@ const Page = ({
     return <ErrorPage statusCode={404} />;
   }
 
-  if (router.asPath === "/blog")
+  if (router.asPath === "/blog") {
     return (
       <Blog
         allPosts={allPosts}
@@ -59,6 +59,8 @@ const Page = ({
         blogDescription={blogDescription}
       />
     );
+  }
+
   return (
     <Layout
       preview={preview}
@@ -67,9 +69,11 @@ const Page = ({
       contact={contact}
     >
       <Container>
-        <div className="py-10 mt-2">
-          <PostTitle>{page?.title}</PostTitle>
+        <div className="py-10 mt-2 w-11/12 md:w-3/4 flex flex-col items-center">
+          <div className="max-w-[1300px] w-full">
+            <PostTitle>{page?.title}</PostTitle>
           <PostBody content={page?.content} />
+          </div>
         </div>
       </Container>
       <ContactSection contact={contact} />

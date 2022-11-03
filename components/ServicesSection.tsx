@@ -46,7 +46,7 @@ const ServicesSection = ({ services }: Props) => {
                   </p>
                   <Link href={`/${item.slug}`}>
                     <a className="mt-2">
-                      <button className="text-xs text-orange-400 font-semibold p-2 border-2 border-orange-400 hover:bg-orange-400 hover:text-slate-100 transition-all">
+                      <button className="text-xs rounded text-orange-400 font-semibold p-2 border-2 border-orange-400 hover:bg-orange-400 hover:text-slate-100 transition-all">
                         {item.cta}
                       </button>
                     </a>
