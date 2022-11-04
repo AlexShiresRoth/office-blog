@@ -73,7 +73,7 @@ const Navigation = ({ navigation }: NavigationType) => {
         className={`w-full transition-all flex md:hidden flex-row items-center justify-center bottom-0 md:top-0 z-50 fixed `}
       >
         <Container>
-          <div className="w-full shadow-lg rounded bg-white my-4 p-4">
+          <div className="w-full shadow-lg rounded bg-slate-50 my-4 p-4">
             <div
               className={`${
                 isMenuOpen

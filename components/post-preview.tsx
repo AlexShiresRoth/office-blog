@@ -35,12 +35,12 @@ export default function PostPreview({
           </Link>
         </h3>
 
-        <div className="my-2 flex items-center">
+        <div className="my-2 flex items-center flex-wrap">
           {author && <Avatar name={author.name} picture={author.headshot} />}
           <span className="mx-2 text-slate-400">|</span>
           <DateComponent
             dateString={publishedAt}
-            classNames="text-slate-400 italic text-sm"
+            classNames="text-slate-400 italic text-xs"
           />
         </div>
 
