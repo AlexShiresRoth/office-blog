@@ -28,13 +28,11 @@ const ArticlePreview = ({ content }) => {
           />
         </div>
       </div>
-      <div className="w-[90px] h-full flex flex-col justify-start">
+      <div className="min-w-[60px] min-h-[60px] max-w-[100px] max-h-[100px] h-full flex flex-col justify-start relative">
         {content?.mainImage && content?.mainImage?.url && (
           <Image
             src={content?.mainImage?.url}
-            layout="responsive"
-            width={300}
-            height={300}
+            layout="fill"
             loader={contentfulLoader}
             className="object-cover rounded"
           />
