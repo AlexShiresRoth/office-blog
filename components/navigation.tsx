@@ -98,8 +98,8 @@ const Navigation = ({ navigation }: NavigationType) => {
 
       {/* Mobile top nav */}
       {/* only show on non blog routes */}
-      {router?.asPath?.includes("/blog") ||
-        (router?.asPath?.includes("/posts") && (
+      {!router?.asPath?.includes("/blog") ||
+        (!router?.asPath?.includes("/posts") && (
           <nav className="w-full z-30 fixed top-0 flex items-center justify-center shadow-md bg-white py-2 md:hidden">
             <div className="w-11/12 flex items-center justify-between ">
               <Link href={"/"}>
