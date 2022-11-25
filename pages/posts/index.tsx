@@ -53,20 +53,18 @@ export default function Index({
         footer={footer}
         contact={contact}
       >
-        <BlogIntro title={intro?.title} briefSummary={intro?.briefSummary} />
+        <BlogIntro
+          title={intro?.title}
+          briefSummary={intro?.briefSummary}
+          callButton={navigation[0]?.callButton}
+        />
         <Container>
-          <div className="my-0 pt-32 md:pt-4 md:mt-0 md:my-4 flex flex-col md:flex-row md:items-center md:justify-between border-b-[1px]">
-            <h1 className="text-slate-800 font-bold text-lg md:text-6xl md:leading-relaxed mr-10">
-              {router?.query?.search ? (
-                <>
-                  Posts:
-                  <span className="font-normal ml-1">
-                    {router?.query?.search?.toString().substring(0, 15)}
-                  </span>
-                </>
-              ) : (
-                "Posts"
-              )}
+          <div className="my-0 pt-32 md:pt-4 md:mt-0  flex flex-col md:flex-row md:items-center md:justify-between border-b-[1px]">
+            <h1 className="text-slate-800 font-bold text-lg md:text-6xl md:leading-relaxed mr-10 flex items-center">
+              Posts:{` `}
+              {router?.query?.search
+                ? router?.query?.search?.toString().substring(0, 15)
+                : "All Posts"}
             </h1>
             <h4 className="text-slate-400 text-sm md:text-2xl font-semibold ">
               {`Results:`}{" "}
@@ -79,9 +77,9 @@ export default function Index({
               </span>
             </h4>
           </div>
-          <div className="my-6">
+          <div className="my-4 flex flex-col gap-2">
             {[posts.length > 0 ? posts : allPosts][0].map((post) => (
-              <div className="my-8" key={post.slug}>
+              <div key={post.slug}>
                 <PostPreview
                   title={post.title}
                   coverImage={post.mainImage}

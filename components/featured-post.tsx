@@ -1,10 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import Avatar from "./avatar";
 import Container from "./container";
 import { contentfulLoader } from "./contentful-image";
-import CoverImage from "./cover-image";
 import DateComponent from "./date";
 
 export const FeaturedPost = ({
@@ -43,16 +41,16 @@ export const FeaturedPost = ({
                 </h1>
               </a>
             </Link>
-            <div className="flex items-center">
-              <div className="w-[30px]">
+            <div className="flex items-center flex-wrap">
+              <div className="w-[35px]">
                 {contributor?.headshot && (
                   <Image
                     src={contributor.headshot.url}
                     alt={contributor.name}
                     layout="responsive"
-                    width={40}
-                    height={40}
-                    className="rounded-full"
+                    width={45}
+                    height={45}
+                    className="rounded-full object-center object-cover"
                     loader={contentfulLoader}
                   />
                 )}

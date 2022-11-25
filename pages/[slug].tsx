@@ -72,7 +72,7 @@ const Page = ({
         <div className="py-10 mt-2 w-11/12 md:w-3/4 flex flex-col items-center">
           <div className="max-w-[1300px] w-full">
             <PostTitle>{page?.title}</PostTitle>
-          <PostBody content={page?.content} />
+            <PostBody content={page?.content} />
           </div>
         </div>
       </Container>
@@ -138,7 +138,11 @@ function Blog({
         footer={footer}
         contact={contact}
       >
-        <BlogIntro title={intro?.title} briefSummary={intro?.briefSummary} />
+        <BlogIntro
+          title={intro?.title}
+          briefSummary={intro?.briefSummary}
+          callButton={navigation[0]?.callButton}
+        />
 
         <div className="flex flex-auto justify-center">
           <div className="w-full flex grow max-w-[1300px]">
