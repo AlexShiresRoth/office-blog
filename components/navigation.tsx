@@ -36,6 +36,7 @@ const Navigation = ({ navigation }: NavigationType) => {
     setIsMenuOpen(false);
   }, [router?.asPath]);
 
+  console.log("router", router.asPath.includes("blog"));
   return (
     <>
       <nav
@@ -98,33 +99,33 @@ const Navigation = ({ navigation }: NavigationType) => {
 
       {/* Mobile top nav */}
       {/* only show on non blog routes */}
-      {!router?.asPath?.includes("/blog") ||
-        (!router?.asPath?.includes("/posts") && (
-          <nav className="w-full z-30 fixed top-0 flex items-center justify-center shadow-md bg-white py-2 md:hidden">
-            <div className="w-11/12 flex items-center justify-between ">
-              <Link href={"/"}>
-                <a className="w-24 h-10 md:w-32 relative block ">
-                  <Image
-                    src={navigation?.logo?.url}
-                    alt="logo"
-                    layout="fill"
-                    className="object-contain object-center"
-                    loader={imageLoader}
-                  />
+      {!router?.pathname?.includes("blog") && !router.asPath?.includes("posts") &&
+       (
+        <nav className="w-full z-30 fixed top-0 flex items-center justify-center shadow-md bg-white py-2 md:hidden">
+          <div className="w-11/12 flex items-center justify-between ">
+            <Link href={"/"}>
+              <a className="w-24 h-10 md:w-32 relative block ">
+                <Image
+                  src={navigation?.logo?.url}
+                  alt="logo"
+                  layout="fill"
+                  className="object-contain object-center"
+                  loader={imageLoader}
+                />
+              </a>
+            </Link>
+            {navigation?.callButton && (
+              <div className="flex items-center gap-2">
+                <a href={`tel:${navigation?.callButton?.phoneNumber}`}>
+                  <button className="px-4 py-2 bg-orange-400 text-white rounded hover:bg-orange-600 transition-all">
+                    {navigation?.callButton?.buttonText}
+                  </button>
                 </a>
-              </Link>
-              {navigation?.callButton && (
-                <div className="flex items-center gap-2">
-                  <a href={`tel:${navigation?.callButton?.phoneNumber}`}>
-                    <button className="px-4 py-2 bg-orange-400 text-white rounded hover:bg-orange-600 transition-all">
-                      {navigation?.callButton?.buttonText}
-                    </button>
-                  </a>
-                </div>
-              )}
-            </div>
-          </nav>
-        ))}
+              </div>
+            )}
+          </div>
+        </nav>
+      )}
 
       {/* MOBILE NAV */}
       <nav
