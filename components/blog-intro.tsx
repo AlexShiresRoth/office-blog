@@ -7,22 +7,34 @@ import SearchBar from "./search-bar";
 type Props = {
   title: string;
   briefSummary: string;
+  callButton: {
+    buttonText: string;
+    phoneNumber: string;
+  };
 };
 
-export default function BlogIntro({ title, briefSummary }: Props) {
+export default function BlogIntro({ title, briefSummary, callButton }: Props) {
   return (
-    <section className="fixed md:relative bg-white shadow-md md:shadow-none z-50 flex-col md:flex-row flex items-center md:justify-between  w-full border-t-[1px] border-b-[1px] pt-[2px] pb-2 md:py-2">
-      <div className="flex flex-col items-center justify-center md:hidden w-full border-b-[1px] border-b-slate-100 mb-2">
-        <div className="w-[90px]">
-          <Image
-            src="https://images.ctfassets.net/3u8nbr4uxelg/o6NO7L7XgcmvnFwWQE0oU/5952e260b085f981dcfccbafe4890e0b/lawofficelogo_fdaxgi.png"
-            alt="blog"
-            width={200}
-            height={100}
-            loader={contentfulLoader}
-            className="w-full object-contain object-center"
-          />
-        </div>
+    <section className="fixed md:relative bg-white shadow-md md:shadow-none z-30 flex-col md:flex-row flex items-center md:justify-between w-full border-t-[1px] border-b-[1px] pt-[2px] pb-2 md:py-2">
+      <div className="flex w-11/12 items-center justify-between md:hidden md:w-full border-b-[1px] border-b-slate-100 mb-2">
+        <Link href="/">
+          <a className="w-24 h-10 relative">
+            <Image
+              src="https://images.ctfassets.net/3u8nbr4uxelg/o6NO7L7XgcmvnFwWQE0oU/5952e260b085f981dcfccbafe4890e0b/lawofficelogo_fdaxgi.png"
+              fill={true}
+              alt={title}
+              loader={contentfulLoader}
+              className="w-full object-contain object-center"
+            />
+          </a>
+        </Link>
+        {callButton && (
+          <a href={`tel:${callButton?.phoneNumber}`}>
+            <button className="px-4 text-sm py-1 bg-orange-400 text-white rounded hover:bg-orange-600 transition-all">
+              {callButton?.buttonText}
+            </button>
+          </a>
+        )}
       </div>
       <Container>
         <div className="flex flex-col md:flex-row justify-between md:justify-stretch items-center">

@@ -5,5 +5,9 @@ export type NavigationType = {
     navItemsCollection: {
       items: Array<{ slug: string; title: string }>;
     };
+    callButton: {
+      buttonText: string;
+      phoneNumber: string;
+    };
   };
 };

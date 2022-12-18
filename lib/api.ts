@@ -27,9 +27,12 @@ const NAV_GQL_FIELDs = `
         logo{
             url
          }
+      callButton {
+          buttonText
+          phoneNumber
+        }
       navItemsCollection {
         items {
-        
           slug
           title
         }

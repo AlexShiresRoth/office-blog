@@ -43,7 +43,7 @@ export default function PostPreview({
           <span className="mx-2 text-slate-400">|</span>
           <DateComponent
             dateString={publishedAt}
-            classNames="text-slate-400 italic text-sm"
+            classNames="text-slate-400 italic text-xs"
           />
         </div>
 

@@ -12,6 +12,16 @@
   @apply text-lg;
 }
 
+.markdown li {
+  @apply ml-6;
+  @apply text-sm;
+  @apply text-blue-600;
+}
+
+.markdown li p {
+  @apply text-gray-500;
+  @apply italic;
+}
 .markdown h1 {
   @apply text-4xl mt-12 mb-4 leading-snug font-serif text-slate-800;
   @apply font-bold;

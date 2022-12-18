@@ -17,10 +17,13 @@ const footer = ({ footer }: Props) => {
     ));
   };
 
+  const currentYear = new Date().getFullYear()
+
   return (
     <footer className="bg-slate-900 w-full py-10 pb-20 md:pb-10">
       <Container>
         <div className="border-b-2 border-slate-700 py-2">
+          <p className="text-slate-600">&copy; {currentYear} Rothenberg Law Offices, PLLC</p>
           <h3 className="text-slate-500 font-bold">{footer.heading}</h3>
         </div>
         <div className="flex flex-col md:flex-row justify-between gap-4 mt-6">

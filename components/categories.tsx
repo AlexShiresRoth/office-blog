@@ -25,7 +25,7 @@ const Categories = ({ categories }: Props) => {
             <button
               onClick={() => handleNavigate(category)}
               key={category}
-              className="text-slate-400 font-regular flex items-center justify-center p-2 flex-1 border-slate-300 border-[1px] rounded hover:bg-slate-300 hover:text-slate-50 transition-all"
+              className="text-xs md:text-lg text-slate-400 font-regular flex items-center justify-center p-2 flex-1 border-slate-300 border-[1px] rounded hover:bg-slate-300 hover:text-slate-50 transition-all"
             >
               {category}
             </button>

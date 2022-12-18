@@ -76,7 +76,7 @@ export const BlogSideBar = ({
 
   return (
     <div
-      className=" hidden md:flex flex-col border-l-[1px]  border-accent-2  mb-8 py-4 relative min-h-screen  w-1/4 overflow-hidden"
+      className=" hidden md:flex flex-col border-l-[1px] border-accent-2  mb-8 py-4 relative min-h-screen  w-1/4 overflow-hidden"
       ref={sideBarRef}
     >
       <div className="relative top-2 h-full w-full">
