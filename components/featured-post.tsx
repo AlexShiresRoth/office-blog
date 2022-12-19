@@ -21,7 +21,7 @@ export const FeaturedPost = ({
       <div className="relative flex flex-col justify-center mt-28 md:mt-[10px] ">
         <div className="w-full h-full md:block">
           {imageURL && (
-            <div className="w-full max-w-[1500px] h-[300px] md:h-[400px] overflow-hidden rounded relative">
+            <div className="w-full max-w-[1500px] min-h-[300px] md:min-h-[300px] overflow-hidden rounded relative">
               <Image
                 src={imageURL}
                 loader={contentfulLoader}
@@ -34,11 +34,12 @@ export const FeaturedPost = ({
         </div>
 
         <Container>
-          <div className="flex flex-col absolute top-0 z-20 mt-8 mb-8 md:mt-0 justify-center md:justify-end h-full py-8 gap-2">
-            <Link href={`/posts/${slug}`}>
-              <h1 className="text-3xl md:text-6xl md:leading-none max-w-sm md:max-w-xl md:mb-4 text-white font-bold hover:underline">
-                {title}
-              </h1>
+          <div className="flex flex-col absolute top-0 z-20 md:mt-8 md:mb-8 md:mt-0 justify-center  h-full md:py-8 gap-2">
+            <Link
+              href={`/posts/${slug}`}
+              className="text-2xl md:text-6xl md:leading-none max-w-sm md:max-w-2xl md:mb-4 text-white font-bold hover:underline"
+            >
+              {title}
             </Link>
             <div className="flex items-center flex-wrap">
               <div className="w-[35px]">
@@ -64,11 +65,14 @@ export const FeaturedPost = ({
               />
             </div>
 
-            <Link href={`/posts/${slug}`}>
-              <button className="px-2 mt-2 py-2 text-xs md:text-sm border-[1px] border-slate-50 text-slate-50 rounded-sm hover:bg-orange-500 hover:border-orange-500 transition-all">
+            <div className="mt-4 ">
+              <Link
+                href={`/posts/${slug}`}
+                className="px-2 py-2 text-xs md:text-sm border-[1px] border-slate-50 text-slate-50 rounded-sm hover:bg-orange-500 hover:border-orange-500 transition-all"
+              >
                 View Post
-              </button>
-            </Link>
+              </Link>
+            </div>
           </div>
         </Container>
 

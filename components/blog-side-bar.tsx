@@ -5,16 +5,19 @@ import Link from "next/link";
 import ArticlePreview from "./article-preview";
 import Image from "next/image";
 import { contentfulLoader } from "./contentful-image";
+import BlogDescription from "./blog-description";
 
 type Props = {
   categories?: any;
   suggestedArticles?: Array<any>;
   authors?: Array<any>;
+  blogDescription?: any;
 };
 export const BlogSideBar = ({
   categories: arrayOfCategoryObjects,
   suggestedArticles,
   authors,
+  blogDescription,
 }: Props) => {
   const sideBarRef = useRef(null);
 
@@ -76,17 +79,15 @@ export const BlogSideBar = ({
 
   return (
     <div
-      className=" hidden md:flex flex-col border-l-[1px] border-accent-2  mb-8 py-4 relative min-h-screen  w-1/4 overflow-hidden"
+      className=" hidden md:flex flex-col border-l-[1px] border-accent-2   py-4 relative min-h-screen  w-1/4 "
       ref={sideBarRef}
     >
-      <div className="relative top-2 h-full w-full">
-        <div
-          className={cn({
-            fixed: !scrollMaxReached,
-            [`absolute bottom-4`]: scrollMaxReached,
-          })}
-        >
-          <div className="border-b-[1px] border-slate-100 flex pb-2 mb-2">
+      <div className="relative top-2 min-h-full w-full flex flex-col">
+        <div className="flex flex-col sticky top-0">
+          {blogDescription && (
+            <BlogDescription blogDescription={blogDescription} />
+          )}
+          <div className="border-b-[1px] border-t-[1px] border-slate-100 flex py-2 mb-2">
             <h2 className="font-bold text-slate-500 ml-6">Top Categories</h2>
           </div>
           <div className="pl-6 pb-2 flex flex-col gap-2 w-full ">

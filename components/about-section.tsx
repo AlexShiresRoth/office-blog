@@ -12,7 +12,7 @@ type Props = {
 
 const AboutSection = ({ about }: Props) => {
   return (
-    <div className="flex flex-col my-6">
+    <div className="flex flex-col my-10">
       <Container>
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="w-full md:w-1/2 relative max-h-[500px]">
@@ -28,15 +28,16 @@ const AboutSection = ({ about }: Props) => {
             )}
           </div>
           <div className="py-10 w-full md:w-1/2">
-            <h6 className="text-sm text-orange-400">{about?.preHeading} </h6>
+            <h6 className="text-sm text-orange-300">{about?.preHeading} </h6>
             <h2 className="font-bold font-serif text-2xl text-slate-700">
               {about.title}
             </h2>
             <RichTextRender content={about.content} />
-            <Link href={`/${about.slug}`}>
-              <button className="text-orange-400 border-orange-400 border-2 px-4 py-2 hover:bg-orange-400 hover:text-slate-50 transition-all">
-                {about?.cta}
-              </button>
+            <Link
+              href={`/${about.slug}`}
+              className=" rounded text-orange-300 border-orange-300 border-2 px-4 py-2 hover:bg-orange-300 hover:text-slate-50 font-semibold transition-all"
+            >
+              {about?.cta}
             </Link>
           </div>
         </div>

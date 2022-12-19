@@ -36,7 +36,6 @@ const Navigation = ({ navigation }: NavigationType) => {
     setIsMenuOpen(false);
   }, [router?.asPath]);
 
-  console.log("router", router.asPath.includes("blog"));
   return (
     <>
       <nav
@@ -48,16 +47,14 @@ const Navigation = ({ navigation }: NavigationType) => {
       >
         <Container>
           <div className="flex flex-row items-center justify-between">
-            <Link href="/">
-              <a className="w-24 h-10 md:w-32 relative">
-                <Image
-                  src={navigation?.logo?.url}
-                  alt="logo"
-                  fill={true}
-                  className="object-contain object-center"
-                  loader={imageLoader}
-                />
-              </a>
+            <Link href="/" className="w-24 h-10 md:w-32 relative">
+              <Image
+                src={navigation?.logo?.url}
+                alt="logo"
+                fill={true}
+                className="object-contain object-center"
+                loader={imageLoader}
+              />
             </Link>
             <div className="hidden md:flex flex-row gap-4 items-center">
               {navigation?.navItemsCollection?.items?.map((item) => (
@@ -73,7 +70,7 @@ const Navigation = ({ navigation }: NavigationType) => {
               {navigation?.callButton && (
                 <div className="flex items-center gap-2">
                   <a href={`tel:${navigation?.callButton?.phoneNumber}`}>
-                    <button className="px-4 py-2 bg-orange-400 text-white rounded hover:bg-orange-600 transition-all">
+                    <button className="px-4 py-2 bg-orange-300 text-white rounded hover:bg-orange-600 transition-all">
                       {navigation?.callButton?.buttonText}
                     </button>
                   </a>
@@ -97,16 +94,14 @@ const Navigation = ({ navigation }: NavigationType) => {
         !router.asPath?.includes("posts") && (
           <nav className="w-full z-30 fixed top-0 flex items-center justify-center shadow-md bg-white py-2 md:hidden">
             <div className="w-11/12 flex items-center justify-between ">
-              <Link href={"/"}>
-                <a className="w-24 h-10 md:w-32 relative block ">
-                  <Image
-                    src={navigation?.logo?.url}
-                    alt="logo"
-                    fill={true}
-                    className="object-contain object-center"
-                    loader={imageLoader}
-                  />
-                </a>
+              <Link href={"/"} className="w-24 h-10 md:w-32 relative block ">
+                <Image
+                  src={navigation?.logo?.url}
+                  alt="logo"
+                  fill={true}
+                  className="object-contain object-center"
+                  loader={imageLoader}
+                />
               </Link>
               {navigation?.callButton && (
                 <div className="flex items-center gap-2">

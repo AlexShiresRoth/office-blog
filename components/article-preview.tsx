@@ -9,10 +9,11 @@ const ArticlePreview = ({ content }) => {
     <div className="w-full my-2 flex items-start gap-4">
       <div className="w-2/3 ">
         <div className="flex flex-col w-full">
-          <Link href={`/posts/${content?.slug}`}>
-            <h4 className="font-bold font-serif text-slate-600 text-base hover:underline">
-              {content?.title}
-            </h4>
+          <Link
+            href={`/posts/${content?.slug}`}
+            className="font-bold font-serif text-slate-600 text-base hover:underline"
+          >
+            {content?.title}
           </Link>
           <p className="font-semibold text-slate-400 text-sm mb-[2px]">
             {content?.author?.name}

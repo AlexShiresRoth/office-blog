@@ -25,7 +25,6 @@ import { flattenArrayNested } from "../utility-funtions/flatten-array";
 import Categories from "../components/categories";
 import BlogIntro from "../components/blog-intro";
 import { BlogSideBar } from "../components/blog-side-bar";
-import BlogDescription from "../components/blog-description";
 
 const Page = ({
   preview,
@@ -92,7 +91,6 @@ function Blog({
   authors,
   blogDescription,
 }) {
-  //TODO add an  older articles section
   const [rankedCategories, setRankedCategories] = useState<Array<string>>([]);
 
   const heroPost: PostType = allPosts[0];
@@ -157,9 +155,7 @@ function Blog({
                 publishedAt={heroPost?.sys?.publishedAt}
                 imageURL={heroPost?.mainImage?.url}
               />
-              {blogDescription && (
-                <BlogDescription blogDescription={blogDescription} />
-              )}
+
               {categories?.length > 0 && (
                 <Categories categories={rankedCategories} />
               )}
@@ -183,6 +179,7 @@ function Blog({
             categories={categories}
             suggestedArticles={[]}
             authors={authors}
+            blogDescription={blogDescription}
           />
         </div>
       </Layout>

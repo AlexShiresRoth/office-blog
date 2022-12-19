@@ -29,15 +29,16 @@ const LandingPostPreview = ({ post }: Props) => {
         dateString={post?.sys?.publishedAt}
         classNames="text-slate-400 italic text-xs"
       />
-      <Link href={`/posts/${post?.slug}`}>
-        <h3 className="text-slate-700 font-bold text-xl hover:underline hover:text-slate-500 transition-all">
-          {post?.title}
-        </h3>
+      <Link
+        href={`/posts/${post?.slug}`}
+        className="text-slate-700 font-bold text-xl hover:underline hover:text-slate-500 transition-all"
+      >
+        {post?.title}
       </Link>
       <p className="text-slate-500 leading-relaxed my-2">{post?.blurb}</p>
       <Link
         href={`/posts/${post?.slug}`}
-        className="text-sm text-orange-500 underline"
+        className="text-sm text-orange-300 underline hover:text-orange-500 transition-all"
       >
         Read More
       </Link>

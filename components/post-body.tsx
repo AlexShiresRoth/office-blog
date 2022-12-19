@@ -15,7 +15,7 @@ const customMarkdownOptions = (content) => {
         <RichTextAsset id={node.data.target.sys.id} />
       ),
       [BLOCKS.PARAGRAPH]: (node, children) => {
-        return <Paragraph content={children} />;
+        return <Paragraph content={children} node={node} />;
       },
       [BLOCKS.UL_LIST]: (node, children) => {
         return <UnorderedList content={children} />;

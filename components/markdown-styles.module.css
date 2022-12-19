@@ -6,10 +6,10 @@
 .markdown ul,
 .markdown ol,
 .markdown blockquote {
-  @apply my-6;
-  @apply text-slate-700;
+  @apply my-4;
+  @apply text-slate-500;
   @apply leading-loose;
-  @apply text-lg;
+  @apply text-base;
 }
 
 .markdown li {

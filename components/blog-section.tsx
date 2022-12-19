@@ -27,14 +27,14 @@ const BlogSection = ({ content, posts }: Props) => {
       <Container>
         <div className="flex flex-col md:flex-row gap-4 w-full">
           <div className="flex flex-col w-full md:w-1/4 mr-2">
-            <h6 className="text-sm text-orange-400">{content?.preHeading}</h6>
+            <h6 className="text-sm text-orange-300">{content?.preHeading}</h6>
             <h1 className="font-bold font-serif text-4xl text-slate-700">
               {content?.title}
             </h1>
             <p className="text-slate-500 w-3/4 my-2 text-xl">
               {content?.contentItemsCollection?.items[0]?.text}
             </p>
-            <Link href="/blog/" className="mt-2 text-orange-400 underline">
+            <Link href="/blog/" className="mt-2 text-orange-300 underline">
               {content?.contentItemsCollection?.items[0]?.cta}
             </Link>
           </div>

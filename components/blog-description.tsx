@@ -10,12 +10,12 @@ type Props = {
 
 const BlogDescription = ({ blogDescription }: Props) => {
   return (
-    <div className="mt-8 grow flex flex-col">
-      <h2 className="text-xl italic md:text-xl font-semibold tracking-tighter leading-tight text-slate-400 font-serif">
+    <div className="flex flex-col">
+      <h2 className="border-b-[1px] pl-6 pb-2 border-slate-100 text-sm md:text-xl font-bold text-slate-500">
         {blogDescription.sectionTitle}
       </h2>
 
-      <div className="p-8 bg-slate-100/50 rounded my-2 ">
+      <div className="px-6  rounded  ">
         <RichTextRender content={blogDescription?.blurb} />
       </div>
     </div>

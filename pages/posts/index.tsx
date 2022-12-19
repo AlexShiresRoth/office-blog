@@ -77,7 +77,7 @@ export default function Index({
               </span>
             </h4>
           </div>
-          <div className="my-4 flex flex-col gap-2">
+          <div className="my-4 flex flex-col gap-8 min-h-[500px]">
             {[posts.length > 0 ? posts : allPosts][0].map((post) => (
               <div key={post.slug}>
                 <PostPreview

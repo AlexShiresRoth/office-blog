@@ -27,7 +27,7 @@ const SectionWithImageBackground = ({ content }: Props) => {
 
 const WideScreenSection = ({ content }: Props) => {
   return (
-    <div className="hidden md:flex flex-col w-full relative mb-30 md:mb-6 items-center justify-center">
+    <div className="hidden md:flex flex-col w-full relative mb-6 items-center justify-center">
       <Container>
         <div className="w-full hidden md:flex flex-col items-center justify-center relative  rounded">
           <div className="md:w-full md:h-full hidden md:block overflow-hidden rounded min-h-[300px]">
@@ -41,16 +41,17 @@ const WideScreenSection = ({ content }: Props) => {
             />
           </div>
           <div className="relative py-4 md:p-0 md:absolute flex flex-col items-center z-20 w-full">
-            <h2 className="text-sm md:text-lg text-orange-400 font-regular relative ">
+            <h2 className="text-sm md:text-lg text-orange-300 font-regular relative ">
               {content?.title}
             </h2>
             <h1 className="text-xl md:text-2xl xl:text-4xl text-slate-50 w-full my-2 md:my-4 md:w-2/3 text-center font-semibold font-serif">
               {content?.subTitle}
             </h1>
-            <Link href={content?.slug ?? "/contact"}>
-              <button className="bg-orange-500 text-slate-50 p-2 mt-2 md:mt-6 border-4 border-orange-200/20 shadow-lg">
-                {content?.cta}
-              </button>
+            <Link
+              href={content?.slug ?? "/contact"}
+              className="rounded bg-orange-300 text-slate-50 p-2 mt-2 md:mt-6 border-4 border-orange-200/20 shadow-lg hover:bg-orange-500 transition-all"
+            >
+              {content?.cta}
             </Link>
           </div>
 
@@ -85,10 +86,11 @@ const SmallScreenSection = ({ content }: Props) => {
               <h1 className="text-xl md:text-2xl xl:text-4xl text-slate-50 w-full my-2 md:my-4 md:w-2/3 text-center font-semibold font-serif">
                 {content?.subTitle}
               </h1>
-              <Link href={content?.slug ?? "/contact"}>
-                <button className="bg-orange-500 text-slate-50 p-2 mt-2 md:mt-6 border-4 border-orange-200/20 shadow-lg">
-                  {content?.cta}
-                </button>
+              <Link
+                href={content?.slug ?? "/contact"}
+                className="rounded bg-orange-300 text-slate-50 p-2 mt-2 md:mt-6 border-4 border-orange-200/20 shadow-lg"
+              >
+                {content?.cta}
               </Link>
             </div>
           </div>

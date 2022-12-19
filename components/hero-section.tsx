@@ -30,83 +30,72 @@ const HeroSection = ({
   }, []);
 
   return (
-    <section className="rounded">
-      <div className="z-0 relative min-h-[250px] max-h-[400px] relative block md:hidden md:w-auto">
-        <Image
-          loader={contentfulLoader}
-          src={backgroundImage.url}
-          alt="hero image"
-          fill={true}
-          className="object-cover object-center h-screen md:min-h-full rounded"
-        />
+    <section className="min-h-[360px] md:min-h-[550px] flex items-center justify-center md:overflow-hidden relative">
+      <div className="absolute w-full md:min-h-[550px] top-0">
+        <div className="z-0 relative min-h-[250px] h-full md:min-h-[550px]  flex md:w-full bg-slate-800">
+          <Image
+            loader={contentfulLoader}
+            src={backgroundImage.url}
+            alt="hero image"
+            fill={true}
+            className="object-cover object-center h-screen md:min-h-full rounded opacity-[.2]"
+          />
+        </div>
       </div>
-      <Container>
-        <div
-          className={`relative -mt-36 md:mt-0 flex flex-col md:items-left justify-start object-center object-cover ${
-            rendered ? "opacity-100" : "opacity-10 p-20"
-          } transition-all duration-700  bg-white shadow-lg md:shadow-none rounded-sm min-h-full`}
-        >
-          {/* background image */}
-          <div className="z-0 relative hidden md:block md:min-h-[500px] md:w-auto">
-            <Image
-              loader={contentfulLoader}
-              src={backgroundImage.url}
-              alt="hero image"
-              width={2000}
-              height={600}
-              className="object-cover object-center h-screen md:min-h-full w-full max-h-[600px] rounded"
-            />
-          </div>
-          {/* background image */}
 
-          <div className="z-20 bg-white rounded md:rounded-none md:bg-white w-full md:w-2/4 gap-2 flex flex-col items-center md:items-stretch justify-center relative md:absolute px-2 py-4 h-full">
-            {/* Show logo in mobile view */}
-            <div className="hidden md:block w-full">
-              <h1 className="font-serif text-slate-600 text-2xl lg:text-4xl xl:text-7xl xl:leading-normal font-semibold md:font-normal text-center md:text-left">
-                {title}
-              </h1>
-            </div>
-            {/* Show logo in mobile view */}
-            <div className="block md:hidden w-2/3 h-26">
-              <Image
-                src={logo}
-                width={500}
-                height={150}
-                loader={contentfulLoader}
-                alt="logo"
-                className="object-contain object-center"
-              />
-            </div>
-            <div className=" w-1/4 md:w-3/4 h-0.5 bg-orange-500/50 md:bg-slate-500 mb-4" />
-            <div className="flex flex-row flex-nowrap items-center gap-2">
-              {services?.map((service, index) => (
-                <div key={service} className="flex items-center flex-nowrap ">
-                  <p className="text-slate-500 text-xs sm:text-sm font-medium md:text-xl">
-                    {service}
-                  </p>
-                  {index !== services.length - 1 && (
-                    <span className="ml-2 text-slate-500 text-sm md:text-xl">
-                      |
-                    </span>
-                  )}
-                </div>
-              ))}
-            </div>
-            <div>
-              <p className="text-slate-500 text-xs text-center md:text-left md:text-xl">
-                {tagline}
-              </p>
-            </div>
-            <div className="mt-4">
-              <Link href="/contact">
-                <button className="px-6 py-2 bg-orange-400 text-sm md:text-xl text-slate-100 transition-all hover:bg-orange-500">
-                  {cta}
-                </button>
-              </Link>
-            </div>
+      <div
+        className={`z-10 rounded shadow-lg md:shadow-none bg-white md:bg-transparent w-11/12 p-4 md:p-0 mt-24   md:mt-0 flex flex-col items-center ${
+          rendered ? "opacity-100" : "opacity-10 p-20"
+        }`}
+      >
+        <div className=" py-4 md:py-0 md:px-10 w-full md:w-11/12 gap-2 flex flex-col items-center md:items-stretch  ">
+          {/* Show logo in mobile view */}
+          <div className="hidden md:block w-2/3 max-w-xl">
+            <h1 className="font-serif text-slate-100  md:text-7xl   font-semibold md:font-normal  border-b-4 border-orange-300">
+              {title}
+            </h1>
+          </div>
+          {/* Show logo in mobile view */}
+          <div className="flex flex-col items-center md:hidden w-2/3 h-26">
+            <Image
+              src={logo}
+              width={500}
+              height={150}
+              loader={contentfulLoader}
+              alt="logo"
+              className="object-contain object-center"
+            />
+            <div className="w-1/3 h-[2px] bg-orange-300 my-2"></div>
+          </div>
+          <div className="flex flex-row flex-nowrap items-center gap-2">
+            {services?.map((service, index) => (
+              <div key={service} className="flex items-center flex-nowrap ">
+                <p className="text-slate-500 md:text-slate-100 text-xs sm:text-sm font-medium md:text-xl">
+                  {service}
+                </p>
+                {index !== services.length - 1 && (
+                  <span className="ml-2 text-slate-200 text-sm md:text-xl">
+                    |
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+          <div>
+            <p className="text-slate-400 md:text-slate-200 text-xs text-center md:text-left md:text-xl">
+              {tagline}
+            </p>
+          </div>
+          <div className="mt-4 md:mt-6">
+            <Link
+              href="/contact"
+              className=" rounded px-6 py-3 font-semibold bg-orange-300 text-sm md:text-xl text-slate-100 transition-all hover:bg-orange-500"
+            >
+              {cta}
+            </Link>
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 };
