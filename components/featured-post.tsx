@@ -15,13 +15,12 @@ export const FeaturedPost = ({
   publishedAt,
   imageURL,
 }) => {
-  console.log("featured post", publishedAt);
   return (
     <div className="flex flex-col w-full my-4">
-      <div className="relative flex flex-col justify-center mt-28 md:mt-[10px] ">
+      <div className=" relative flex flex-col justify-center mt-28 md:mt-[10px] ">
         <div className="w-full h-full md:block">
           {imageURL && (
-            <div className="w-full max-w-[1500px] min-h-[300px] md:min-h-[300px] overflow-hidden rounded relative">
+            <div className="w-full max-w-[1500px] min-h-[300px] md:min-h-[330px] overflow-hidden rounded relative">
               <Image
                 src={imageURL}
                 loader={contentfulLoader}
@@ -34,7 +33,7 @@ export const FeaturedPost = ({
         </div>
 
         <Container>
-          <div className="flex flex-col absolute top-0 z-20 md:mt-8 md:mb-8 md:mt-0 justify-center  h-full md:py-8 gap-2">
+          <div className="flex flex-col absolute top-0 z-20  justify-center  h-full  gap-2">
             <Link
               href={`/posts/${slug}`}
               className="text-2xl md:text-6xl md:leading-none max-w-sm md:max-w-2xl md:mb-4 text-white font-bold hover:underline"
