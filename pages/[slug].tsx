@@ -142,46 +142,48 @@ function Blog({
           callButton={navigation[0]?.callButton}
         />
 
-        <div className="flex flex-auto justify-center">
-          <div className="w-full flex grow max-w-[1200px]">
-            <Container>
-              <FeaturedPost
-                title={heroPost?.title}
-                excerpt={heroPost?.blurb}
-                slug={heroPost?.slug}
-                contributor={heroPost?.author}
-                featured={true}
-                category={""} //fix this
-                publishedAt={heroPost?.sys?.publishedAt}
-                imageURL={heroPost?.mainImage?.url}
-              />
+        <section className="flex w-full  justify-center">
+          <Container>
+            <div className="flex w-full justify-between">
+              <div className="flex flex-col md:w-3/4">
+                <FeaturedPost
+                  title={heroPost?.title}
+                  excerpt={heroPost?.blurb}
+                  slug={heroPost?.slug}
+                  contributor={heroPost?.author}
+                  featured={true}
+                  category={""} //fix this
+                  publishedAt={heroPost?.sys?.publishedAt}
+                  imageURL={heroPost?.mainImage?.url}
+                />
 
-              {categories?.length > 0 && (
-                <Categories categories={rankedCategories} />
-              )}
-              {morePosts.length > 0 && (
-                <MoreStories
-                  posts={morePosts}
-                  title={"Recent Posts"}
-                  link={`/posts/`}
-                />
-              )}
-              {olderPosts.length > 0 && (
-                <MoreStories
-                  posts={olderPosts}
-                  title={"More Posts"}
-                  link={"/posts/"}
-                />
-              )}
-            </Container>
-          </div>
-          <BlogSideBar
-            categories={categories}
-            suggestedArticles={[]}
-            authors={authors}
-            blogDescription={blogDescription}
-          />
-        </div>
+                {categories?.length > 0 && (
+                  <Categories categories={rankedCategories} />
+                )}
+                {morePosts.length > 0 && (
+                  <MoreStories
+                    posts={morePosts}
+                    title={"Recent Posts"}
+                    link={`/posts/`}
+                  />
+                )}
+                {olderPosts.length > 0 && (
+                  <MoreStories
+                    posts={olderPosts}
+                    title={"More Posts"}
+                    link={"/posts/"}
+                  />
+                )}
+              </div>
+              <BlogSideBar
+                categories={categories}
+                suggestedArticles={[]}
+                authors={authors}
+                blogDescription={blogDescription}
+              />
+            </div>
+          </Container>
+        </section>
       </Layout>
     </>
   );

@@ -16,17 +16,20 @@ export const FeaturedPost = ({
   imageURL,
 }) => {
   return (
-    <div className="flex flex-col w-full my-4">
-      <div className=" relative flex flex-col justify-center mt-28 md:mt-[10px] ">
-        <div className="w-full h-full md:block">
+    <div className="flex flex-col  my-4 md:mr-8">
+      <h1 className="font-bold text-2xl text-slate-400 font-serif italic mt-28 md:mt-2">
+        Featured Post
+      </h1>
+      <div className="relative flex flex-col justify-center  mt-[10px] ">
+        <div className="h-full md:flex">
           {imageURL && (
-            <div className="w-full max-w-[1500px] min-h-[300px] md:min-h-[330px] overflow-hidden rounded relative">
+            <div className="w-full  min-h-[300px] md:min-h-[330px] overflow-hidden rounded relative">
               <Image
                 src={imageURL}
                 loader={contentfulLoader}
                 alt="featured post image"
                 fill={true}
-                className="object-cover object-center rounded w-full max-h-[500px]"
+                className="object-cover object-center rounded  "
               />
             </div>
           )}

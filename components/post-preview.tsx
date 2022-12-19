@@ -17,7 +17,7 @@ export default function PostPreview({
   return (
     <div className=" gap-4 md:gap-12  flex flex-col md:flex-row  md:items-center">
       {coverImage && coverImage?.url && (
-        <div className="min-w-[250px] min-h-[150px] md:min-h-[200px] relative  ">
+        <div className="w-full md:w-1/4 min-h-[150px] md:min-h-[200px] relative  ">
           <Image
             src={coverImage.url}
             alt={title}
@@ -27,7 +27,7 @@ export default function PostPreview({
           />
         </div>
       )}
-      <div className="w-full md:w-2/3  flex flex-col justify-center gap-2">
+      <div className=" flex flex-col justify-center gap-2">
         <h3 className="text-2xl leading-snug ">
           <Link
             href={`/posts/${slug}`}
@@ -46,7 +46,7 @@ export default function PostPreview({
           />
         </div>
 
-        <p className="text-base leading-relaxed  text-slate-500">
+        <p className="text-base leading-relaxed  text-slate-500 max-w-lg">
           {!expanded ? excerpt.substring(0, 240) + "..." : excerpt}
         </p>
 

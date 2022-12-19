@@ -2,9 +2,7 @@ import PostPreview from "./post-preview";
 import { PostType } from "../types/post.types";
 import { BiRightArrowAlt } from "react-icons/bi";
 import Link from "next/link";
-import { useState } from "react";
 import cn from "classnames";
-import { BsLayoutThreeColumns, BsList } from "react-icons/bs";
 
 export default function MoreStories({
   posts,
@@ -16,14 +14,14 @@ export default function MoreStories({
   link: string | undefined;
 }) {
   return (
-    <section className="my-2 mb-6 ">
+    <section className="my-2 mb-6 flex flex-col">
       <div className="py-2 flex justify-between items-center border-b-[1px] border-slate-100 mb-4">
         <div className="flex items-center">
           <h2 className="text-xl italic md:text-xl font-semibold tracking-tighter leading-tight text-slate-400 font-serif">
             {title}
           </h2>
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center mr-8">
           {link && (
             <Link
               href={link}
