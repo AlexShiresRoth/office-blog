@@ -10,7 +10,6 @@ type Props = {
 };
 
 const LandingPostPreview = ({ post }: Props) => {
-  console.log("post", post);
   return (
     <div className="flex flex-col">
       <div className="my-2">
@@ -21,7 +20,7 @@ const LandingPostPreview = ({ post }: Props) => {
             width={1000}
             alt="post image"
             loader={contentfulLoader}
-            className="object-cover object-center h-screen md:min-h-full w-full max-h-[300px] rounded"
+            className="object-cover object-center h-screen md:min-h-full w-full max-h-[300px] "
           />
         ) : null}
       </div>
@@ -38,7 +37,7 @@ const LandingPostPreview = ({ post }: Props) => {
       <p className="text-slate-500 leading-relaxed my-2">{post?.blurb}</p>
       <Link
         href={`/posts/${post?.slug}`}
-        className="text-sm text-orange-300 underline hover:text-orange-500 transition-all"
+        className="text-sm text-yellow-500 underline hover:text-yellow-700 transition-all"
       >
         Read More
       </Link>

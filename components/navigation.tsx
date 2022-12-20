@@ -39,7 +39,7 @@ const Navigation = ({ navigation }: NavigationType) => {
   return (
     <>
       <nav
-        className={`w-full transition-all hidden md:flex flex-row items-center md:top-0 bg-white z-40 ${
+        className={`w-full transition-all hidden md:flex flex-row items-center md:top-0 bg-slate-50 z-40 ${
           isAtTopOfScreen
             ? "relative py-4"
             : "relative md:fixed py-2 shadow-md "
@@ -70,7 +70,7 @@ const Navigation = ({ navigation }: NavigationType) => {
               {navigation?.callButton && (
                 <div className="flex items-center gap-2">
                   <a href={`tel:${navigation?.callButton?.phoneNumber}`}>
-                    <button className="px-4 py-2 bg-orange-300 text-white rounded hover:bg-orange-600 transition-all">
+                    <button className="px-4 py-2 bg-yellow-500 text-white hover:bg-yellow-600 transition-all">
                       {navigation?.callButton?.buttonText}
                     </button>
                   </a>
@@ -106,7 +106,7 @@ const Navigation = ({ navigation }: NavigationType) => {
               {navigation?.callButton && (
                 <div className="flex items-center gap-2">
                   <a href={`tel:${navigation?.callButton?.phoneNumber}`}>
-                    <button className="px-4 py-2 bg-orange-400 text-white rounded hover:bg-orange-600 transition-all">
+                    <button className="px-4 py-2 bg-orange-400 text-white  hover:bg-orange-600 transition-all">
                       {navigation?.callButton?.buttonText}
                     </button>
                   </a>

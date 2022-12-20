@@ -27,35 +27,35 @@ const SectionWithImageBackground = ({ content }: Props) => {
 
 const WideScreenSection = ({ content }: Props) => {
   return (
-    <div className="hidden md:flex flex-col w-full relative mb-6 items-center justify-center">
+    <div className="hidden md:flex flex-col w-full relative mb-10 items-center justify-center">
       <Container>
         <div className="w-full hidden md:flex flex-col items-center justify-center relative  rounded">
-          <div className="md:w-full md:h-full hidden md:block overflow-hidden rounded min-h-[300px]">
+          <div className="md:w-full md:h-full hidden md:block overflow-hidden min-h-[350px]">
             <Image
               src={content?.bgImage?.url}
               loader={contentfulLoader}
               alt="background image"
               width={2000}
               height={300}
-              className="object-cover object-center rounded w-full max-h-[350px]"
+              className="object-cover object-center  w-full max-h-[350px]"
             />
           </div>
           <div className="relative py-4 md:p-0 md:absolute flex flex-col items-center z-20 w-full">
-            <h2 className="text-sm md:text-lg text-orange-300 font-regular relative ">
+            <h2 className="text-sm md:text-lg text-yellow-500 font-semibold relative ">
               {content?.title}
             </h2>
-            <h1 className="text-xl md:text-2xl xl:text-4xl text-slate-50 w-full my-2 md:my-4 md:w-2/3 text-center font-semibold font-serif">
+            <h1 className="text-xl md:text-2xl xl:text-4xl text-slate-50 w-full max-w-lg my-2 md:my-4 md:w-2/3 text-center font-semibold font-serif">
               {content?.subTitle}
             </h1>
             <Link
               href={content?.slug ?? "/contact"}
-              className="rounded bg-orange-300 text-slate-50 p-2 mt-2 md:mt-6 border-4 border-orange-200/20 shadow-lg hover:bg-orange-500 transition-all"
+              className="bg-yellow-500 text-slate-50 p-2 px-4 mt-2 md:mt-6  hover:bg-yellow-400 transition-all"
             >
               {content?.cta}
             </Link>
           </div>
 
-          <div className="absolute h-full w-full z-10 bg-slate-700/50 left-0 hidden md:block rounded"></div>
+          <div className="absolute h-full w-full z-10 bg-slate-800/50 left-0 hidden md:block "></div>
         </div>
       </Container>
     </div>

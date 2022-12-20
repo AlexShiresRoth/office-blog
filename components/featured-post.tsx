@@ -17,19 +17,19 @@ export const FeaturedPost = ({
 }) => {
   return (
     <div className="flex flex-col  my-4 md:mr-8">
-      <h1 className="font-bold text-2xl text-slate-400 font-serif italic mt-28 md:mt-2">
+      <h1 className="font-bold text-2xl text-slate-800 font-serif italic mt-28 md:mt-2">
         Featured Post
       </h1>
       <div className="relative flex flex-col justify-center  mt-[10px] ">
         <div className="h-full md:flex">
           {imageURL && (
-            <div className="w-full  min-h-[300px] md:min-h-[330px] overflow-hidden rounded relative">
+            <div className="w-full  min-h-[300px] md:min-h-[330px] overflow-hidden relative">
               <Image
                 src={imageURL}
                 loader={contentfulLoader}
                 alt="featured post image"
                 fill={true}
-                className="object-cover object-center rounded  "
+                className="object-cover object-center "
               />
             </div>
           )}
@@ -70,7 +70,7 @@ export const FeaturedPost = ({
             <div className="mt-4 ">
               <Link
                 href={`/posts/${slug}`}
-                className="px-2 py-2 text-xs md:text-sm border-[1px] border-slate-50 text-slate-50 rounded-sm hover:bg-orange-500 hover:border-orange-500 transition-all"
+                className="px-2 py-2 text-xs md:text-sm border-[1px] border-slate-50 text-slate-50  hover:bg-orange-500 hover:border-orange-500 transition-all"
               >
                 View Post
               </Link>
