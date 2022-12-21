@@ -23,7 +23,7 @@ type Props = {
 
 const BlogSection = ({ content, posts }: Props) => {
   return (
-    <div className="flex flex-col w-full mb-10 mt-20 md:mt-0">
+    <div className="flex flex-col w-full mb-10 mt-20 md:mt-16">
       <Container>
         <div className="flex flex-col md:flex-row gap-4 w-full  items-start">
           <div className="flex flex-col w-full md:w-1/4 mr-2 relative">

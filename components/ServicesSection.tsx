@@ -12,14 +12,14 @@ const ServicesSection = ({ services }: Props) => {
   return (
     <div className="flex flex-col w-full mb-2 mt-6 ">
       <Container>
-        <div className="flex-col items-center flex w-full">
+        <div className="flex-col md:items-center flex w-full">
           <h6 className="text-sm text-yellow-500">{services?.preHeading}</h6>
           <div className="flex items-center w-full mb-4 gap-2">
-            <span className="border-b-2 border-slate-800 w-1/3 md:w-2/3"></span>
-            <h2 className="font-bold font-serif text-xl md:text-2xl text-slate-700  w-full md:w-1/3 text-center">
+            <span className="border-b-2 border-slate-800 hidden md:block md:w-2/3"></span>
+            <h2 className="font-bold font-serif text-xl md:text-2xl text-slate-700  w-full md:w-1/3 md:text-center">
               {services.title}
             </h2>
-            <span className="border-b-2 border-slate-400 w-1/3 md:w-2/3"></span>
+            <span className="border-b-2 border-slate-800 w-1/2 md:w-2/3"></span>
           </div>
         </div>
         <div className="flex flex-col md:grid  justify-items-stretch	grid-cols-4 gap-8 ">

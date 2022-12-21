@@ -27,15 +27,15 @@ const ArticlePreview = ({ content }) => {
           />
         </div>
       </div>
-      <div className="w-[90px] h-full flex flex-col justify-start">
+      <div className="w-[90px] h-full flex flex-col justify-start shadow-[5px_5px_0_0_black]">
         {content?.mainImage && content?.mainImage?.url && (
           <Image
             src={content?.mainImage?.url}
-            alt={content?.mainImage?.title}
+            alt={content?.mainImage?.title ?? "Image"}
             width={300}
             height={300}
             loader={contentfulLoader}
-            className="object-cover rounded"
+            className="object-cover object-center"
           />
         )}
       </div>

@@ -79,7 +79,7 @@ export const BlogSideBar = ({
 
   return (
     <div
-      className=" hidden md:flex flex-col border-l-[1px] border-accent-2   py-4 relative min-h-screen  w-1/4 "
+      className=" hidden md:flex flex-col border-l-[1px] border-slate-800   py-4 relative min-h-screen  w-1/4 "
       ref={sideBarRef}
     >
       <div className="relative top-2 min-h-full w-full flex flex-col">
@@ -87,7 +87,7 @@ export const BlogSideBar = ({
           {blogDescription && (
             <BlogDescription blogDescription={blogDescription} />
           )}
-          <div className="border-b-[1px] border-t-[1px] border-slate-100 flex py-2 mb-2">
+          <div className="border-b-[1px] border-t-[1px] border-slate-800 flex py-2 mb-2">
             <h2 className="font-bold text-slate-500 ml-6">Top Categories</h2>
           </div>
           <div className="pl-6 pb-2 flex flex-col gap-2 w-full ">
@@ -106,8 +106,8 @@ export const BlogSideBar = ({
           </div>
           {suggestedArticles?.length > 0 && (
             <>
-              <div className="border-b-[1px] border-t-[1px] border-slate-100 flex py-4 mt-4 mb-2">
-                <h2 className="font-bold text-slate-500 ml-6">
+              <div className="border-b-[1px] border-t-[1px] border-slate-800 flex py-4 mt-4 mb-2">
+                <h2 className="font-bold text-slate-800 ml-6">
                   Suggested Articles
                 </h2>
               </div>
@@ -120,7 +120,7 @@ export const BlogSideBar = ({
           )}
           {authors?.length > 0 && (
             <div className="flex flex-col gap-2">
-              <div className="border-b-[1px] border-t-[1px] border-slate-100 flex py-4 mt-4 mb-2">
+              <div className="border-b-[1px] border-t-[1px] border-slate-800 flex py-4 mt-4 mb-2">
                 <h2 className="font-bold text-slate-500 ml-6">Authors</h2>
               </div>
               {authors?.map((author) => (

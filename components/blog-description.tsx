@@ -11,7 +11,7 @@ type Props = {
 const BlogDescription = ({ blogDescription }: Props) => {
   return (
     <div className="flex flex-col">
-      <h2 className="border-b-[1px] pl-6 pb-2 border-slate-100 text-sm md:text-xl font-bold text-slate-500">
+      <h2 className="border-b-[1px] pl-6 pb-2 border-slate-800 text-sm md:text-xl font-bold text-slate-800">
         {blogDescription.sectionTitle}
       </h2>
 

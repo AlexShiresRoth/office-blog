@@ -18,12 +18,12 @@ const Textarea = ({
   isRequired,
 }: Props) => {
   return (
-    <div className="flex flex-col my-4 w-full items-start border-slate-600 border-2">
-      <label className="text-orange-400 text-sm ml-4 bg-slate-100 -mt-3 px-4">
+    <div className="flex flex-col my-4 w-full items-start border-slate-800 border-2 border-b-4">
+      <label className="text-orange-400 text-sm ml-4 bg-white -mt-3 px-4">
         {label}
       </label>
       <textarea
-        className="w-full px-4 py-2 h-36 focus:outline-none bg-slate-100"
+        className="w-full px-4 py-2 h-36 focus:outline-none bg-white"
         name={name}
         value={value}
         placeholder={placeholder}

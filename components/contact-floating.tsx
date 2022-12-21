@@ -68,10 +68,10 @@ const ContactFloating = ({ contact }: Props) => {
 
   return (
     <div
-      className={`fixed right-10 bottom-10 z-50 shadow-xl hidden md:flex flex-col items-center justify-center   md:h-auto md:w-auto transition-all rounded-full hover:cursor-pointer ${
+      className={`fixed right-10 bottom-10 z-50 shadow-xl hidden md:flex flex-col items-center justify-center   md:h-auto md:w-auto transition-all  hover:cursor-pointer ${
         !formState?.contact?.isFormVisible
-          ? "rounded-full bg-orange-500 w-12 h-12"
-          : "w-half bg-slate-100 rounded-none"
+          ? "rounded-full bg-yellow-500 w-12 h-12"
+          : "w-half bg-white rounded-none"
       }`}
     >
       {!formState?.contact?.isFormVisible && (
@@ -91,9 +91,9 @@ const ContactFloating = ({ contact }: Props) => {
           } transition-all`}
         >
           <div className="flex flex-col w-full">
-            <div className="flex">
+            <div className="flex my-4">
               <div>
-                <h6 className="text-orange-400 text-sm">
+                <h6 className="text-yellow-500 text-sm">
                   {contact?.preHeading}
                 </h6>
                 <h2 className="font-bold font-serif text-2xl text-slate-700">
@@ -105,14 +105,14 @@ const ContactFloating = ({ contact }: Props) => {
                   onClick={() =>
                     dispatch(toggleForm(!formState?.contact?.isFormVisible))
                   }
-                  className="flex rounded items-center bg-slate-700 text-slate-50 p-2 text-xs hover:bg-slate-500 transition-all"
+                  className="flex  items-center bg-slate-800 text-slate-50 p-2 text-xs hover:bg-slate-500 transition-all"
                 >
                   Close
                   <AiOutlineClose size={16} />
                 </button>
               </div>
             </div>
-            <form className="flex flex-col gap-4 w-full" onSubmit={submit}>
+            <form className="flex flex-col gap-2 w-full" onSubmit={submit}>
               <div className="flex  gap-4 w-full">
                 {contact?.inputsCollection?.items?.map((input) => {
                   return input.type === "text" || input.type === "email" ? (
@@ -162,7 +162,7 @@ const ContactFloating = ({ contact }: Props) => {
               </div>
               <div className="flex justify-end">
                 {!sending ? (
-                  <button className="px-6 py-4 bg-orange-400 text-slate-50 text-xl font-semibold w-36 rounded">
+                  <button className="px-6 py-4 bg-yellow-500 text-slate-50 text-xl font-semibold w-36">
                     {contact?.submit}
                   </button>
                 ) : (

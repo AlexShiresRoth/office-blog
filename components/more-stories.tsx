@@ -14,10 +14,10 @@ export default function MoreStories({
   link: string | undefined;
 }) {
   return (
-    <section className="my-2 mb-6 flex flex-col">
-      <div className="py-2 flex justify-between items-center border-b-[1px] border-slate-100 mb-4">
+    <section className="mt-6 mb-6 flex flex-col">
+      <div className="py-2 flex justify-between items-center border-b-[1px] border-slate-800 mb-6">
         <div className="flex items-center">
-          <h2 className="text-xl italic md:text-xl font-semibold tracking-tighter leading-tight text-slate-400 font-serif">
+          <h2 className="text-xl italic md:text-xl font-semibold tracking-tighter leading-tight text-slate-800 font-serif">
             {title}
           </h2>
         </div>
@@ -25,7 +25,7 @@ export default function MoreStories({
           {link && (
             <Link
               href={link}
-              className="text-blue-300 hover:underline flex items-center"
+              className="text-slate-400 hover:underline flex items-center"
             >
               All Articles <BiRightArrowAlt size={14} />
             </Link>

@@ -13,6 +13,7 @@ import BlogIntro from "../../components/blog-intro";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { PostType } from "../../types/post.types";
+import BreadCrumbs from "../../components/bread-crumbs";
 
 export default function Index({
   preview,
@@ -23,6 +24,10 @@ export default function Index({
   contact,
 }) {
   const router = useRouter();
+
+  const navBack = (path: string) => {
+    router.push(path);
+  };
 
   const [posts, setPosts] = useState<PostType[]>([]);
 
@@ -59,7 +64,16 @@ export default function Index({
           callButton={navigation[0]?.callButton}
         />
         <Container>
-          <div className="my-0 pt-32 md:pt-4 md:mt-0  flex flex-col md:flex-row md:items-center md:justify-between border-b-[1px]">
+          <div className="my-0 pt-2 md:pt-4 md:mt-0  flex flex-col md:flex-row md:items-center md:justify-between border-b-[1px]">
+            <div className="mt-28 md:mt-6">
+              <BreadCrumbs
+                historySequence={[
+                  "blog",
+                  ...router.asPath.split("/").filter((item) => item !== ""),
+                ]}
+                navFunction={navBack}
+              />
+            </div>
             <h1 className="text-slate-800 font-bold text-lg md:text-6xl md:leading-relaxed mr-10 flex items-center">
               Posts:{` `}
               {router?.query?.search

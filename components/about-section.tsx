@@ -14,7 +14,7 @@ const AboutSection = ({ about }: Props) => {
   return (
     <div className="flex flex-col my-16">
       <Container>
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="flex flex-col md:flex-row items-center justify-between md:gap-8">
           <div className="w-full md:w-1/2 relative">
             {about?.image && about?.image?.url && (
               <Image
@@ -23,7 +23,7 @@ const AboutSection = ({ about }: Props) => {
                 height={400}
                 alt="About image"
                 loader={contentfulLoader}
-                className="object-cover object-center h-screen md:min-h-full w-full md:max-h-[500px]"
+                className="object-cover object-center h-screen max-h-[200px] md:min-h-full w-full md:max-h-[500px]"
               />
             )}
           </div>

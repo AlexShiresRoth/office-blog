@@ -62,7 +62,7 @@ const ContactSection = ({ contact }: Props) => {
   };
 
   return (
-    <div className="py-10 w-full bg-slate-100">
+    <div className="py-10 w-full ">
       <Container>
         <div className="flex items-center w-full">
           <div className="flex flex-col w-full">

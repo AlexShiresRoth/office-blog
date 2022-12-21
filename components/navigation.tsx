@@ -92,7 +92,7 @@ const Navigation = ({ navigation }: NavigationType) => {
       {/* only show on non blog routes */}
       {!router?.pathname?.includes("blog") &&
         !router.asPath?.includes("posts") && (
-          <nav className="w-full z-30 fixed top-0 flex items-center justify-center shadow-md bg-white py-2 md:hidden">
+          <nav className="w-full z-30 fixed top-0 flex items-center justify-center border-b-[1px] border-b-slate-100 bg-slate-50 py-2 md:hidden">
             <div className="w-11/12 flex items-center justify-between ">
               <Link href={"/"} className="w-24 h-10 md:w-32 relative block ">
                 <Image
@@ -106,7 +106,7 @@ const Navigation = ({ navigation }: NavigationType) => {
               {navigation?.callButton && (
                 <div className="flex items-center gap-2">
                   <a href={`tel:${navigation?.callButton?.phoneNumber}`}>
-                    <button className="px-4 py-2 bg-orange-400 text-white  hover:bg-orange-600 transition-all">
+                    <button className="px-2 py-1 bg-yellow-400 text-white  hover:bg-yellow-600 transition-all">
                       {navigation?.callButton?.buttonText}
                     </button>
                   </a>
@@ -118,10 +118,10 @@ const Navigation = ({ navigation }: NavigationType) => {
 
       {/* MOBILE NAV */}
       <nav
-        className={`w-full transition-all flex md:hidden flex-row items-center justify-center bottom-0 md:top-0 z-50 fixed `}
+        className={`w-full shadow-[0px_-5px_10px_0px_rgba(0,0,0,0.1)]  bg-white transition-all flex md:hidden flex-row items-center justify-center bottom-0 md:top-0 z-50 fixed `}
       >
         <Container>
-          <div className="w-full shadow-lg rounded bg-slate-50 my-4 p-4">
+          <div className="w-full   my-2 p-2">
             <div
               className={`${
                 isMenuOpen

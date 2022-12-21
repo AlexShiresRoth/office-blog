@@ -20,12 +20,12 @@ const TextInput = ({
   isRequired,
 }: Props) => {
   return (
-    <div className="flex flex-col my-2 md:my-4 w-full items-start border-slate-600 border-2">
-      <label className="text-orange-400 text-sm ml-4 bg-slate-100 -mt-3 px-4">
+    <div className="flex flex-col my-2 md:my-4 w-full items-start border-slate-800 border-2 border-b-4">
+      <label className="text-orange-400 text-sm ml-4 bg-white -mt-3 px-4">
         {label}
       </label>
       <input
-        className="px-4 py-4 bg-slate-100 focus:outline-none w-full"
+        className="px-4 py-4 bg-white focus:outline-none w-full"
         type={type}
         name={name}
         value={value}

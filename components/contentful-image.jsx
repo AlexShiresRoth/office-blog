@@ -11,7 +11,7 @@ const ContentfulImage = (props) => {
       {...props}
       width={500}
       height={500}
-      className="object-cover object-center rounded"
+      className="object-cover object-center"
       layout="responsive"
     />
   );

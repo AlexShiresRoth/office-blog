@@ -4,27 +4,25 @@ import ErrorPage from "next/error";
 import Container from "../../components/container";
 import PostBody from "../../components/post-body";
 import MoreStories from "../../components/more-stories";
-import Header from "../../components/header";
 import PostHeader from "../../components/post-header";
-import SectionSeparator from "../../components/section-separator";
 import Layout from "../../components/layout";
 import {
   getAllPostsWithSlug,
   getBlogCategories,
+  getBlogDescription,
   getBlogIntro,
   getContactSection,
   getFooterSection,
   getNavigation,
   getPostAndMorePosts,
-  getPostBySlug,
   getPostComments,
 } from "../../lib/api";
 import PostTitle from "../../components/post-title";
 import BlogIntro from "../../components/blog-intro";
 import { BlogSideBar } from "../../components/blog-side-bar";
-import { useEffect } from "react";
 import CommentForm from "../../components/comment-form";
 import Comments from "../../components/comments";
+import BreadCrumbs from "../../components/bread-crumbs";
 
 //Need to fetch articles that arent the current article & more articles
 export default function Post({
@@ -38,8 +36,13 @@ export default function Post({
   contact,
   sidebarPosts,
   comments,
+  blogDescription,
 }) {
   const router = useRouter();
+
+  const navBack = (path: string) => {
+    router.push(path);
+  };
 
   if (!router.isFallback && !post) {
     return <ErrorPage statusCode={404} />;
@@ -52,7 +55,11 @@ export default function Post({
       navigation={nav[0]}
       contact={contact}
     >
-      <BlogIntro title={intro?.title} briefSummary={intro?.briefSummary} callButton={nav[0]?.callButton}/>
+      <BlogIntro
+        title={intro?.title}
+        briefSummary={intro?.briefSummary}
+        callButton={nav[0]?.callButton}
+      />
       <div>
         <Container>
           <div className="flex justify-between gap-16">
@@ -61,7 +68,18 @@ export default function Post({
                 <PostTitle>Loading…</PostTitle>
               ) : (
                 <>
-                  <article className="pt-32 md:pt-4">
+                  <div className="mt-32 md:mt-6">
+                    <BreadCrumbs
+                      historySequence={[
+                        "blog",
+                        ...router.asPath
+                          .split("/")
+                          .filter((item) => item !== ""),
+                      ]}
+                      navFunction={navBack}
+                    />
+                  </div>
+                  <article className="pt-2 md:pt-4">
                     <Head>
                       <title>{post.title}</title>
                       {/* <meta property="og:image" content={post.coverImage.url} /> */}
@@ -79,7 +97,9 @@ export default function Post({
                   {comments?.length > 0 ? (
                     <Comments comments={comments} />
                   ) : (
-                    <p className="my-4 text-slate-400 font-bold">No comments yet</p>
+                    <p className="my-4 text-slate-400 font-bold">
+                      No comments yet
+                    </p>
                   )}
                   {morePosts && morePosts.length > 0 && (
                     <MoreStories posts={morePosts} title={""} link="" />
@@ -91,6 +111,7 @@ export default function Post({
             <BlogSideBar
               categories={categories}
               suggestedArticles={sidebarPosts}
+              blogDescription={blogDescription}
             />
           </div>
         </Container>
@@ -115,6 +136,7 @@ export async function getStaticProps({ params, preview = false }) {
   const categories = (await getBlogCategories()) ?? [];
   const sidebarPosts = await getAllPostsWithSlug();
   const comments = (await getPostComments(params.slug)) ?? [];
+  const blogDescription = (await getBlogDescription()) ?? null;
 
   const existingPosts = [
     data?.post?.slug,
@@ -137,6 +159,7 @@ export async function getStaticProps({ params, preview = false }) {
       categories,
       sidebarPosts: filteredPosts.slice(0, 3),
       comments,
+      blogDescription,
     },
   };
 }

@@ -80,7 +80,7 @@ const SmallScreenSection = ({ content }: Props) => {
         <Container>
           <div className="w-full flex absolute top-0 md:flex flex-col items-center justify-center relative my-4">
             <div className="relative py-4 md:p-0 md:absolute flex flex-col items-center z-20 w-full">
-              <h2 className="text-sm md:text-lg text-orange-400 font-regular relative ">
+              <h2 className="text-sm md:text-lg text-yellow-500 font-regular relative ">
                 {content?.title}
               </h2>
               <h1 className="text-xl md:text-2xl xl:text-4xl text-slate-50 w-full my-2 md:my-4 md:w-2/3 text-center font-semibold font-serif">
@@ -88,7 +88,7 @@ const SmallScreenSection = ({ content }: Props) => {
               </h1>
               <Link
                 href={content?.slug ?? "/contact"}
-                className="rounded bg-orange-300 text-slate-50 p-2 mt-2 md:mt-6 border-4 border-orange-200/20 shadow-lg"
+                className=" bg-yellow-500 text-slate-50 p-2 mt-2 md:mt-6  shadow-lg"
               >
                 {content?.cta}
               </Link>
