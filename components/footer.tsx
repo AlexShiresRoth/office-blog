@@ -11,7 +11,7 @@ const footer = ({ footer }: Props) => {
   const parseText = (text: string) => {
     if (!text) return;
     return text.split("\n").map((sentence, index) => (
-      <p key={index} className="my-2 text-slate-600">
+      <p key={index} className="my-2 text-slate-400">
         {sentence}
       </p>
     ));
@@ -30,13 +30,13 @@ const footer = ({ footer }: Props) => {
           {footer.columnsCollection?.items?.map((item) => {
             return (
               <div key={item.title} className="md:w-1/4">
-                <h4 className="font-semibold text-slate-500">{item.title} </h4>
+                <h4 className="font-semibold text-slate-200">{item.title} </h4>
                 <div>{parseText(item.text)}</div>
                 {item?.linksCollection?.items.map((link) => (
                   <div className="w-full my-2" key={link.title}>
                     <Link
                       href={`/${link.slug}`}
-                      className="text-slate-600 hover:underline hover:text-slate-400 transition-all"
+                      className="text-slate-400 hover:underline hover:text-slate-400 transition-all"
                     >
                       {link.title}
                     </Link>

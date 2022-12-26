@@ -7,7 +7,7 @@ const TrustBadges = () => {
   };
   return (
     <div className="flex w-full items-center justify-center bg-slate-100 py-6 my-6">
-      <div className="flex justify-around items-center w-3/4 gap-4 md:w-11/12 flex-col md:flex-row">
+      <div className="flex justify-center justify-items-center md:justify-around items-center w-11/12 gap-4 md:w-11/12 grid grid-cols-2 md:flex md:flex-row">
         <a
           rel="me"
           target="_blank"

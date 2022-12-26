@@ -1,8 +1,7 @@
 import Image, { ImageLoaderProps } from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import Container from "./container";
-import ContentfulImage, { contentfulLoader } from "./contentful-image";
+import  { contentfulLoader } from "./contentful-image";
 
 type Props = {
   backgroundImage: {
@@ -35,7 +34,7 @@ const HeroSection = ({
   return (
     <section className=" flex items-center justify-center relative pt-12 md:py-16">
       <div
-        className={`w-full p-2 md:p-0 mt-4   md:mt-0 flex flex-col items-center ${
+        className={`w-11/12 md:w-full p-2 md:p-0 mt-4   md:mt-0 flex flex-col items-center ${
           rendered ? "opacity-100" : "opacity-10 p-20"
         }`}
       >
@@ -86,7 +85,7 @@ const HeroSection = ({
               rel="me"
               target="_blank"
               href="https://www.avvo.com/attorneys/11716-ny-bruce-rothenberg-887503.html"
-              className="relative w-32 h-8 mt-10"
+              className="relative w-32 h-8 mt-6 md:mt-10"
             >
               <Image
                 alt="Avvo - Rate your Lawyer. Get Free Legal Advice."
