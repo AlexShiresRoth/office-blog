@@ -15,6 +15,7 @@ import ServicesSection from "../components/ServicesSection";
 import AboutSection from "../components/about-section";
 import SectionWithImageBackground from "../components/section-with-image-background";
 import BlogSection from "../components/blog-section";
+import TrustBadges from "../components/trust-bages";
 
 export default function Index({
   preview,
@@ -50,6 +51,7 @@ export default function Index({
           services={hero?.services}
           logo={navigation[0]?.logo.url}
         />
+        <TrustBadges />
         <ServicesSection services={services} />
         <AboutSection about={about} />
         <SectionWithImageBackground content={sectionWithImage} />

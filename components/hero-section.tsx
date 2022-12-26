@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image, { ImageLoaderProps } from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Container from "./container";
@@ -24,6 +24,9 @@ const HeroSection = ({
   logo,
 }: Props) => {
   const [rendered, setRendered] = useState<boolean>(false);
+  const imageLoader = ({ src, width, quality }: ImageLoaderProps) => {
+    return `${src}?w=${width}&q=${quality || 75}`;
+  };
 
   useEffect(() => {
     setRendered(true);
@@ -32,13 +35,13 @@ const HeroSection = ({
   return (
     <section className=" flex items-center justify-center relative pt-12 md:py-16">
       <div
-        className={`w-11/12 p-2 md:p-0 mt-4   md:mt-0 flex flex-col items-center ${
+        className={`w-full p-2 md:p-0 mt-4   md:mt-0 flex flex-col items-center ${
           rendered ? "opacity-100" : "opacity-10 p-20"
         }`}
       >
-        <div className=" py-4 md:py-0 md:px-10 w-full md:w-11/12 gap-4 md:gap-12 flex  flex-col md:flex-row items-center ">
+        <div className=" py-4 md:py-0 md:px-10 w-full md:w-11/12 gap-4 md:gap-12 flex  flex-col md:flex-row items-center justify-between">
           {/* Show logo in mobile view */}
-          <div className="z-0 relative min-h-[140px]  md:min-h-[450px] w-full md:w-1/2  flex  ">
+          <div className="z-0 relative min-h-[140px]  md:min-h-[450px] w-full md:w-1/2  flex max-w-[800px] ">
             <Image
               loader={contentfulLoader}
               src={backgroundImage.url}
@@ -79,6 +82,20 @@ const HeroSection = ({
                 {cta}
               </Link>
             </div>
+            <a
+              rel="me"
+              target="_blank"
+              href="https://www.avvo.com/attorneys/11716-ny-bruce-rothenberg-887503.html"
+              className="relative w-32 h-8 mt-10"
+            >
+              <Image
+                alt="Avvo - Rate your Lawyer. Get Free Legal Advice."
+                id="avvo_badge"
+                src="//images.avvo.com/avvo/cms/images/amos_assets/microbadge.png"
+                fill={true}
+                loader={imageLoader}
+              />
+            </a>
           </div>
         </div>
       </div>
