@@ -22,15 +22,15 @@ const ServicesSection = ({ services }: Props) => {
             <span className="border-b-2 border-slate-800 w-1/2 md:w-2/3"></span>
           </div>
         </div>
-        <div className="flex flex-col md:grid  justify-items-stretch	grid-cols-4 gap-8 ">
+        <div className="flex flex-col md:flex-row justify-items-stretch gap-8 ">
           {services.contentItemsCollection.items.map((item) => {
             return (
               <div
                 key={item.title}
-                className="flex bg-white flex-col items-center relative justify-center   "
+                className="flex flex-1 flex-col items-center relative justify-center border-4 border-slate-800 shadow-[10px_10px_0_0_black]  "
               >
-                <div className="relative z-10 bg-white p-4 border-4 border-slate-800">
-                  <div className="relative w-full min-h-[200px] flex flex-auto bg-slate-500">
+                <div className="relative z-10  p-4 flex flex-col  h-full">
+                  <div className="relative w-full h-[200px] max-h-[200px] flex flex-auto bg-slate-500">
                     <Image
                       src={item.image.url}
                       alt={item.image.title}
@@ -39,11 +39,12 @@ const ServicesSection = ({ services }: Props) => {
                       className="object-cover object-center opacity-[.5]"
                     />
                   </div>
-                  <div className="p-4 flex flex-col items-start gap-4">
-                    <h4 className=" z-10  bg-slate-800 p-4 -mt-10 font-semibold text-slate-100  text-lg border-b-4 border-yellow-300 py-2">
+                  <div className="p-4 flex flex-col items-start gap-4 ">
+                    <h4 className=" z-10  bg-slate-800 p-4 -mt-10 font-semibold text-slate-100  md:text-base border-b-4 border-yellow-300 py-2">
                       {item.title}
                     </h4>
-                    <p className="text-sm md:text-base fond-semibold text-slate-700">
+                   <div className="flex flex-col gap-4 justify-between">
+                     <p className="text-sm md:text-base fond-semibold text-slate-700">
                       {item.text.substring(0, 100) + "..."}
                     </p>
                     <Link
@@ -52,9 +53,10 @@ const ServicesSection = ({ services }: Props) => {
                     >
                       {item.cta}
                     </Link>
+                   </div>
                   </div>
                 </div>
-                <span className="h-full w-full bg-slate-800 translate-x-3 translate-y-3 absolute block z-0"></span>
+                {/* <span className="h-full w-full bg-slate-800 translate-x-3 translate-y-3 absolute block z-0"></span> */}
               </div>
             );
           })}
